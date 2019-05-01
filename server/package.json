@@ -1,0 +1,41 @@
+{
+  "name": "blue-ocean-prime",
+  "version": "1.0.0",
+  "description": "Main Repository for Project Blue Ocean",
+  "main": "server.js",
+  "scripts": {
+    "start": "node bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gSchool/blue-ocean-starter.git"
+  },
+  "keywords": [
+    "Agile",
+    "CI",
+    "CD",
+    "Node",
+    "Express",
+    "React"
+  ],
+  "author": "HRATX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gSchool/blue-ocean-starter/issues"
+  },
+  "homepage": "https://github.com/gSchool/blue-ocean-starter#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "http-errors": "^1.7.2",
+    "install": "^0.12.2",
+    "mocha": "^6.0.2",
+    "morgan": "^1.9.1",
+    "npm": "^6.9.0",
+    "supertest": "^4.0.0"
+  }
+}
