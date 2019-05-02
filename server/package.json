@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -31,11 +31,13 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "http-errors": "^1.7.2",
     "install": "^0.12.2",
-    "mocha": "^6.0.2",
+    "mocha": "^6.1.4",
     "morgan": "^1.9.1",
     "npm": "^6.9.0",
+    "nyc": "^14.1.0",
     "supertest": "^4.0.0"
   }
 }

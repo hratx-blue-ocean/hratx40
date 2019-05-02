@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "cd ./client && npm install ; cd ../server && npm install",
     "test": "echo pwd && cd ./client && npm test",
-    "launch": "cd ./server && node bin/www & cd ../client && npm run-script start &"
+    "launch": "cd ./server && node bin/www & cd ./client && npm run-script start &"
   },
   "repository": {
     "type": "git",
