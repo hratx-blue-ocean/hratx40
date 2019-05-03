@@ -7,6 +7,9 @@ Trello Board: https://trello.com/b/1Ry424Xs/hratx40-blue-ocean
 
 How do you feel today? [![Build Status](https://travis-ci.com/hratx39-blue-ocean/deep-dive.svg?branch=master)](https://travis-ci.com/hratx39-blue-ocean/deep-dive)
 
+## Agile Workflow
+Daily standups are a must.
+
 ## Contribution Guidelines
 We expect our new software engineers to start contributing to our codebase immediately. That doesn't mean we want maverick manatees swimming wild and munching on whatever looks tastiest with no concern for what other herdmates are doing. That means:
   1. No code shall be written except that which directly addresses a specific ticket.
