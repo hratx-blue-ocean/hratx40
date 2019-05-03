@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "setup": "cd ./client && npm install ; cd ../server && npm install",
-    "test": "echo pwd && cd ./client && npm test",
-    "launch": "cd ./server && node bin/www && cd ../client && npm run-script start &"
+    "test": "cd ./client && npm test",
+    "launch": "cd ./client && npm run-script build && cd ../server && node bin/www && cd ../client webpack-dev-server &"
   },
   "repository": {
     "type": "git",
