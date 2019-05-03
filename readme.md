@@ -1,4 +1,4 @@
-# blue-ocean-rewrite
+# Welcome to Blue Ocean!
 
 How do you feel today? [![Build Status](https://travis-ci.com/hratx39-blue-ocean/deep-dive.svg?branch=master)](https://travis-ci.com/hratx39-blue-ocean/deep-dive)
 
