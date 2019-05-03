@@ -62,3 +62,6 @@ typings/
 
 # Mac Finder
 .DS_Store
+
+# Webpack
+bundle.js
