@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import fetch from 'node-fetch';
 // import './App.css';
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       seaCreatures: []
-    }
+    };
     this.api = `http://localhost:8000/api/example`;
   }
-  componentDidMount(){
+  componentDidMount() {
     fetch(this.api)
-    .then(res => res.json())
-    .then(seaCreatures => {
-      this.setState({ seaCreatures: seaCreatures.data})
-    })
+      .then(res => res.json())
+      .then(seaCreatures => {
+        this.setState({ seaCreatures: seaCreatures.data });
+      });
   }
 
   render() {
@@ -22,9 +23,11 @@ export default class App extends Component {
       <>
         <h1>Welcome to Blue Ocean!</h1>
         <ul>
-          { this.state.seaCreatures.map((creature, index) => <li key={index}>{creature}</li>) }
+          {this.state.seaCreatures.map((creature, index) => (
+            <li key={index}>{creature}</li>
+          ))}
         </ul>
       </>
-    )
+    );
   }
 }
