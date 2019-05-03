@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 
-const api = `http://localhost:8000/api/example`
-
-
-class App extends Component {
-  constructor(){
-    super()
-    this.state = {seaCreatures:[]}
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      seaCreatures: []
+    }
+    this.api = `http://localhost:8000/api/example`;
   }
-
   componentDidMount(){
-    fetch(api)
+    fetch(this.api)
     .then(res => res.json())
     .then(seaCreatures => {
       this.setState({ seaCreatures: seaCreatures.data})
@@ -21,13 +20,11 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>Welcome to Blue Ocean</h1>
+        <h1>Welcome to Blue Ocean!</h1>
         <ul>
-          {this.state.seaCreatures.map((seaCreature,i) => <li key={i}>{seaCreature}</li>)}
+          { this.state.seaCreatures.map((creature, index) => <li key={index}>{creature}</li>) }
         </ul>
       </>
-    );
+    )
   }
 }
-
-export default App;
