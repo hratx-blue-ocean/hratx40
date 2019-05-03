@@ -25,5 +25,10 @@ module.exports = {
         loader: 'css-loader'
       }
     ]
+  },
+  devServer: {
+    contentBase: DIST_DIR,
+    compress: true,
+    port: 9000
   }
 };
