@@ -3,10 +3,6 @@ CREATE DATABASE blueocean;
 
 \c blueocean;
 
-DROP TABLE IF EXISTS users_topics;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS topics;
-
 CREATE TABLE users(
     user_id serial primary key,
     first_name varchar(20),
