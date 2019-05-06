@@ -1,6 +1,7 @@
 const Pool = require('pg').Pool;
-require('dotenv').config()
+require('dotenv').config({path: '../.env'});
 
+//.env file must be inside the server folder
 const pool = new Pool({
     user: process.env.DB_USER, //needs to be changed to work in your instance
     host: process.env.DB_HOST, //localhost for most
@@ -17,8 +18,20 @@ const getAll = (cb) => {
         } else {
             cb(null, data);
         }
-    })
-}
+    });
+};
+
+const insertTopic = (causeObj, cb) => {
+    pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
+    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}')`, (err, data) => {
+        if (err) {
+            cb(err)
+        } else {
+            cb(null,data)
+        }
+    });
+};
 
 
 module.exports.getAll = getAll
+module.exports.insertTopic = insertTopic
