@@ -3,4 +3,5 @@ node_js:
  - "10.6.0 "
 before_script:
  - "npm run-script setup"
- - "npm run-script launch"
+ - "npm run-script launch-client"
+ - "npm run-script launch-server"
