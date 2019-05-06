@@ -20,5 +20,18 @@ const getAll = (cb) => {
     })
 }
 
+const getTopic = (topicName, cb) => {
+    topicName = topicName.replace(`'`,`''`)
+    pool.query(`select * from topics where topic_name = '${topicName}'`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null,data);
+        }
+    });
+}
 
 module.exports.getAll = getAll
+
+module.exports.getTopic = getTopic
+
