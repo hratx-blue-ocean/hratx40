@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
         if (err) { 
             res.end()
         } else {
-            res.send(data.rows)
+            res.send(data.fields)
         }
 
     });
