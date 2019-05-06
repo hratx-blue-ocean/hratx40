@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const axios = require('axios');
 const db = require('../../db/db');
+require('dotenv').config({path: '../../.env'})
 //deleted fs from package.json, re-install if you wish to re-seed seedTopics.sql
 // const fs = require('fs');
 
 router.get('/', (req, res) => {
-    axios.get('https://api.data.charitynavigator.org/v2/Categories?app_id=ad60fc1b&app_key=d905962cb8b5dbd0f55db21e8c8ba7fc')
+    axios.get(`https://api.data.charitynavigator.org/v2/Categories?app_id=${process.env.CHARITY_NAVIGATOR_ID}&app_key=${process.env.CHARITY_NAVIGATOR_KEY}`)
     .then(data => {
         for (let i = 0; i < data.data.length; i++) {
             for (let j = 0; j < data.data[i].causes.length; j++) {
