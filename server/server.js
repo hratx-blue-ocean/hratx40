@@ -17,6 +17,9 @@ app.use(logger('dev'));
 const { example } = require('./routes');
 app.use('/api/example', example)
 
+const { charity } = require('./routes');
+app.use(`/api/charity`, charity)
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
