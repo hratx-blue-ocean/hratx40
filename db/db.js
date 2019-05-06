@@ -1,11 +1,12 @@
 const Pool = require('pg').Pool;
+require('dotenv').config()
 
 const pool = new Pool({
-    user: 'andersaustin', //needs to be changed to work in your instance
-    host: 'localhost',
-    database: 'blueocean',
-    password: 'hackreactor', //needs to be changed to work in your instance
-    port: 5432
+    user: process.env.DB_USER, //needs to be changed to work in your instance
+    host: process.env.DB_HOST, //localhost for most
+    database: process.env.DB_NAME, //blueocean is working name, open to adjustment
+    password: process.env.DB_PASSWORD, //password
+    port: process.env.DB_PORT //port, please put 5432 unless you have need to use another
 });
 
 
