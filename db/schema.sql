@@ -10,7 +10,7 @@ CREATE TABLE users(
     user_id serial primary key,
     first_name varchar(20),
     last_name varchar(20),
-    -- username varchar(50) unique,
+    username varchar(50) unique,
     email varchar(50) unique not null,
     hashedPW varchar(100) not null
 );
@@ -33,8 +33,8 @@ CREATE TABLE users_topics(
 CREATE INDEX topic_name_idx
 ON topics USING HASH (topic_name);
 
--- CREATE INDEX username_idx
--- ON users USING HASH (username);
+CREATE INDEX username_idx
+ON users USING HASH (username);
 
 CREATE INDEX email_idx
 ON users USING HASH (email);
