@@ -1,3 +1,6 @@
+--use following command:
+--psql postgres -f ./db/schema.sql
+
 DROP DATABASE IF EXISTS blueocean;
 CREATE DATABASE blueocean;
 
@@ -7,29 +10,31 @@ CREATE TABLE users(
     user_id serial primary key,
     first_name varchar(20),
     last_name varchar(20),
-    username varchar(50) unique,
-    email varchar(50) unique,
-    hashedPW varchar(100)
+    -- username varchar(50) unique,
+    email varchar(50) unique not null,
+    hashedPW varchar(100) not null
 );
 
 
 CREATE TABLE topics(
     topic_id serial primary key,
-    topic_name varchar(100),
-    topic_imageUrl varchar(200)
+    topic_name varchar(100) not null,
+    topic_imageUrl varchar(200) not null,
+    website_url varchar(200) not null
 );
 
 CREATE TABLE users_topics(
     id serial primary key,
-    user_id integer references users (user_id),
-    topic_id integer references topics (topic_id)
+    user_id integer references users (user_id) not null,
+    topic_id integer references topics (topic_id) not null,
+    unique (user_id, topic_id)
 );
 
 CREATE INDEX topic_name_idx
 ON topics USING HASH (topic_name);
 
-CREATE INDEX username_idx
-ON users USING HASH (username);
+-- CREATE INDEX username_idx
+-- ON users USING HASH (username);
 
 CREATE INDEX email_idx
 ON users USING HASH (email);
