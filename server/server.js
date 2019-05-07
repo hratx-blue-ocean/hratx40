@@ -14,13 +14,14 @@ app.use((_, res, next) => {
 app.use(logger('dev'));
 app.use(express.json({urlencoded:true}))
 // You can place your routes here, feel free to refactor:
-const { example, seedTopics, search, addFavorite, deleteFavorite, getAllTopics } = require('./routes');
+const { example, seedTopics, search, addFavorite, deleteFavorite, getAllTopics, news } = require('./routes');
 app.use('/api/example', example)
 app.use('/api/seedTopics', seedTopics)
 app.use('/api/searchTopics', search)
 app.use('/api/addFavorites', addFavorite)
 app.use('/api/deleteFavorites', deleteFavorite)
 app.use('/api/getAllTopics', getAllTopics);
+app.use('/api/news', news);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
