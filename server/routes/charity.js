@@ -1,12 +1,34 @@
 const router = require('express').Router();
 const axios = require('axios');
+require('dotenv').config();
 
+/********** FOR FRONT END, PASS PARMAS IN AS charityTopic ***********/
 router.get(`/`, (req, res) => {
-  axios.get(`https://api.data.charitynavigator.org/v2/Organizations?app_id=ad60fc1b&app_key=d905962cb8b5dbd0f55db21e8c8ba7fc`)
+  let charityTopic = req.query.topicName;
+  let causeId;
+  axios.get(`https://api.data.charitynavigator.org/v2/Categories?app_id=${process.env.CHARITY_NAVIGATOR_ID}&app_key=${process.env.CHARITY_NAVIGATOR_KEY}`)
     .then(response => {
-      console.log(response.data);
+      const causeData = response.data;
+      // // console.log(`charity names`, response.data[0].charityName);
+      for (let i = 0; i < causeData.length; i++) {
+        for (let j = 0; j < causeData[i].causes.length; j++) {
+          if (causeData[i].causes[j].causeName === charityTopic) {
+            causeId = causeData[i].causes[j].causeID;
+            break;
+          }
+        }
+      }
+      return axios.get(`https://api.data.charitynavigator.org/v2/Organizations?app_id=${process.env.CHARITY_NAVIGATOR_ID}&app_key=${process.env.CHARITY_NAVIGATOR_KEY}&causeID=${causeId}`)
     })
-    .catch(console.log(err));
+    .then(response => {
+      const charityNames = [];
+      const data = response.data;
+      for (let i = 0; i < data.length; i++) {
+        charityNames.push(data[i].charityName);
+      }
+      res.send(charityNames);
+    })
+    .catch(console.log);
 });
 
 module.exports = router;
