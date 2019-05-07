@@ -25,8 +25,8 @@ CREATE TABLE topics(
 
 CREATE TABLE users_topics(
     id serial primary key,
-    user_id integer references users (user_id) not null,
-    topic_id integer references topics (topic_id) not null,
+    user_id integer not null,
+    topic_id integer not null,
     unique (user_id, topic_id)
 );
 
