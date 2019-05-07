@@ -18,13 +18,13 @@ router.get(`/`, (req, res) => {
           }
         }
       }
-      return axios.get(`https://api.data.charitynavigator.org/v2/Organizations?app_id=${process.env.CHARITY_NAVIGATOR_ID}&app_key=${process.env.CHARITY_NAVIGATOR_KEY}&causeID=${causeId}`)
+      return axios.get(`https://api.data.charitynavigator.org/v2/Organizations?app_id=${process.env.CHARITY_NAVIGATOR_ID}&app_key=${process.env.CHARITY_NAVIGATOR_KEY}&causeID=${causeId}&sort=RATING`)
     })
     .then(response => {
       const charityNames = [];
       const data = response.data;
       for (let i = 0; i < data.length; i++) {
-        charityNames.push(data[i].charityName);
+        charityNames.push({ name: data[i].charityName, mission: data[i].mission, link: data[i].websiteURL });
       }
       res.send(charityNames);
     })
