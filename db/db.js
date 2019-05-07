@@ -43,6 +43,16 @@ const getTopic = (topicName, cb) => {
     });
 };
 
+const getAllTopics = (cb) => {
+    pool.query(`select * from topics;`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null,data);
+        }
+    });
+};
+
 const addFavorite = (topicId,userId, cb) => {
     pool.query(`insert into users_topics(user_id, topic_id) values (${userId}, ${topicId});`, (err, data) => {
         if (err) {
@@ -73,4 +83,4 @@ const getFavoritedTopics = (userId, cb) => {
     })
 }
 
-module.exports = { getAll, getTopic, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite }
+module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite }
