@@ -1,3 +1,5 @@
 const example = require('./example');
 const seedTopics = require('./seedTopics');
-module.exports = { example, seedTopics }
+const search = require('./search');
+
+module.exports = { example, seedTopics, search }

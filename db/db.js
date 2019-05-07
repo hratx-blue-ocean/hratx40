@@ -32,6 +32,15 @@ const insertTopic = (causeObj, cb) => {
     });
 };
 
+const getTopic = (topicName, cb) => {
+    topicName = topicName.replace(`'`,`''`)
+    pool.query(`select * from topics where lower(topic_name) like lower('%${topicName}%')`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null,data);
+        }
+    });
+}
 
-module.exports.getAll = getAll
-module.exports.insertTopic = insertTopic
+module.exports = { getAll, getTopic, insertTopic }
