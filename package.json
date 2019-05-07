@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "setup": "npm install && cd ./client && npm install ; cd ../server && npm install",
+<<<<<<< HEAD
     "test": "cd ./client && npm test",
+=======
+>>>>>>> abefb9d5647db8b8aaeefdf434645c86bc5e0aac
     "test": "cd ./client && npm test && cd ../server && npm test",
     "launch-server": "cd ./server && node bin/www &",
     "launch-client": "cd ./client && npm run build && npm run server &",
