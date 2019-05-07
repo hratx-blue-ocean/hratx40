@@ -7,16 +7,20 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe('GET search', () => {
-  it('it should GET search data', () => {
+describe('post delete Favorites', () => {
+  it('it should post delete favorite data', () => {
     chai
       .request(`http://localhost:8000`)
-      .get('/api/searchTopics?topic_name=social')
+      .post('/api/deleteFavorites').type('application/json').send({
+        "topic_id": "1",
+        "user_id": "1"
+      })
       .then((err, res) => {
         should.not.exist(err);
         should.exist(res);
         res.should.have.status(200);
         res.body.should.be.a('object');
+        res.body.should.equal([])
         done();
       })
       .catch(err => err);
