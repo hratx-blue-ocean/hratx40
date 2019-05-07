@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
-import './App.css';
+// import './App.css';
 import Modal from './Components/Modal.js';
 
 
