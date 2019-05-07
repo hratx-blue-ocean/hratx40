@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import fetch from 'node-fetch';
 // import './App.css';
 import Modal from './Components/Modal.js';
+import ActionsContainer from './Components/ActionsContainer';
 
 
 export default class App extends Component {
@@ -55,7 +56,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <h1>Welcome to Blue Ocean!</h1>
+        <h1>Make a Ripl.Today!</h1>
         <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
         <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
         <ul>
@@ -63,6 +64,7 @@ export default class App extends Component {
             <li key={index}>{creature}</li>
           ))}
         </ul>
+        <ActionsContainer />
       </>
     );
   }
