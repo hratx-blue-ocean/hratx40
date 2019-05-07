@@ -9,9 +9,7 @@ afterEach(cleanup);
 
 
 it('CheckboxWithLabel changes the text after click', async () => {
-    const { getByText } = render(<App/>,);
+    const { handleChange } = render(<App />,);
 
-    const dolphin = await waitForElement(() => getByText(/dolphin/i),)
-
-    expect(dolphin).toBeTruthy();
+    
 });
