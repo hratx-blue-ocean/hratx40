@@ -12,9 +12,9 @@ app.use((_, res, next) => {
 });
 
 app.use(logger('dev'));
-app.use(express.json({urlencoded:true}))
+app.use(express.json({ urlencoded: true }))
 // You can place your routes here, feel free to refactor:
-const { example, seedTopics, search, addFavorite, deleteFavorite, getAllTopics, news } = require('./routes');
+const { example, seedTopics, search, addFavorite, deleteFavorite, getAllTopics, news, charity } = require('./routes');
 app.use('/api/example', example)
 app.use('/api/seedTopics', seedTopics)
 app.use('/api/searchTopics', search)
@@ -22,6 +22,7 @@ app.use('/api/addFavorites', addFavorite)
 app.use('/api/deleteFavorites', deleteFavorite)
 app.use('/api/getAllTopics', getAllTopics);
 app.use('/api/news', news);
+app.use(`/api/charities`, charity)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -36,7 +37,11 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    // res.render('error');
+    res.json({
+        message: err.message,
+        err: err
+    })
 });
 
 module.exports = app;
