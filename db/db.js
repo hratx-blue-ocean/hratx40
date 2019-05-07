@@ -35,7 +35,7 @@ const getHashedPassword = (login, cb) => {
 
 const insertTopic = (causeObj, cb) => {
     pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
-    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}');`, (err, data) => {
+    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}')`, (err, data) => {
         if (err) {
             cb(err)
         } else {
@@ -55,8 +55,28 @@ const getTopic = (topicName, cb) => {
     });
 };
 
+const getAllTopics = (cb) => {
+    pool.query(`select * from topics;`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null,data);
+        }
+    });
+};
+
 const addFavorite = (topicId,userId, cb) => {
     pool.query(`insert into users_topics(user_id, topic_id) values (${userId}, ${topicId});`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null, data);
+        }
+    })
+}
+
+const deleteFavorite = (topicId,userId, cb) => {
+    pool.query(`delete from users_topics where user_id = ${userId} and topic_id = ${topicId};`, (err, data) => {
         if (err) {
             cb(err);
         } else {
@@ -75,4 +95,8 @@ const getFavoritedTopics = (userId, cb) => {
     })
 }
 
+<<<<<<< HEAD
 module.exports = { getAll, getTopic, insertTopic, addFavorite, getFavoritedTopics, getHashedPassword }
+=======
+module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite }
+>>>>>>> c9523fb392b598ef715e9c70cd5f089927e898ee
