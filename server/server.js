@@ -22,7 +22,7 @@ app.use('/api/addFavorites', addFavorite)
 app.use('/api/deleteFavorites', deleteFavorite)
 app.use('/api/getAllTopics', getAllTopics);
 app.use('/api/news', news);
-app.use(`/api/charity`, charity)
+app.use(`/api/charities`, charity)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
