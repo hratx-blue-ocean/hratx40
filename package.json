@@ -23,7 +23,6 @@
   "homepage": "https://github.com/selder18/blue-ocean-rewrite#readme",
   "dependencies": {
     "dotenv": "^8.0.0",
-    "password-hash": "^1.2.2",
     "pg": "^7.10.0"
   },
   "devDependencies": {

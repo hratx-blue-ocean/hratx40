@@ -95,8 +95,4 @@ const getFavoritedTopics = (userId, cb) => {
     })
 }
 
-<<<<<<< HEAD
-module.exports = { getAll, getTopic, insertTopic, addFavorite, getFavoritedTopics, getHashedPassword }
-=======
-module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite }
->>>>>>> c9523fb392b598ef715e9c70cd5f089927e898ee
+module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite, getHashedPassword }
