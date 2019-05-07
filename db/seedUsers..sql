@@ -1,4 +1,4 @@
---run file with psql postgres -f ./db/seedTopics.sql
+--run file with psql postgres -f ./db/seedUsers.sql
 \c blueocean
 
 insert into users(first_name, last_name, username, email, hashedPW) values ('austin', 'anderson', 'andersaustin', 'andersauj@gmail.com', 'austin');
