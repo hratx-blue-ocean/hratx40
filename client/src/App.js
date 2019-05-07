@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 import './App.css';
-import Modal from './Modal.js';
+import Modal from './Components/Modal.js';
 
 
 export default class App extends Component {

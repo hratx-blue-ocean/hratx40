@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import './App.css';
+import '../App.css';
 
 // Import child modals
 const chooseChild = (type) => {
