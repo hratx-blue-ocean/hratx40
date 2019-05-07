@@ -95,4 +95,17 @@ const getFavoritedTopics = (userId, cb) => {
     })
 }
 
-module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite, getHashedPassword }
+const handleSignup = (userInfo, cb) => {
+    console.log('>>>>userInfo', userInfo)
+    pool.query(`insert into users (first_name, last_name, username, email, hashedpw) values (${userInfo.first_name}, ${userInfo.last_name}, ${userInfo.username}, ${userInfo.email}, ${userInfo.password},) where not exists (select user_id from users where username = ${userInfo.username});`, (err, data)=>{
+        if (err){
+            cb(err)
+        }
+        else {
+            cb(null, data)
+        }
+    })
+}
+        
+
+module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite, getHashedPassword, handleSignup }
