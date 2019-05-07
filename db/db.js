@@ -43,8 +43,4 @@ const getTopic = (topicName, cb) => {
     });
 }
 
-module.exports.getAll = getAll
-
-module.exports.getTopic = getTopic
-
-module.exports.insertTopic = insertTopic
+module.exports = { getAll, getTopic, insertTopic }
