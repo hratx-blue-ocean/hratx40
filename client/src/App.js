@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import fetch from 'node-fetch';
 // import './App.css';
 import Modal from './Components/Modal.js';
-
+import LabelBottomNavigation from './Components/Footer.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -63,6 +63,7 @@ export default class App extends Component {
             <li key={index}>{creature}</li>
           ))}
         </ul>
+        <LabelBottomNavigation />
       </>
     );
   }
