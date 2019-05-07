@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
+import SearchAppBar from './Components/Header.js';
 
 
 export default class App extends Component {
@@ -21,6 +22,7 @@ export default class App extends Component {
   render() {
     return (
       <>
+        <SearchAppBar />
         <h1>Welcome to Blue Ocean!</h1>
         <ul>
           {this.state.seaCreatures.map((creature, index) => (
