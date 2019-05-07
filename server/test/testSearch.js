@@ -8,15 +8,14 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('GET search', () => {
-  it('it should GET search data', () => {
+  it('it should GET search data', (done) => {
     chai
       .request(`http://localhost:8000`)
       .get('/api/searchTopics?topic_name=social')
-      .then((err, res) => {
-        should.not.exist(err);
+      .then((res) => {
         should.exist(res);
         res.should.have.status(200);
-        res.body.should.be.a('object');
+        res.body.should.be.a('array');
         done();
       })
       .catch(err => err);

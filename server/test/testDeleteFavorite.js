@@ -8,19 +8,18 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('post delete Favorites', () => {
-  it('it should post delete favorite data', () => {
+  it('it should post delete favorite data', (done) => {
     chai
       .request(`http://localhost:8000`)
       .post('/api/deleteFavorites').type('application/json').send({
         "topic_id": "1",
         "user_id": "1"
       })
-      .then((err, res) => {
-        should.not.exist(err);
+      .then((res) => {
         should.exist(res);
         res.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.equal([])
+        res.body.should.be.a('array');
+        // res.body.should.equal([])
         done();
       })
       .catch(err => err);

@@ -8,12 +8,12 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('GET example', () => {
-  it('it should GET sample data', () => {
+  it('it should GET sample data', (done) => {
     chai
       .request(`http://localhost:8000`)
       .get('/api/example')
-      .then((err, res) => {
-        should.not.exist(err);
+      .then((res) => {
+        // should.not.exist(err);
         should.exist(res);
         res.should.have.status(200);
         res.body.should.be.a('object');

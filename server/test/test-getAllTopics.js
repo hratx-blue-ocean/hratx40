@@ -8,15 +8,14 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('GET all topics', () => {
-  it('it should GET all topics data data', () => {
+  it('it should GET all topics data data', (done) => {
     chai
       .request(`http://localhost:8000`)
       .get('/api/getAllTopics')
-      .then((err, res) => {
-        should.not.exist(err);
+      .then((res) => {
         should.exist(res);
         res.should.have.status(200);
-        res.body.should.be.a('object');
+        res.body.should.be.a('array');
         done();
       })
       .catch(err => err);
