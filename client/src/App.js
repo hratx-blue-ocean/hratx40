@@ -23,7 +23,7 @@ export default class App extends Component {
     return (
       <>
         <h1>Welcome to Blue Ocean!</h1>
-        <Modal modalType={"login"}/>
+        <Modal modalType={"login"} isOpen={true}/>
         <ul>
           {this.state.seaCreatures.map((creature, index) => (
             <li key={index}>{creature}</li>

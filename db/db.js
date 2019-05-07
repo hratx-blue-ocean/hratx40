@@ -1,6 +1,7 @@
 const Pool = require('pg').Pool;
-require('dotenv').config()
+require('dotenv').config({path: '../.env'});
 
+//.env file must be inside the server folder
 const pool = new Pool({
     user: process.env.DB_USER, //needs to be changed to work in your instance
     host: process.env.DB_HOST, //localhost for most
@@ -17,8 +18,49 @@ const getAll = (cb) => {
         } else {
             cb(null, data);
         }
+    });
+};
+
+const insertTopic = (causeObj, cb) => {
+    pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
+    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}');`, (err, data) => {
+        if (err) {
+            cb(err)
+        } else {
+            cb(null,data)
+        }
+    });
+};
+
+const getTopic = (topicName, cb) => {
+    topicName = topicName.replace(`'`,`''`)
+    pool.query(`select * from topics where lower(topic_name) like lower('%${topicName}%');`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null,data);
+        }
+    });
+};
+
+const addFavorite = (topicId,userId, cb) => {
+    pool.query(`insert into users_topics(user_id, topic_id) values (${userId}, ${topicId});`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null, data);
+        }
     })
 }
 
+const getFavoritedTopics = (userId, cb) => {
+    pool.query(`select b.* from users_topics a join topics b on a.topic_id=b.topic_id where a.user_id = ${userId};`, (err, data) => {
+        if (err) {
+            cb(err)
+        } else {
+            cb(null, data);
+        }
+    })
+}
 
-module.exports.getAll = getAll
+module.exports = { getAll, getTopic, insertTopic, addFavorite, getFavoritedTopics }
