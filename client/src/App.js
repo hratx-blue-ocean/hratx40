@@ -9,7 +9,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       seaCreatures: [],
-      isOpen: true,
+      isOpen: false,
       modalType: "login"
     };
     this.api = `http://localhost:8000/api/example`;
