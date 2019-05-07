@@ -14,8 +14,10 @@ app.use((_, res, next) => {
 app.use(logger('dev'));
 
 // You can place your routes here, feel free to refactor:
-const { example } = require('./routes');
+const { example, seedTopics, search } = require('./routes');
 app.use('/api/example', example)
+app.use('/api/seedTopics', seedTopics)
+app.use('/api/searchTopics', search)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
