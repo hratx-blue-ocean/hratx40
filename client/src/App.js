@@ -8,8 +8,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       seaCreatures: [],
-      isOpen: false,
-      modalType: ""
+      isOpen: true,
+      modalType: "login"
     };
     this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -38,6 +38,17 @@ export default class App extends Component {
         isOpen: open 
       });
     }
+  }
+
+  // This is a global handleChange function
+  // make sure whatever is utilizing it has an e.target.name and e.target.value
+  handleChange(e) {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    const newState = {};
+    newState[name] = value;
+    this.setState(newState);
   }
 
   render() {
