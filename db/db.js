@@ -23,7 +23,7 @@ const getAll = (cb) => {
 
 const insertTopic = (causeObj, cb) => {
     pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
-    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}');`, (err, data) => {
+    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}')`, (err, data) => {
         if (err) {
             cb(err)
         } else {
@@ -53,6 +53,16 @@ const addFavorite = (topicId,userId, cb) => {
     })
 }
 
+const deleteFavorite = (topicId,userId, cb) => {
+    pool.query(`delete from users_topics where user_id = ${userId} and topic_id = ${topicId};`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null, data);
+        }
+    })
+}
+
 const getFavoritedTopics = (userId, cb) => {
     pool.query(`select b.* from users_topics a join topics b on a.topic_id=b.topic_id where a.user_id = ${userId};`, (err, data) => {
         if (err) {
@@ -63,4 +73,4 @@ const getFavoritedTopics = (userId, cb) => {
     })
 }
 
-module.exports = { getAll, getTopic, insertTopic, addFavorite, getFavoritedTopics }
+module.exports = { getAll, getTopic, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite }
