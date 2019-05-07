@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
-import fetch from 'node-fetch';
+import React, { Component } from "react";
+import fetch from "node-fetch";
+import axios from "axios";
 // import './App.css';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seaCreatures: []
+      seaCreatures: [],
+      topics: []
     };
     this.api = `http://localhost:8000/api/example`;
   }
   componentDidMount() {
+    // axios.get('api/getAllTopics')
     fetch(this.api)
       .then(res => res.json())
       .then(seaCreatures => {
