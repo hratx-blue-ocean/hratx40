@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from 'material-ui/core/Modal';
+import Modal from '@material-ui/core/Modal';
 
 const ModalDiv = (props) => {
   if (props.modalType === "login") {
