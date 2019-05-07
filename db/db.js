@@ -9,7 +9,6 @@ const pool = new Pool({
     port: process.env.DB_PORT //port, please put 5432 unless you have need to use another
 });
 
-
 const getAll = (cb) => {
     pool.query('select * from users', (err, data) => {
         if (err) {
@@ -18,7 +17,17 @@ const getAll = (cb) => {
             cb(null, data);
         }
     })
-}
+};
 
+const getHashedPassword = (login, cb) => {
+    pool.query(`select "hashedpw" from users where username = '${login.username}'`, (err, hashedPassword)=>{
+        if (err){
+           console.log(`Database error! Unable to retrieve password for ${login.username}: ${err}`)
+        }
+        else {
+            cb(hashedPassword.rows[0].hashedpw)
+        }
+    })
+};
 
-module.exports.getAll = getAll
+module.exports.getAll = getAll;
