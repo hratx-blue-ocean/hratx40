@@ -11,7 +11,7 @@ describe('GET search', () => {
   it('it should GET search data', () => {
     chai
       .request(`http://localhost:8000`)
-      .get('/api/search?topic_name=social')
+      .get('/api/searchTopics?topic_name=social')
       .then((err, res) => {
         should.not.exist(err);
         should.exist(res);

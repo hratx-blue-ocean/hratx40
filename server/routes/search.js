@@ -5,9 +5,9 @@ router.get('/', (req, res) => {
     const topicName = req.query.topic_name;
     db.getTopic(topicName,(err, data) => {
         if (err) { 
-            res.end()
+            res.status(404).end()
         } else {
-            res.send(data.fields)
+            res.send(data.rows)
         }
 
     });
