@@ -22,7 +22,6 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <h1>Welcome to Blue Ocean!</h1>
         <LandingPage topics={[]}/>
         <ul>
           {this.state.seaCreatures.map((creature, index) => (
