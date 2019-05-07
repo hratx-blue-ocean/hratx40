@@ -7,33 +7,47 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import pink from "@material-ui/core/colors/pink";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import TopicTile from "../src/topicTile";
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: "center",
-    color: theme.palette.text.secondary
-  },
-  control: {
-    padding: theme.spacing.unit * 2
-  }
-});
+// const styles = theme => ({
+//   card: {
+//     maxWidth: "100%"
+//   },
+//   avatar: {
+//     backGroundColor: pink
+//   }
+// });
 
 // const topicTiles = props.topicTiles.map(tile => {});
 
 const TopicTiles = props => {
-  <div onClick={props.handleClick}>
-    <Grid container className={topicTilesGrid} spacing={16} />
-    <Grid item xs />
-  </div>;
+  const tiles = props.allTopics.map(topic => (
+    <Card
+      className={topic["topic_name"]}
+      square={true}
+      onClick={props.handleClick}
+    >
+      <CardHeader
+        action={
+          <IconButton>
+            <FavoriteIcon />
+          </IconButton>
+        }
+      />
+      <CardContent>
+        <Typography component="p">{topic["topic_name"]}</Typography>
+      </CardContent>
+    </Card>
+  ));
+  return <div>{tiles}</div>;
 };
+
+// TopicTile.propTypes = {
+//   classes: PropTypes.object.isRequired
+// };
 
 export default TopicTiles;

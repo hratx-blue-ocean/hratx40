@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import fetch from "node-fetch";
 import axios from "axios";
+import TopicTiles from "../src/topicTiles";
+import TopicTile from "../src/topicTile";
 // import './App.css';
 
 export default class App extends Component {
@@ -16,11 +18,16 @@ export default class App extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    axios.get("api/getAllTopics").then(results => {
-      const allTopics = results;
-      console.log("AT :", allTopics);
-      this.setState({ allTopics: allTopics });
-    });
+    axios
+      .get("http://localhost:8000/api/getAllTopics")
+      .then(results => {
+        const allDBTopics = results.data;
+        // console.log("AT :");
+        this.setState({ allTopics: allDBTopics });
+      })
+      .catch(error => {
+        // console.log(error);
+      });
 
     fetch(this.api)
       .then(res => res.json())
@@ -31,6 +38,7 @@ export default class App extends Component {
 
   handleClick(e) {
     if (e.target.id === "topicTile") {
+      // console.log("clicked");
       this.setState({ currentPage: "topicPage", currentTopic: e.target.name });
     }
   }
@@ -40,11 +48,20 @@ export default class App extends Component {
       return (
         <>
           <h1>Welcome to Blue Ocean!</h1>
+          <TopicTiles
+            allTopics={this.state.allTopics}
+            handleClick={this.handleClick}
+          />
+          {/* <ul>
+            {this.state.allTopics.map(topic => {
+              return <li>{topic["topic_name"]}</li>;
+            })}
+          </ul>
           <ul>
             {this.state.seaCreatures.map((creature, index) => (
               <li key={index}>{creature}</li>
             ))}
-          </ul>
+          </ul> */}
         </>
       );
     } else if (this.state.currentPage === "topicPage") {

@@ -20,16 +20,6 @@ const getAll = cb => {
   });
 };
 
-const getAll = cb => {
-  pool.query("select * from users", (err, data) => {
-    if (err) {
-      cb(err);
-    } else {
-      cb(null, data);
-    }
-  });
-};
-
 const insertTopic = (causeObj, cb) => {
   pool.query(
     `insert into topics(topic_name,topic_imageUrl,website_url) values 
@@ -63,6 +53,7 @@ const getTopic = (topicName, cb) => {
 const getAllTopics = cb => {
   pool.query(`select * from topics;`, (err, data) => {
     if (err) {
+      console.log("Error db :", err);
       cb(err);
     } else {
       cb(null, data);
