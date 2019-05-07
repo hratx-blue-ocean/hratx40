@@ -1,17 +1,34 @@
 const router = require('express').Router();
-const { validateLogin } = require('../../db/db.js')
+const { getHashedPassword } = require('../../db/db.js')
+const { getFavoritedTopics } = require('../../db/db.js')
+const passwordHash = require('password-hash');
 
-//for frontend, pass in params as `{params: {username: <input>}}`
-router.get('/logins', (req, res) => {
-  let username = req.query.username;
-  validateLogin(username, (err, data) => {
+//for frontend, pass in params as `{params: {loginInfo: <input>}}`
+router.get('/', (req, res) => {
+  let login = req.query;
+
+  getHashedPassword(login, (err, hashedPassword)=>{
     if (err){
-      console.log('Server erorr: Unable to run validateLogin script')
+      console.log('Server error: Unable to get hashed Password');
+      res.end();
     }
     else {
-      res.status(200).send(data);
+      console.log('Server success: hashedPassword retrieved from database');
+      let validated = passwordHash.verify(login.password, hashedPassword);
+
+      if (validated === true){
+        getFavoritedTopics(login.username, (err, favorites)=>{
+          if (err){
+            console.log(`Server error: Unable to get favorites for ${login.username}`)
+          }
+          else{
+            console.log('Server success: favorites.rows>>>', favorites.rows)
+            res.status(200).send(favorites.rows);
+          }
+        })
+      }
     }
-  })
+  });
 });
 
-module.exports = { logins };
+module.exports = router;

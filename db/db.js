@@ -21,12 +21,13 @@ const getAll = (cb) => {
 };
 
 const getHashedPassword = (login, cb) => {
-    pool.query(`select "hashedpw" from users where username = '${login.username}'`, (err, hashedPassword)=>{
+
+    pool.query(`select * from users where username = '${login.username}'`, (err, data)=>{
         if (err){
-           console.log(`Database error! Unable to retrieve password for ${login.username}: ${err}`)
+            cb(err);
         }
         else {
-            cb(hashedPassword.rows[0].hashedpw)
+            cb(null, data)
         }
     })
 };
@@ -34,7 +35,7 @@ const getHashedPassword = (login, cb) => {
 
 const insertTopic = (causeObj, cb) => {
     pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
-    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}')`, (err, data) => {
+    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}');`, (err, data) => {
         if (err) {
             cb(err)
         } else {
@@ -45,13 +46,33 @@ const insertTopic = (causeObj, cb) => {
 
 const getTopic = (topicName, cb) => {
     topicName = topicName.replace(`'`,`''`)
-    pool.query(`select * from topics where lower(topic_name) like lower('%${topicName}%')`, (err, data) => {
+    pool.query(`select * from topics where lower(topic_name) like lower('%${topicName}%');`, (err, data) => {
         if (err) {
             cb(err);
         } else {
             cb(null,data);
         }
     });
+};
+
+const addFavorite = (topicId,userId, cb) => {
+    pool.query(`insert into users_topics(user_id, topic_id) values (${userId}, ${topicId});`, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            cb(null, data);
+        }
+    })
 }
 
-module.exports = { getAll, getTopic, insertTopic, getHashedPassword }
+const getFavoritedTopics = (userId, cb) => {
+    pool.query(`select b.* from users_topics a join topics b on a.topic_id=b.topic_id where a.user_id = ${userId};`, (err, data) => {
+        if (err) {
+            cb(err)
+        } else {
+            cb(null, data);
+        }
+    })
+}
+
+module.exports = { getAll, getTopic, insertTopic, addFavorite, getFavoritedTopics, getHashedPassword }
