@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-.landingPage {
+/* .landingPage {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
@@ -43,4 +43,4 @@ code {
   text-align: center;
   color: #000000;
   font-size: 50px;
-}
+} */
