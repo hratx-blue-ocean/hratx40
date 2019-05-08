@@ -29,7 +29,7 @@ const chooseChild = (type, toggleOpen) => {
     );
   } else if (type === "info") {
     return (
-      <div id="child-modal">info</div>
+      <div id="child-modal">infsdfasdfo</div>
     );
   } else if (type === "location") {
     return (
