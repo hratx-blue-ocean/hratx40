@@ -18,6 +18,7 @@ export default class App extends Component {
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
     // fetch(this.api)
@@ -72,7 +73,7 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar />
-          <LandingPage topics={[]}/>
+          <LandingPage toggleModal={this.toggleModal} topics={[]}/>
           <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
           <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
