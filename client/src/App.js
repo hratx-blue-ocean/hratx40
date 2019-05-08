@@ -14,13 +14,17 @@ export default class App extends Component {
       seaCreatures: [],
       isOpen: false,
       modalType: "login",
-      page: 'home'
+      page: 'home',
+      location: ''
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.geolocate = this.geolocate.bind(this);
+    this.geolocateSuccess = this.geolocateSuccess.bind(this);
   }
   componentDidMount() {
+    this.geolocate();
     // fetch(this.api)
     //   .then(res => res.json())
     //   .then(seaCreatures => {
@@ -41,11 +45,11 @@ export default class App extends Component {
     const { latitude, longitude } = coordinates.coords;
     alert(
       "Found coordinates: ",
-      latitude.toFixed(1),
-      longitude.toFixed(1)
+      latitude,
+      longitude
     );
     this.setState({
-      location: `${latitude.toFixed(1)},${longitude.toFixed(1)}`
+      location: `${latitude},${longitude}`
     });
   }
 
