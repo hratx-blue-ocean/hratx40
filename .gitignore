@@ -65,6 +65,7 @@ typings/
 
 # Webpack
 bundle.js
+client/public/*.png
 
 # API Keys
 .env

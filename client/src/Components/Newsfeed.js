@@ -5,7 +5,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import axios from "axios";
 
-class App extends React.Component {
+class Newsfeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +34,7 @@ class App extends React.Component {
       <div className="App">
       { this.state.articles.map((article)=>{ 
         return (
-          <a href={`${article.url}`} target="_blank" style={{color:"black", textDecoration:"none"}}>
+          <a href={`${article.url}`} target="_blank" style={{color:"black", textDecoration:"none", margin:"2px"}}>
             <Card style={{display:"flex", flexDirection:"row", alignItems:"center", justify:"center", width:"100%"}}>
                 <CardContent style={{width:"50%"}}>
                   <h2>{article.title}</h2>
@@ -53,8 +53,4 @@ class App extends React.Component {
   }
 }
 
-
-
-export default App;
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<App />, rootElement);
+export default Newsfeed;

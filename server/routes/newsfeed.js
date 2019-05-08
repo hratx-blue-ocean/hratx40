@@ -4,7 +4,7 @@ require('dotenv').config({path: '../../.env'})
 
 router.get("/", (req, res) => {
   let keyword = req.query.topic;
-  axios.get(`https://newsapi.org/v2/everything?q="${keyword}"&sortBy=popularity&language=en&apiKey=${process.env.NEWS_KEY}`)
+  axios.get(`https://newsapi.org/v2/everything?q=("${keyword}" AND charity)&sortBy=popularity&language=en&apiKey=${process.env.NEWS_KEY}`)
     .then((data) => {
       console.log(data)
       res.send(data.data.articles)
