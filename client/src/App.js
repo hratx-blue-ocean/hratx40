@@ -12,10 +12,11 @@ export default class App extends Component {
       seaCreatures: [],
       allTopics: [],
       currentPage: "landingPage",
-      currentTopic: ""
+      currentTopic: "",
+      testingOnly: false
     };
     this.api = `http://localhost:8000/api/example`;
-    this.handleClick = this.handleClick.bind(this);
+    this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
   }
   componentDidMount() {
     axios
@@ -36,10 +37,20 @@ export default class App extends Component {
       });
   }
 
-  handleClick(e) {
-    if (e.target.id === "topicTile") {
-      // console.log("clicked");
-      this.setState({ currentPage: "topicPage", currentTopic: e.target.name });
+  handleTopicTileClick(e, target) {
+    console.log("click happened", e.target.className);
+    if (target === "topicTile") {
+      console.log("clicked");
+      alert("topicTile");
+      this.setState({
+        currentPage: "topicPage",
+        currentTopic: e.target.className,
+        testingOnly: e.target.id
+      });
+    } else if (target === "fav") {
+      this.setState({ testingOnly: e.target.id });
+      alert("fav");
+      //if user is loggedin submit fav to database, otherwise prompt user to sign up
     }
   }
 
@@ -50,7 +61,7 @@ export default class App extends Component {
           <h1>Welcome to Blue Ocean!</h1>
           <TopicTiles
             allTopics={this.state.allTopics}
-            handleClick={this.handleClick}
+            handleTopicTileClick={this.handleTopicTileClick}
           />
           {/* <ul>
             {this.state.allTopics.map(topic => {
