@@ -5,10 +5,10 @@ import Paper from '@material-ui/core/Paper';
 import Login from './ChildModals/Login.js'
 
 // Import child modals
-const chooseChild = (type, toggleOpen) => {
+const chooseChild = (type, toggleOpen, setLogin) => {
   if (type === "login") {
     return (
-      <Login toggleOpen={toggleOpen}/>
+      <Login toggleOpen={toggleOpen} setLogin={setLogin}/>
     );
   } else if (type === "signup") {
     return (
@@ -28,8 +28,43 @@ const chooseChild = (type, toggleOpen) => {
     );
   } else if (type === "info") {
     return (
-      <div id="child-modal">info</div>
+      <div>
+        <br/>
+        <h3 style={{textAlign: 'center'}}>HRATX40</h3>
+        <ul>
+          <li>Austin Anderson</li>
+          <li>David Castillo</li>
+          <li>Drew DiStefano</li>
+          <li>Drew Lockliear</li>
+          <li>Jarrod Milller</li>
+          <li>Jay Kannaiyan</li>
+          <li>Jonathan Becker</li>
+          <li>Jonathon Lopez</li>
+          <li>Maggie Lopez</li>
+          <li>Matthew Feinburg</li>
+          <li>Nicholas Miron</li>
+          <li>Ryan Ferrer</li>
+        </ul>
+      </div>
     );
+  } else if (type === "location") {
+    return (
+      <div>
+        <br/>
+        <h2 style={{textAlign: 'center'}}>Made in</h2>
+        <h3 style={{textAlign: 'center'}}>Austin, Tx</h3>
+      </div>
+    )
+  } else if (type === 'contact') {
+    return (
+      <div >
+        <br/>
+        <h3 style={{textAlign: 'center'}}>Contact Information</h3>
+          <ul>
+            <li>Some relevant shit belongs here</li>
+          </ul>
+      </div>
+    )
   }
 }
 
@@ -48,7 +83,7 @@ const ModalDiv = (props) => {
           <Paper 
             style={{height:"400px"}}
             square={true}>
-            {chooseChild(props.modalType, props.toggleOpen)}
+            {chooseChild(props.modalType, props.toggleOpen, props.setLogin)}
           </Paper>
         </Grid>
       </Grid>

@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    fontFamily: "'Comfortaa', cursive",
   },
   paper: {
     padding: theme.spacing.unit * 2,
@@ -31,7 +32,7 @@ const ActionsContainer = (props) => {
     <div>
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
-          <Card className={classes.card}>
+          <Card>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
@@ -39,7 +40,8 @@ const ActionsContainer = (props) => {
                 title="Volunteer"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                {/* <h2>Volunteer</h2> */}
+                <Typography className={classes.root} gutterBottom variant="h5" component="h2">
                   Volunteer
                 </Typography>
                 <Typography component="p">
@@ -63,7 +65,7 @@ const ActionsContainer = (props) => {
                 title="Volunteer"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography className={classes.root} gutterBottom variant="h5" component="h2">
                   Donate
                 </Typography>
                 <Typography component="p">
@@ -87,7 +89,7 @@ const ActionsContainer = (props) => {
                 title="Volunteer"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography className={classes.root} gutterBottom variant="h5" component="h2">
                   General Info
                 </Typography>
                 <Typography component="p">
@@ -111,8 +113,8 @@ const ActionsContainer = (props) => {
                 title="Volunteer"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  General Info
+                <Typography className={classes.root} gutterBottom variant="h5" component="h2">
+                  Charities List
                 </Typography>
                 <Typography component="p">
                   
