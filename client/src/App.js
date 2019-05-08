@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import fetch from "node-fetch";
-import LandingPage from "./Components/LandingPage.js";
-import axios from "axios";
-import TopicTiles from "./topicTiles";
+import React, { Component } from 'react';
+import fetch from 'node-fetch';
+import SearchAppBar from './Components/Header.js';
+import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from "./Components/Modal.js";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
@@ -17,29 +16,21 @@ export default class App extends Component {
       testingOnly: false,
       isOpen: false,
       modalType: "login",
-      page: "home",
-      favoritedTopics: [
-        {
-          topic_id: 19,
-          topic_name: "Humanitarian Relief Supplies",
-          topic_imageurl:
-            "https://d20umu42aunjpx.cloudfront.net/_gfx_/causes/small/humanitarian_relief.jpg?utm_source=DataAPI&utm_content=9af5afa3",
-          website_url:
-            "https://www.charitynavigator.org/index.cfm?bay=search.results&cgid=7&cuid=30&utm_source=DataAPI&utm_content=9af5afa3"
-        },
-        {
-          topic_id: 20,
-          topic_name: "Foreign Charity Support Organizations",
-          topic_imageurl:
-            "https://d20umu42aunjpx.cloudfront.net/_gfx_/causes/small/single_country.jpg?utm_source=DataAPI&utm_content=9af5afa3",
-          website_url:
-            "https://www.charitynavigator.org/index.cfm?bay=search.results&cgid=7&cuid=31&utm_source=DataAPI&utm_content=9af5afa3"
-        }
-      ]
+      page: "home", 
+      currentTopic: "homeless services",
+      location: '',
+      isLoggedIn: false,
+      firstName: "",
+      favorites: [],
+      username: ""
     };
-    this.api = `http://localhost:8000/api/example`;
-    this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
+    // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.geolocate = this.geolocate.bind(this);
+    this.geolocateSuccess = this.geolocateSuccess.bind(this);
+    this.setLoginState = this.setLoginState.bind(this);
+    this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
   }
   componentDidMount() {
     axios
@@ -96,25 +87,50 @@ export default class App extends Component {
           })
           .catch();
       }
+    this.geolocate();
+    // fetch(this.api)
+    //   .then(res => res.json())
+    //   .then(seaCreatures => {
+    //     this.setState({ seaCreatures: seaCreatures.data });
+    //   });
+  
+
+  geolocate() {
+    if (window.navigator && window.navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this.geolocateSuccess,
+        this.onGeolocateError
+      );
     }
   }
 
+  geolocateSuccess(coordinates) {
+    const { latitude, longitude } = coordinates.coords;
+    this.setState({
+      location: `${latitude},${longitude}`
+    });
+  }
+
+
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
-  toggleModal(event) {
-    event.preventDefault();
+  toggleModal (event, type) {
+    if (event) event.preventDefault();
     let open = !this.state.isOpen;
-    if (open) {
-      let name = event.target.name;
-      this.setState({
-        isOpen: open,
-        modalType: name
+    if(open) {
+      this.setState({ 
+        isOpen: open, 
+        modalType: type
       });
     } else {
       this.setState({
         isOpen: open
       });
     }
+  }
+  
+  setLoginState(data) {
+    this.setState(data);
   }
 
   // This is a global handleChange function
@@ -159,15 +175,18 @@ export default class App extends Component {
           <button name="action" onClick={e => this.handlePageChange(e)}>
             Go To Action Page
           </button>
+          <SearchAppBar toggleModal={this.toggleModal} />
+          <LandingPage topics={[]} toggleModal={this.toggleModal}/>
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
+          <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
         </>
       );
     } else if (this.state.page === "action") {
       return (
         <>
-          <TopicPageContainer />
-          <button name="home" onClick={e => this.handlePageChange(e)}>
-            Go To Home Page
-          </button>
+          <TopicPageContainer currentTopic={this.state.currentTopic}/>
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
+          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       );
     }

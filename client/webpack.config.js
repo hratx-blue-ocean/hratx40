@@ -7,6 +7,7 @@ module.exports = {
     filename: "bundle.js",
     path: DIST_DIR
   },
+<<<<<<< HEAD
   module: {
     rules: [
       {
@@ -14,6 +15,15 @@ module.exports = {
         enforce: "pre",
         loader: "eslint-loader"
       },
+=======
+  module : {
+    rules : [
+      // {
+      //   test: /\.(js|mjs|jsx)$/,
+      //   enforce: 'pre',
+      //   loader: 'eslint-loader'
+      // },
+>>>>>>> 9ed0dd512e8f7b3499447899fda5a1f9a382c070
       {
         test: /\.js?/,
         include: SRC_DIR,
@@ -29,6 +39,9 @@ module.exports = {
   devServer: {
     contentBase: DIST_DIR,
     compress: true,
-    port: 9000
+    port: 9000,
+    allowedHosts: [
+      '.amazonaws.com'
+    ]
   }
 };
