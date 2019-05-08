@@ -18,7 +18,24 @@ export default class App extends Component {
       isOpen: false,
       modalType: "login",
       page: "home",
-      favoritedTopics: []
+      favoritedTopics: [
+        {
+          topic_id: 19,
+          topic_name: "Humanitarian Relief Supplies",
+          topic_imageurl:
+            "https://d20umu42aunjpx.cloudfront.net/_gfx_/causes/small/humanitarian_relief.jpg?utm_source=DataAPI&utm_content=9af5afa3",
+          website_url:
+            "https://www.charitynavigator.org/index.cfm?bay=search.results&cgid=7&cuid=30&utm_source=DataAPI&utm_content=9af5afa3"
+        },
+        {
+          topic_id: 20,
+          topic_name: "Foreign Charity Support Organizations",
+          topic_imageurl:
+            "https://d20umu42aunjpx.cloudfront.net/_gfx_/causes/small/single_country.jpg?utm_source=DataAPI&utm_content=9af5afa3",
+          website_url:
+            "https://www.charitynavigator.org/index.cfm?bay=search.results&cgid=7&cuid=31&utm_source=DataAPI&utm_content=9af5afa3"
+        }
+      ]
     };
     this.api = `http://localhost:8000/api/example`;
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
@@ -28,8 +45,15 @@ export default class App extends Component {
     axios
       .get("http://localhost:8000/api/getAllTopics")
       .then(results => {
-        const allDBTopics = results.data;
-        // console.log("AT :");
+        let allDBTopics = results.data;
+        allDBTopics.sort((a, b) => {
+          const temp = this.state.favoritedTopics;
+          for (let i = 0; i < temp.length; i++) {
+            if (temp[i].topic_name === a.topic_name) return -1;
+          }
+          if (a.topic_name < b.topic_name) return -1;
+          else return 1;
+        });
         this.setState({ allTopics: allDBTopics });
       })
       .catch(error => {
