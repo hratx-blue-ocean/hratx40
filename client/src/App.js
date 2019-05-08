@@ -28,6 +28,28 @@ export default class App extends Component {
     //   });
   }
 
+  geolocate() {
+    if (window.navigator && window.navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this.geolocateSuccess,
+        this.onGeolocateError
+      );
+    }
+  }
+
+  geolocateSuccess(coordinates) {
+    const { latitude, longitude } = coordinates.coords;
+    alert(
+      "Found coordinates: ",
+      latitude.toFixed(1),
+      longitude.toFixed(1)
+    );
+    this.setState({
+      location: `${latitude.toFixed(1)},${longitude.toFixed(1)}`
+    });
+  }
+
+
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
   toggleModal (event, type) {
