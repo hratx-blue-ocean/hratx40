@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
+import SearchAppBar from './Components/Header.js';
 import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from './Components/Modal.js';
@@ -15,21 +16,22 @@ export default class App extends Component {
       modalType: "login",
       page: 'home'
     };
-    this.api = `http://localhost:8000/api/example`;
+    // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
-    fetch(this.api)
-      .then(res => res.json())
-      .then(seaCreatures => {
-        this.setState({ seaCreatures: seaCreatures.data });
-      });
+    // fetch(this.api)
+    //   .then(res => res.json())
+    //   .then(seaCreatures => {
+    //     this.setState({ seaCreatures: seaCreatures.data });
+    //   });
   }
 
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
   toggleModal (event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     let open = !this.state.isOpen;
     if(open) {
       let name = event.target.name;
@@ -70,7 +72,8 @@ export default class App extends Component {
     if (this.state.page === 'home') {
       return (
         <>
-          <LandingPage topics={[]}/>
+          <SearchAppBar />
+          <LandingPage toggleModal={this.toggleModal} topics={[]}/>
           <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
           <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
