@@ -7,11 +7,11 @@
 
 // chai.use(chaiHttp);
 
-// describe('GET search', () => {
-//   it('it should GET search data', (done) => {
+// describe('GET all topics', () => {
+//   it('it should GET all topics data data', (done) => {
 //     chai
 //       .request(`http://localhost:8000`)
-//       .get('/api/searchTopics?topic_name=social')
+//       .get('/api/getAllTopics')
 //       .then((res) => {
 //         should.exist(res);
 //         res.should.have.status(200);
