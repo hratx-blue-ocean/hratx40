@@ -27,7 +27,7 @@ export default class App extends Component {
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
   toggleModal (event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     let open = !this.state.isOpen;
     if(open) {
       let name = event.target.name;
@@ -58,7 +58,7 @@ export default class App extends Component {
       <>
         <LandingPage topics={[]}/>
         <h1>Welcome to Blue Ocean!</h1>
-        <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
+        <button name="login" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
         <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
         <ul>
           {this.state.seaCreatures.map((creature, index) => (
