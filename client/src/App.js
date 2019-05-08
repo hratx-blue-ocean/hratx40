@@ -16,22 +16,22 @@ export default class App extends Component {
       modalType: "login",
       page: 'home'
     };
-    this.api = `http://localhost:8000/api/example`;
+    // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
-    fetch(this.api)
-      .then(res => res.json())
-      .then(seaCreatures => {
-        this.setState({ seaCreatures: seaCreatures.data });
-      });
+    // fetch(this.api)
+    //   .then(res => res.json())
+    //   .then(seaCreatures => {
+    //     this.setState({ seaCreatures: seaCreatures.data });
+    //   });
   }
 
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
   toggleModal (event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     let open = !this.state.isOpen;
     if(open) {
       let name = event.target.name;
