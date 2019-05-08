@@ -9,20 +9,25 @@ router.get('/', (req, res) => {
     axios.get(`http://api.eventful.com/json/events/search?q=volunteer+%26%26+${topic}&where=${location}&within=25&app_key=${process.env.EVENTFUL_KEY}`)
     .then(data => {
         const dataArr = []
-        let data1 = data.data.events.event
-        for (let i = 0; i < data1.length; i++) {
-            let obj = {
-                name: data1[i].title,
-                description: data1[i].description,
-                time: data1[i].start_time,
-                url: data1[i].url
+        let data1 = data.data.events
+        if (data1) {
+            data1 = data1.event
+            for (let i = 0; i < data1.length; i++) {
+                let obj = {
+                    name: data1[i].title,
+                    description: data1[i].description,
+                    time: data1[i].start_time,
+                    url: data1[i].url
+                }
+                dataArr.push(obj)
             }
-            dataArr.push(obj)
+            res.send(dataArr);
+        } else {
+            res.send([])
         }
-        res.send(dataArr);
     })
     .catch(err => {
-        // console.log(err)
+        console.log(err)
         res.end()
     })
 
