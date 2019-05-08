@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from './Components/Modal.js';
-import ActionsContainer from './Components/ActionsContainer';
+import TopicPageContainer from './Components/TopicPageContainer.js';
 
 
 export default class App extends Component {
@@ -12,7 +12,8 @@ export default class App extends Component {
     this.state = {
       seaCreatures: [],
       isOpen: false,
-      modalType: "login"
+      modalType: "login",
+      page: 'home'
     };
     this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -54,13 +55,34 @@ export default class App extends Component {
     this.setState(newState);
   }
 
+  // Temporary change page state button (Jay)
+  handlePageChange(e) {
+    e.preventDefault();
+    // console.log('page:', e.target.name)
+    this.setState({
+      page: e.target.name
+    })
+
+  }
+
+  // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
-    return (
-      <>
-        <LandingPage topics={[]}/>
-        <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
-        <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
-      </>
-    );
+    if (this.state.page === 'home') {
+      return (
+        <>
+          <LandingPage topics={[]}/>
+          <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
+          <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
+        </>
+      );
+    } else if (this.state.page === 'action') {
+      return (
+        <>
+          <TopicPageContainer />
+          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
+        </>
+      )
+    }
   }
 }
