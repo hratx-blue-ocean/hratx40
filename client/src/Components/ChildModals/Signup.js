@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PasswordMask from 'react-password-mask';
 
 const signupReq = (e, toggleOpen) => {
   e.preventDefault();
@@ -12,9 +13,8 @@ const signupReq = (e, toggleOpen) => {
       password: document.getElementById(`password`).value,
     }
   })
-    .then((success) => {
+    .then((results) => {
       document.getElementById(`success`).innerHTML = `Success!`;
-      alert(JSON.stringify(success));
       setTimeout(() => {
         toggleOpen();
       }, 3000);
@@ -38,8 +38,7 @@ const Signup = (props) => {
       <br />
       <input id='username' placeholder='Enter a username' style={{ width: "200px" }}></input>
       <br />
-      <input id='password' placeholder='Enter a password' style={{ width: "200px" }}></input>
-      <br />
+      <PasswordMask id='password' name='password' placeholder='Enter password' useVendorStyles={false} inputStyles={{ width: "200px" }} />
       <br />
       <button onClick={(e) => { signupReq(e, props.toggleOpen) }}>Signup!</button>
       <span id='success'></span>
