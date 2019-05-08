@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
+import SearchAppBar from './Components/Header.js';
 import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from './Components/Modal.js';
@@ -70,6 +71,7 @@ export default class App extends Component {
     if (this.state.page === 'home') {
       return (
         <>
+          <SearchAppBar />
           <LandingPage topics={[]}/>
           <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
