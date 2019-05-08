@@ -10,7 +10,6 @@ const pool = new Pool({
     port: process.env.DB_PORT //port, please put 5432 unless you have need to use another
 });
 
-
 const getAll = (cb) => {
     pool.query('select * from users', (err, data) => {
         if (err) {
@@ -18,8 +17,21 @@ const getAll = (cb) => {
         } else {
             cb(null, data);
         }
-    });
+    })
 };
+
+const getHashedPassword = (login, cb) => {
+
+    pool.query(`select * from users where username = '${login.username}'`, (err, data)=>{
+        if (err){
+            cb(err);
+        }
+        else {
+            cb(null, data)
+        }
+    })
+};
+
 
 const insertTopic = (causeObj, cb) => {
     pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
@@ -83,4 +95,4 @@ const getFavoritedTopics = (userId, cb) => {
     })
 }
 
-module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite }
+module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite, getHashedPassword }
