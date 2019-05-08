@@ -7,7 +7,7 @@ import App from '../App';
 
 afterEach(cleanup);
 
-it('Should load the hero banner text', async () => {
+xit('Should load the hero banner text', async () => {
   const { getByText } = render(<App />,);
   const hero = await waitForElement(() => getByText(/throw your pebble/i))
   expect(hero).toBeTruthy();
@@ -21,6 +21,6 @@ it('Should load the hero banner text', async () => {
 //   expect(dolphin).toBeTruthy();
 // });
 
-it('Is a dummy test', async () => {
+xit('Is a dummy test', async () => {
   expect(true).toBe(true);
 });
