@@ -1,5 +1,5 @@
 import React from 'react'
-import {render, fireEvent, cleanup, waitForElement} from 'react-testing-library'
+import { render, fireEvent, cleanup, waitForElement } from 'react-testing-library'
 
 // this adds custom jest matchers from jest-dom
 import 'jest-dom/extend-expect'
@@ -8,10 +8,14 @@ import App from '../App';
 afterEach(cleanup);
 
 
-xit('CheckboxWithLabel changes the text after click', async () => {
-    const { getByText } = render(<App/>,);
+// xit('CheckboxWithLabel changes the text after click', async () => {
+//     const { getByText } = render(<App/>,);
 
-    const dolphin = await waitForElement(() => getByText(/dolphin/i),)
+//     const dolphin = await waitForElement(() => getByText(/dolphin/i),)
 
-    expect(dolphin).toBeTruthy();
+//     expect(dolphin).toBeTruthy();
+// });
+
+it('Is a dummy test', async () => {
+    expect(true).toBe(true);
 });
