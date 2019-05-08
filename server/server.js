@@ -14,7 +14,11 @@ app.use((_, res, next) => {
 app.use(logger('dev'));
 app.use(express.json({ urlencoded: true }))
 // You can place your routes here, feel free to refactor:
+<<<<<<< HEAD
 const { example, seedTopics, search, addFavorite, deleteFavorite, getAllTopics, news, charity, login, signup } = require('./routes');
+=======
+const { example, seedTopics, search, addFavorite, deleteFavorite, getAllTopics, news, charity, login } = require('./routes');
+>>>>>>> 0d52d93efb8afb5fa828b0c87479e890d9089ecf
 app.use('/api/example', example)
 app.use('/api/seedTopics', seedTopics)
 app.use('/api/searchTopics', search)
