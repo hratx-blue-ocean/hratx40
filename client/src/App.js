@@ -30,14 +30,13 @@ export default class App extends Component {
 
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
-  toggleModal (event) {
+  toggleModal (event, type) {
     if (event) event.preventDefault();
     let open = !this.state.isOpen;
     if(open) {
-      let name = event.target.name;
       this.setState({ 
         isOpen: open, 
-        modalType: name
+        modalType: type
       });
     } else {
       this.setState({ 
@@ -72,9 +71,9 @@ export default class App extends Component {
     if (this.state.page === 'home') {
       return (
         <>
-          <SearchAppBar />
-          <LandingPage toggleModal={this.toggleModal} topics={[]}/>
-          <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
+          <SearchAppBar toggleModal={this.toggleModal} />
+          <LandingPage topics={[]}/>
+          <button name="volunteer" onClick={(event) => this.toggleModal(event, "login")}>Press Me!</button>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
           <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
         </>
