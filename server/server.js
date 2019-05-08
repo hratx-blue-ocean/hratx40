@@ -14,7 +14,7 @@ app.use((_, res, next) => {
 app.use(logger('dev'));
 app.use(express.json({ urlencoded: true }))
 // You can place your routes here, feel free to refactor:
-const { example, seedTopics, search, addFavorite, deleteFavorite, getAllTopics, news, charity, login, signup } = require('./routes');
+const { example, seedTopics, search, addFavorite, deleteFavorite, getAllTopics, news, charity, login, signup, volunteering } = require('./routes');
 app.use('/api/example', example)
 app.use('/api/seedTopics', seedTopics)
 app.use('/api/searchTopics', search)
@@ -25,6 +25,8 @@ app.use('/api/getAllTopics', getAllTopics);
 app.use('/api/news', news);
 app.use(`/api/charities`, charity)
 app.use(`/api/signups`, signup)
+app.use(`/api/volunteers`, volunteering)
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
