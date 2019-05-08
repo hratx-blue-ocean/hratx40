@@ -1,15 +1,19 @@
 import React from 'react';
 import axios from 'axios';
 
-const loginReq = (event, toggleOpen) => {
+const loginReq = (event, toggleOpen, setLogin) => {
   event.preventDefault();
   axios.get('http://localhost:8000/api/logins', {params: {
     password: document.getElementById('password').value,
     username: document.getElementById('username').value
   }})
-    .then((success) => {
+    .then((response) => {
       document.getElementById('success').innerHTML = "Success!";
-      alert(JSON.stringify(success));
+      setLogin({
+        firstName: response.data[0].first_name,
+        username: response.data[0].username,
+        favorites: response.data[0].favorites
+      });
       setTimeout(() => {
         toggleOpen();
       }, 3000);
@@ -27,10 +31,10 @@ const Login = (props) => {
       <br />
       <input placeholder="username/email" id="username" style={{width: "200px"}}></input>
       <br />
-      <input placeholder="password" id="password" style={{width: "200px"}}></input>
+      <input type="password" placeholder="password" id="password" style={{width: "200px"}}></input>
       <br />
       <br />
-      <button onClick={(event) => {loginReq(event, props.toggleOpen)}}>Login</button>
+      <button onClick={(event) => {loginReq(event, props.toggleOpen, props.setLogin)}}>Login</button>
       <br />
       <span id="success"></span>
       <span id="error" style={{color: "red"}}></span>
