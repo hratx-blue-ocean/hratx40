@@ -43,11 +43,6 @@ export default class App extends Component {
 
   geolocateSuccess(coordinates) {
     const { latitude, longitude } = coordinates.coords;
-    alert(
-      "Found coordinates: ",
-      latitude,
-      longitude
-    );
     this.setState({
       location: `${latitude},${longitude}`
     });
