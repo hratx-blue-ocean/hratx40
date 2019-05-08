@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
       if (validated === true){
         getFavoritedTopics(data.rows[0].user_id, (err, data)=>{
           if (err){
-            res.end();
+            res.status(401).end();
           }
           else{
             res.status(200).send(data.rows);
