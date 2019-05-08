@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import NewsFeedItem from "./NewfeedItem.js"
+import NewsFeedItem from "./NewsfeedItem.js"
 
 class Newsfeed extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Newsfeed extends React.Component {
 
   render() {
     return (
-      <div style={{height:"100vw"}}>
+      <div style={{height:"100vh"}}>
       { this.state.articles.map((article)=>( 
         <NewsFeedItem article={article} />
       ))}
