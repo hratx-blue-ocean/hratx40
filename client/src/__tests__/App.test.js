@@ -16,6 +16,6 @@ afterEach(cleanup);
 //     expect(dolphin).toBeTruthy();
 // });
 
-it('Is a dummy test', async () => {
+xit('Is a dummy test', async () => {
     expect(true).toBe(true);
   });
