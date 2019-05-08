@@ -22,14 +22,20 @@ const {
   search,
   addFavorite,
   deleteFavorite,
-  getAllTopics
+  getAllTopics,
+  news,
+  charity,
+  login
 } = require("./routes");
 app.use("/api/example", example);
 app.use("/api/seedTopics", seedTopics);
 app.use("/api/searchTopics", search);
 app.use("/api/addFavorites", addFavorite);
+app.use("/api/logins", login);
 app.use("/api/deleteFavorites", deleteFavorite);
 app.use("/api/getAllTopics", getAllTopics);
+app.use("/api/news", news);
+app.use(`/api/charities`, charity);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,7 +50,11 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  // res.render('error');
+  res.json({
+    message: err.message,
+    err: err
+  });
 });
 
 module.exports = app;

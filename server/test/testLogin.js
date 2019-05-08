@@ -7,17 +7,15 @@
 
 // chai.use(chaiHttp);
 
-// describe('GET all topics', () => {
-//   it('it should GET all topics data data', (done) => {
+// describe('GET login', () => {
+//   it('it should GET user data', (done) => {
 //     chai
 //       .request(`http://localhost:8000`)
-//       .get('/api/getAllTopics')
-//       .then((res) => {
-//         should.exist(res);
-//         res.should.have.status(200);
-//         res.body.should.be.a('array');
+//       .get('/api/logins?username=test-username2&password=testhashed')
+//       .end((err, res)=>{
+//         should.exist(res.body);
+//         should.not.exist(err);
 //         done();
 //       })
-//       .catch(err => err);
 //   });
 // });

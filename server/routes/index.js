@@ -1,7 +1,10 @@
 const example = require("./example");
+const charity = require("./charity");
 const seedTopics = require("./seedTopics");
 const search = require("./search");
 const addFavorite = require("./favorites");
+const login = require("./login");
+const news = require("./newsfeed");
 const deleteFavorite = require("./deleteFave");
 const getAllTopics = require("./getAllTopics");
 
@@ -11,5 +14,8 @@ module.exports = {
   search,
   addFavorite,
   deleteFavorite,
-  getAllTopics
+  charity,
+  getAllTopics,
+  news,
+  login
 };
