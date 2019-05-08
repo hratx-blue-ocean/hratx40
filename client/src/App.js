@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import fetch from "node-fetch";
 import LandingPage from "./Components/LandingPage.js";
 import axios from "axios";
-import TopicTiles from "../src/topicTiles";
-import TopicTile from "../src/topicTile";
+import TopicTiles from "./topicTiles";
 // import './App.css';
 import Modal from "./Components/Modal.js";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
@@ -14,7 +13,6 @@ export default class App extends Component {
     this.state = {
       seaCreatures: [],
       allTopics: [],
-      page: "landingPage",
       currentTopic: "",
       testingOnly: false,
       isOpen: false,
@@ -47,16 +45,14 @@ export default class App extends Component {
   handleTopicTileClick(e, target) {
     console.log("click happened", e.target.className);
     if (target === "topicTile") {
-      console.log("clicked");
-      alert("topicTile");
+      console.log("eTV", e.target.id);
       this.setState({
         currentPage: "topicPage",
-        currentTopic: e.target.className,
-        testingOnly: e.target.id
+        currentTopic: e.target.id
       });
     } else if (target === "fav") {
-      this.setState({ testingOnly: e.target.id });
-      alert("fav");
+      this.setState({ testingOnly: "fav" });
+      console.log("clicked fav");
       //if user is loggedin submit fav to database, otherwise prompt user to sign up
     }
   }
@@ -105,6 +101,10 @@ export default class App extends Component {
       return (
         <>
           <LandingPage topics={[]} />
+          <TopicTiles
+            allTopics={this.state.allTopics}
+            handleTopicTileClick={this.handleTopicTileClick}
+          />
           <button name="volunteer" onClick={event => this.toggleModal(event)}>
             Press Me!
           </button>

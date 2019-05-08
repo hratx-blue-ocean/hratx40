@@ -1,52 +1,61 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
-// import tileData from "./tileData";
-
-// import classnames from "classnames";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import pink from "@material-ui/core/colors/pink";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import TopicTile from "./topicTile";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    paddingTop: 100,
+    paddingLeft: 5,
+    paddingRight: 5
+    // width: "90vw"
+    // display: "flex"
+    // flexWrap: "wrap",
+    // justifyContent: "center"
+    // overflow: "hidden",
+    // backgroundColor: theme.palette.background.paper
+  },
+  gridList: {
+    // width: 500,
+    // height: 450
+  }
+});
 
 const TopicTiles = props => {
-  // const { classes } = props;
-  <GridList
-    cellHeight={200}
-    spacing={1}
-    style={{ width: "100%", height: 400, transform: "translateZ(0)" }}
-  >
-    {/* const tiles = props.allTopics.map(topic => ( */}
-    props.allTopics.map(topic => (
-    <GridListTile
-      key={topic["topic_imageurl"]}
-      cols={tile.featured ? 3 : 1}
-      rows={tile.featured ? 2 : 1}
-    >
-      <img src={topic["topic_imageurl"]} alt={topic["topic_name"]} />
-      <GridListTileBar
-        title={topic["topic_name"]}
-        titlePosition="top"
-        actionIcon={
-          <IconButton onClick={props.handleTopicTileClick}>
-            <FavoriteIcon />
-          </IconButton>
-        }
-        actionPosition="left"
-        className={"fav"}
-      />
-    </GridListTile>
-    )
-  </GridList>;
+  const { classes } = props;
+
+  return (
+    <div className={classes.root}>
+      <Grid container>
+        <GridList
+          // cellHeight={200}
+          className={classes.gridList}
+          // cols={1}
+          // sm={4}
+        >
+          {props.allTopics.map(topic => (
+            <TopicTile
+              topic={topic}
+              handleTopicTileClick={props.handleTopicTileClick}
+            />
+          ))}
+        </GridList>
+      </Grid>
+    </div>
+  );
 
   //   <Card
   //     id={topic["topic_name"]}
@@ -82,11 +91,11 @@ const TopicTiles = props => {
   //     </CardContent>
   //   </Card>
   // ));
-  return <div id="tilesParent">{tiles}</div>;
+  // return <div id="tilesParent">{tiles}</div>;
 };
 
-// TopicTiles.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
+TopicTiles.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
-export default TopicTiles;
+export default withStyles(styles)(TopicTiles);
