@@ -12,3 +12,15 @@ it('Should load the hero banner text', async () => {
   const hero = await waitForElement(() => getByText(/throw your pebble/i))
   expect(hero).toBeTruthy();
 });
+
+// xit('CheckboxWithLabel changes the text after click', async () => {
+//   const { getByText } = render(<App />);
+
+//   const dolphin = await waitForElement(() => getByText(/dolphin/i))
+
+//   expect(dolphin).toBeTruthy();
+// });
+
+it('Is a dummy test', async () => {
+  expect(true).toBe(true);
+});
