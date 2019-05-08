@@ -94,11 +94,12 @@ const getFavoritedTopics = (userId, cb) => {
         }
     })
 }
-
+//  where not exists (select * from users where username = '${userInfo.username}'); 
 const handleSignup = (userInfo, cb) => {
     console.log('>>>>userInfo', userInfo)
-    pool.query(`insert into users (first_name, last_name, username, email, hashedpw) values (${userInfo.first_name}, ${userInfo.last_name}, ${userInfo.username}, ${userInfo.email}, ${userInfo.password},) where not exists (select user_id from users where username = ${userInfo.username});`, (err, data)=>{
+    pool.query(`insert into users (first_name, last_name, username, email, hashedpw) values ('${userInfo.first_name}', '${userInfo.last_name}', '${userInfo.username}', '${userInfo.email}', '${userInfo.password}');`, (err, data)=>{
         if (err){
+            console.log('IT FAILED!', err)
             cb(err)
         }
         else {
