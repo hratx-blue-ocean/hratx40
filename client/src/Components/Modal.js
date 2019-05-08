@@ -30,6 +30,18 @@ const chooseChild = (type, toggleOpen) => {
     return (
       <div id="child-modal">info</div>
     );
+  } else if (type === "location") {
+    return (
+      <div>
+        <h3>Austin, Tx</h3>
+      </div>
+    )
+  } else if (type === 'contact') {
+    return (
+      <div>
+        <h3>Contact Information</h3>
+      </div>
+    )
   }
 }
 

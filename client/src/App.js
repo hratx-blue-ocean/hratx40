@@ -18,6 +18,7 @@ export default class App extends Component {
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
     // fetch(this.api)
