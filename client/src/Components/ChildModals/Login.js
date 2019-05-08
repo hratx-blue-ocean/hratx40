@@ -25,7 +25,7 @@ const Login = (props) => {
       <br />
       <h1>Login</h1>
       <br />
-      <input placeholder="username" id="username" style={{width: "200px"}}></input>
+      <input placeholder="username/email" id="username" style={{width: "200px"}}></input>
       <br />
       <input placeholder="password" id="password" style={{width: "200px"}}></input>
       <br />

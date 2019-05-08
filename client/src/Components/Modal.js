@@ -28,8 +28,20 @@ const chooseChild = (type, toggleOpen) => {
     );
   } else if (type === "info") {
     return (
-      <div id="child-modal">info</div>
+      <div id="child-modal">infsdfasdfo</div>
     );
+  } else if (type === "location") {
+    return (
+      <div>
+        <h3>Austin, Tx</h3>
+      </div>
+    )
+  } else if (type === 'contact') {
+    return (
+      <div>
+        <h3>Contact Information</h3>
+      </div>
+    )
   }
 }
 
