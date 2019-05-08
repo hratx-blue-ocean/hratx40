@@ -18,19 +18,9 @@ import TopicTile from "./topicTile";
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    paddingTop: 100,
+    paddingTop: 20,
     paddingLeft: 5,
     paddingRight: 5
-    // width: "90vw"
-    // display: "flex"
-    // flexWrap: "wrap",
-    // justifyContent: "center"
-    // overflow: "hidden",
-    // backgroundColor: theme.palette.background.paper
-  },
-  gridList: {
-    // width: 500,
-    // height: 450
   }
 });
 
@@ -40,12 +30,7 @@ const TopicTiles = props => {
   return (
     <div className={classes.root}>
       <Grid container>
-        <GridList
-          // cellHeight={200}
-          className={classes.gridList}
-          // cols={1}
-          // sm={4}
-        >
+        <GridList>
           {props.allTopics.map(topic => (
             <TopicTile
               topic={topic}
@@ -57,42 +42,6 @@ const TopicTiles = props => {
       </Grid>
     </div>
   );
-
-  //   <Card
-  //     id={topic["topic_name"]}
-  //     className="topicTile"
-  //     square={true}
-  //     onClick={e => props.handleTopicTileClick(e, "topicTile")}
-  //     src={topic["topic_imageurl"]}
-  //     style={{
-  //       maxWidth: "33%",
-  //       color: { pink },
-  //       height: 400,
-  //       padding: 2,
-  //       cursor: "pointer"
-  //     }}
-  //   >
-  //     <CardMedia
-  //       className={topic["topic_name"]}
-  //       title={topic["topic_name"]}
-  //       image={topic["topic_imageurl"]}
-  //       style={{ height: 400, opacity: 0.9 }}
-  //     />
-  //     <IconButton
-  //       onClick={e => props.handleTopicTileClick(e, "fav")}
-  //       id={topic["topic_name"]}
-  //       className={"fav"}
-  //       style={{ height: 400, cursor: "crosshair" }}
-  //     >
-  //       <FavoriteIcon />
-  //     </IconButton>
-  //     <CardActions />
-  //     <CardContent>
-  //       <Typography component="p">{topic["topic_name"]}</Typography>
-  //     </CardContent>
-  //   </Card>
-  // ));
-  // return <div id="tilesParent">{tiles}</div>;
 };
 
 TopicTiles.propTypes = {

@@ -15,11 +15,6 @@ afterEach(cleanup);
 it("CheckboxWithLabel changes the text after click", async () => {
   const { getByText } = render(<App />);
 
-<<<<<<< HEAD
-  const dolphin = await waitForElement(() => getByText(/dolphin/i));
-  expect(dolphin).toBeTruthy();
-});
-=======
 xit('CheckboxWithLabel changes the text after click', async () => {
     const { getByText } = render(<App/>,);
 
@@ -27,4 +22,3 @@ xit('CheckboxWithLabel changes the text after click', async () => {
 
     expect(dolphin).toBeTruthy();
 });
->>>>>>> b9763b34138a325bae22f615a5e0056e24775b1b

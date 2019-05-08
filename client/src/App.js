@@ -56,49 +56,46 @@ export default class App extends Component {
         });
         this.setState({ allTopics: allDBTopics });
       })
-      .catch(error => {
-        console.log("no topics to load");
-      });
+      .catch();
   }
 
-  handleTopicTileClick(e, target) {
-    console.log("click happened", e.target.className);
+  handleTopicTileClick(e, target, topic_id, target_name) {
     if (target === "topicTile") {
-      console.log("eTV", e.target.id);
       this.setState({
         currentPage: "topicPage",
-        currentTopic: e.target.id
+        currentTopic: target_name
       });
     } else if (target === "fav") {
       let foundFavorite = false;
       this.state.favoritedTopics.forEach(topic => {
-        if (topic.topic_name === e.target.id) {
+        if (topic.topic_name === target_name) {
           foundFavorite = true;
-          //unfill heart on topicTile
-          // api/deleteFavorites route
-          // topic_id, user_id
-          //this.setState favoritedTopics
+          axios
+            .post("http://localhost:8000/api/deleteFavorites", {
+              topic_id: topic_id,
+              //user_id is hardcoded, change when login is implemented
+              user_id: 1
+            })
+            .then(results => {
+              const allFavorites = results.data;
+              this.setState({ favoritedTopics: allFavorites });
+            })
+            .catch();
         }
       });
       if (foundFavorite === false) {
-        //fill heart on topicTile
-        // api/addFavorites route
-        // topic_id, user_id
-        //this.setState favoritedTopics
+        axios
+          .post("http://localhost:8000/api/addFavorites", {
+            topic_id: topic_id,
+            //user_id is hardcoded, change when login is implemented
+            user_id: 1
+          })
+          .then(results => {
+            const allFavorites = results.data;
+            this.setState({ favoritedTopics: allFavorites });
+          })
+          .catch();
       }
-      if (this.state.favoritedTopics[""].includes(e.target.id)) {
-      } else {
-      }
-      axios
-        .get("http://localhost:8000/api/logins")
-        .then(results => {
-          console.log("favs:", results);
-          const allFavorites = results.data;
-          this.setState({ favoritedTopics: allFavorites });
-        })
-        .catch(error => {
-          console.log("no favorites to load");
-        });
     }
   }
 
