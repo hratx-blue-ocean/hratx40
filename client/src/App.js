@@ -82,6 +82,7 @@ export default class App extends Component {
       return (
         <>
           <TopicPageContainer />
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
           <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       )
