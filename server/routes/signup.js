@@ -4,7 +4,7 @@ const { handleSignup } = require('../../db/db.js')
 
 //for frontend, pass in params as `{params: {loginInfo: <input>}}`
 router.post('/', (req, res) => {
-  let userInfo = req.query;
+  let userInfo = req.body;
   let hashed = passwordHash.generate(userInfo.password);
   userInfo.password = hashed;
 
