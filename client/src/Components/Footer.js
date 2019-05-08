@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Icon from '@material-ui/core/Icon';
-import RestoreIcon from '@material-ui/icons/Restore';
+import Mail from '@material-ui/icons/Mail';
 import Home from '@material-ui/icons/Home';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const styles = {
   root: {
     width: 500,
+    marginLeft: 'auto',
+    marginRight: 'auto'
   },
 };
 
@@ -19,12 +20,17 @@ class LabelBottomNavigation extends React.Component {
     super (props)
 
     this.state = {
-      value: 'recents',
+    
     };
   }
 
-  handleChange(event, value) {
-    this.setState({ value });
+
+  handleHome() {
+
+  }
+
+  handleGithub() {
+
   }
 
   render() {
@@ -33,10 +39,9 @@ class LabelBottomNavigation extends React.Component {
 
     return (
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
+        <BottomNavigationAction label="Mail" value="mail" icon={<Mail />} />
         <BottomNavigationAction label="Home" value="favorites" icon={<Home />} />
-        <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
-        <BottomNavigationAction label="Folder" value="folder" icon={<Icon>folder</Icon>} />
+        <BottomNavigationAction label="Location" value="location" icon={<LocationOnIcon />} />
       </BottomNavigation>
     );
   }
