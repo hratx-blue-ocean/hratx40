@@ -10,7 +10,6 @@ const pool = new Pool({
     port: process.env.DB_PORT //port, please put 5432 unless you have need to use another
 });
 
-
 const getAll = (cb) => {
     pool.query('select * from users', (err, data) => {
         if (err) {
@@ -18,8 +17,21 @@ const getAll = (cb) => {
         } else {
             cb(null, data);
         }
-    });
+    })
 };
+
+const getHashedPassword = (login, cb) => {
+
+    pool.query(`select * from users where username = '${login.username}'`, (err, data)=>{
+        if (err){
+            cb(err);
+        }
+        else {
+            cb(null, data)
+        }
+    })
+};
+
 
 const insertTopic = (causeObj, cb) => {
     pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
@@ -82,5 +94,19 @@ const getFavoritedTopics = (userId, cb) => {
         }
     })
 }
+//  where not exists (select * from users where username = '${userInfo.username}'); 
+const handleSignup = (userInfo, cb) => {
+    console.log('>>>>userInfo', userInfo)
+    pool.query(`insert into users (first_name, last_name, username, email, hashedpw) values ('${userInfo.first_name}', '${userInfo.last_name}', '${userInfo.username}', '${userInfo.email}', '${userInfo.password}');`, (err, data)=>{
+        if (err){
+            console.log('IT FAILED!', err)
+            cb(err)
+        }
+        else {
+            cb(null, data)
+        }
+    })
+}
+        
 
-module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite }
+module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite, getHashedPassword, handleSignup }
