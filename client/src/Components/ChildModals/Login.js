@@ -9,7 +9,6 @@ const loginReq = (event, toggleOpen) => {
   }})
     .then((success) => {
       document.getElementById('success').innerHTML = "Success!";
-      alert(JSON.stringify(success));
       setTimeout(() => {
         toggleOpen();
       }, 3000);
@@ -27,7 +26,7 @@ const Login = (props) => {
       <br />
       <input placeholder="username/email" id="username" style={{width: "200px"}}></input>
       <br />
-      <input placeholder="password" id="password" style={{width: "200px"}}></input>
+      <input type="password" placeholder="password" id="password" style={{width: "200px"}}></input>
       <br />
       <br />
       <button onClick={(event) => {loginReq(event, props.toggleOpen)}}>Login</button>
