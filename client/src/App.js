@@ -17,7 +17,8 @@ export default class App extends Component {
       testingOnly: false,
       isOpen: false,
       modalType: "login",
-      page: "home"
+      page: "home",
+      favoritedTopics: []
     };
     this.api = `http://localhost:8000/api/example`;
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
@@ -32,13 +33,7 @@ export default class App extends Component {
         this.setState({ allTopics: allDBTopics });
       })
       .catch(error => {
-        // console.log(error);
-      });
-
-    fetch(this.api)
-      .then(res => res.json())
-      .then(seaCreatures => {
-        this.setState({ seaCreatures: seaCreatures.data });
+        console.log("no topics to load");
       });
   }
 
@@ -51,9 +46,35 @@ export default class App extends Component {
         currentTopic: e.target.id
       });
     } else if (target === "fav") {
-      this.setState({ testingOnly: "fav" });
-      console.log("clicked fav");
-      //if user is loggedin submit fav to database, otherwise prompt user to sign up
+      let foundFavorite = false;
+      this.state.favoritedTopics.forEach(topic => {
+        if (topic.topic_name === e.target.id) {
+          foundFavorite = true;
+          //unfill heart on topicTile
+          // api/deleteFavorites route
+          // topic_id, user_id
+          //this.setState favoritedTopics
+        }
+      });
+      if (foundFavorite === false) {
+        //fill heart on topicTile
+        // api/addFavorites route
+        // topic_id, user_id
+        //this.setState favoritedTopics
+      }
+      if (this.state.favoritedTopics[""].includes(e.target.id)) {
+      } else {
+      }
+      axios
+        .get("http://localhost:8000/api/logins")
+        .then(results => {
+          console.log("favs:", results);
+          const allFavorites = results.data;
+          this.setState({ favoritedTopics: allFavorites });
+        })
+        .catch(error => {
+          console.log("no favorites to load");
+        });
     }
   }
 
@@ -104,6 +125,7 @@ export default class App extends Component {
           <TopicTiles
             allTopics={this.state.allTopics}
             handleTopicTileClick={this.handleTopicTileClick}
+            favoritedTopics={this.state.favoritedTopics}
           />
           <button name="volunteer" onClick={event => this.toggleModal(event)}>
             Press Me!
