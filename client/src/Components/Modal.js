@@ -3,6 +3,7 @@ import Modal from '@material-ui/core/Modal';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Login from './ChildModals/Login.js'
+import Signup from './ChildModals/Signup';
 
 // Import child modals
 const chooseChild = (type, toggleOpen) => {
@@ -12,7 +13,7 @@ const chooseChild = (type, toggleOpen) => {
     );
   } else if (type === "signup") {
     return (
-      <div id="child-modal">signup</div>
+      <Signup toggleOpen={toggleOpen} />
     );
   } else if (type === "donate") {
     return (

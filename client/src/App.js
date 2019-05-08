@@ -73,7 +73,7 @@ export default class App extends Component {
         <>
           <SearchAppBar />
           <LandingPage topics={[]} />
-          <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
+          <button name="signup" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} />
           <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
         </>
