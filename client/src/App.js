@@ -14,19 +14,40 @@ export default class App extends Component {
       seaCreatures: [],
       isOpen: false,
       modalType: "login",
-      page: 'home'
+      page: 'home',
+      location: ''
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.geolocate = this.geolocate.bind(this);
+    this.geolocateSuccess = this.geolocateSuccess.bind(this);
   }
   componentDidMount() {
+    this.geolocate();
     // fetch(this.api)
     //   .then(res => res.json())
     //   .then(seaCreatures => {
     //     this.setState({ seaCreatures: seaCreatures.data });
     //   });
   }
+
+  geolocate() {
+    if (window.navigator && window.navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this.geolocateSuccess,
+        this.onGeolocateError
+      );
+    }
+  }
+
+  geolocateSuccess(coordinates) {
+    const { latitude, longitude } = coordinates.coords;
+    this.setState({
+      location: `${latitude},${longitude}`
+    });
+  }
+
 
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
