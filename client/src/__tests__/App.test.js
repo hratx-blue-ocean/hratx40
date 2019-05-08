@@ -7,17 +7,4 @@ import App from '../App';
 
 afterEach(cleanup);
 
-it('Should pass', async () => {
-    const { getByText } = render(<App />,);
-    const hero = await waitForElement(() => getByText(/Welcome/i))
-    expect(hero).toBeTruthy();
-
-});
-
-xit('CheckboxWithLabel changes the text after click', async () => {
-    const { getByText } = render(<App/>,);
-
-    const dolphin = await waitForElement(() => getByText(/dolphin/i),)
-
-    expect(dolphin).toBeTruthy();
-});
+it('Is a placeholder test')

@@ -15,15 +15,15 @@ export default class App extends Component {
       modalType: "login",
       page: 'home'
     };
-    this.api = `http://localhost:8000/api/example`;
+    // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
   }
   componentDidMount() {
-    fetch(this.api)
-      .then(res => res.json())
-      .then(seaCreatures => {
-        this.setState({ seaCreatures: seaCreatures.data });
-      });
+    // fetch(this.api)
+    //   .then(res => res.json())
+    //   .then(seaCreatures => {
+    //     this.setState({ seaCreatures: seaCreatures.data });
+    //   });
   }
 
   // Toggles if the Modal is open or closed
