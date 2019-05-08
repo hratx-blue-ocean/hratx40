@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -15,40 +14,22 @@ const styles = {
   },
 };
 
-class LabelBottomNavigation extends React.Component {
-  constructor(props) {
-    super (props)
+const LabelBottomNavigation = (props) => {
 
-    this.state = {
-    
-    };
-  }
+  
 
-
-  handleHome() {
-
-  }
-
-  handleGithub() {
-
-  }
-
-  render() {
-    const { classes } = this.props;
-    const { value } = this.state;
-
-    return (
-      <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction label="Mail" value="mail" icon={<Mail />} />
-        <BottomNavigationAction label="Home" value="favorites" icon={<Home />} />
-        <BottomNavigationAction label="Location" value="location" icon={<LocationOnIcon />} />
-      </BottomNavigation>
-    );
-  }
+  return (
+    <BottomNavigation>
+      <BottomNavigationAction label="Mail" value="mail" icon={<Mail />} />
+      <BottomNavigationAction label="Home" value="favorites" icon={<Home />} />
+      <BottomNavigationAction name="location" label="Location" value="location" icon={<LocationOnIcon />} onClick={(event) => props.toggleModal(event)} />
+      <a href="https://github.com/hratx-blue-ocean/hratx40" target="_blank">github</a>
+    </BottomNavigation>
+  );
 }
 
-LabelBottomNavigation.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// LabelBottomNavigation.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 export default withStyles(styles)(LabelBottomNavigation);

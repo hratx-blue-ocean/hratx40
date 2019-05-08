@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
+import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from './Components/Modal.js';
-import LabelBottomNavigation from './Components/Footer.js'
+import ActionsContainer from './Components/ActionsContainer';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -14,6 +16,7 @@ export default class App extends Component {
     };
     this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
     fetch(this.api)
@@ -55,6 +58,7 @@ export default class App extends Component {
   render() {
     return (
       <>
+        <LandingPage toggleModal={this.toggleModal} topics={[]}/>
         <h1>Welcome to Blue Ocean!</h1>
         <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
         <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
@@ -63,7 +67,6 @@ export default class App extends Component {
             <li key={index}>{creature}</li>
           ))}
         </ul>
-        <LabelBottomNavigation />
       </>
     );
   }
