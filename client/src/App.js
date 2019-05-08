@@ -14,7 +14,8 @@ export default class App extends Component {
       seaCreatures: [],
       isOpen: false,
       modalType: "login",
-      page: 'home',
+      page: "home", 
+      currentTopic: "homeless services",
       location: ''
     };
     // this.api = `http://localhost:8000/api/example`;
@@ -102,7 +103,7 @@ export default class App extends Component {
     } else if (this.state.page === 'action') {
       return (
         <>
-          <TopicPageContainer />
+          <TopicPageContainer currentTopic={this.state.currentTopic}/>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
           <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
