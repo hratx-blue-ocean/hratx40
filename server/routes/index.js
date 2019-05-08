@@ -7,6 +7,7 @@ const login = require('./login')
 const news = require("./newsfeed");
 const deleteFavorite = require('./deleteFave');
 const getAllTopics = require('./getAllTopics');
-const signup = require('./signup')
+const signup = require('./signup');
+const volunteering = require('./volunteer.js');
 
-module.exports = { example, seedTopics, search, addFavorite, deleteFavorite, charity, getAllTopics, news, login, signup }
+module.exports = { example, seedTopics, search, addFavorite, deleteFavorite, charity, getAllTopics, news, login, signup, volunteering }
