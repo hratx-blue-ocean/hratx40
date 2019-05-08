@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from './Components/Modal.js';
+import ActionsContainer from './Components/ActionsContainer';
 
 
 export default class App extends Component {
