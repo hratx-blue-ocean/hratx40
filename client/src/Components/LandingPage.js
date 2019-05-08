@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import LabelBottomNavigation from './Footer.js'
+import Footer from './Footer.js'
 import HeroBanner from './HeroBanner.js';
 // import TopicTiles from './TopicTiles.js';
 // import Footer from './Footer.js';
@@ -14,7 +13,7 @@ const LandingPage = (props) => {
       {/* {topics.map((topic, i) => (
         <TopicTiles topic={topic} key={i}/>
       ))} */}
-      <LabelBottomNavigation toggleModal={props.toggleModal} />
+      <Footer toggleModal={props.toggleModal} />
     </div>
   );
 }

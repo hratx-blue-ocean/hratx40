@@ -69,19 +69,6 @@ export default class App extends Component {
 
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
-    return (
-      <>
-        <LandingPage toggleModal={this.toggleModal} topics={[]}/>
-        <h1>Welcome to Blue Ocean!</h1>
-        <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
-        <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
-        <ul>
-          {this.state.seaCreatures.map((creature, index) => (
-            <li key={index}>{creature}</li>
-          ))}
-        </ul>
-      </>
-    );
     if (this.state.page === 'home') {
       return (
         <>

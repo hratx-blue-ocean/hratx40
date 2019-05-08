@@ -1,35 +1,28 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Mail from '@material-ui/icons/Mail';
-import Home from '@material-ui/icons/Home';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { faInfoCircle, faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faGithub} from "@fortawesome/free-brands-svg-icons";
 
-const styles = {
-  root: {
-    width: 500,
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-};
+const divStyle = {
+  width: '100vw',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  listStyle: 'none',
+  padding: '20px 0',
+  backgroundColor: '#D8DBD0',
+  opacity: '.90'
+}
 
-const LabelBottomNavigation = (props) => {
-
-  
-
+const Footer = (props) => {
   return (
-    <BottomNavigation>
-      <BottomNavigationAction label="Mail" value="mail" icon={<Mail />} />
-      <BottomNavigationAction label="Home" value="favorites" icon={<Home />} />
-      <BottomNavigationAction name="location" label="Location" value="location" icon={<LocationOnIcon />} onClick={(event) => props.toggleModal(event)} />
-      <a href="https://github.com/hratx-blue-ocean/hratx40" target="_blank">github</a>
-    </BottomNavigation>
+    <div style={divStyle}>
+      <FontAwesomeIcon icon={faInfoCircle} size='2x'/>
+      <FontAwesomeIcon icon={faEnvelope} size='2x'/>
+      <FontAwesomeIcon icon={faMapMarkerAlt} size='2x'/>
+      <FontAwesomeIcon onClick={() => {window.open('https://github.com/hratx-blue-ocean/hratx40',"_blank")}} icon={faGithub} size='2x'/>
+    </div>
   );
 }
 
-// LabelBottomNavigation.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
-export default withStyles(styles)(LabelBottomNavigation);
+export default Footer;
