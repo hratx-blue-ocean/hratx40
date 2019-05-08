@@ -35,12 +35,6 @@ const chooseChild = (type) => {
         <h3>Austin, Tx</h3>
       </div>
     )
-  } else if (type === 'aboutUs') {
-    return (
-      <div>
-        <h3>About Us</h3>
-      </div>
-    )
   } else if (type === 'contact') {
     return (
       <div>
