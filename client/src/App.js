@@ -4,7 +4,7 @@ import SearchAppBar from './Components/Header.js';
 import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from './Components/Modal.js';
-import ActionsContainer from './Components/ActionsContainer';
+import TopicPageContainer from './Components/TopicPageContainer.js';
 
 
 export default class App extends Component {
@@ -13,7 +13,8 @@ export default class App extends Component {
     this.state = {
       seaCreatures: [],
       isOpen: false,
-      modalType: "login"
+      modalType: "login",
+      page: 'home'
     };
     this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -55,20 +56,35 @@ export default class App extends Component {
     this.setState(newState);
   }
 
+  // Temporary change page state button (Jay)
+  handlePageChange(e) {
+    e.preventDefault();
+    // console.log('page:', e.target.name)
+    this.setState({
+      page: e.target.name
+    })
+
+  }
+
+  // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
-    return (
-      <>
-        <SearchAppBar />
-        <LandingPage topics={[]}/>
-        <h1>Welcome to Blue Ocean!</h1>
-        <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
-        <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
-        <ul>
-          {this.state.seaCreatures.map((creature, index) => (
-            <li key={index}>{creature}</li>
-          ))}
-        </ul>
-      </>
-    );
+    if (this.state.page === 'home') {
+      return (
+        <>
+          <SearchAppBar />
+          <LandingPage topics={[]}/>
+          <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
+          <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
+        </>
+      );
+    } else if (this.state.page === 'action') {
+      return (
+        <>
+          <TopicPageContainer />
+          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
+        </>
+      )
+    }
   }
 }
