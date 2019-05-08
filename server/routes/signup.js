@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
 
   handleSignup(userInfo, (err, data)=>{
     if (err){
-      res.end();
+      res.sendStatus(400);
     }
     else {
       res.sendStatus(200);
