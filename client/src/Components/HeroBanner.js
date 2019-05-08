@@ -1,33 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-
-import Image from './icons/hero.png';
 
 const styles = theme => ({
   heroImage: {
-    backgroundImage: `url(${Image})`,
-    height: '101vh',
-    // width: '100vw',
+    height: '100vh',
+    backgroundImage: 'url(https://images.unsplash.com/photo-1491382825904-a4c6dca98e8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format})',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    position: 'relative',
-    top: 0,
-    display: 'flex',
+    backgroundColor: 'black',
+    opacity: '.95',
     justifyContent: 'center',
     alignItems: 'center',
-    gridColumn: '1/-1',
-    backgroundColor: 'black',
-    opacity: '.88',
   },
   heroText: {
-    maxWidth: '75%',
     textAlign: 'center',
     fontSize: '2.5vmax',
     color: 'black',
     fontFamily: '"Comfortaa", cursive',
+    paddingBottom: '150px'
   }
 })
 
@@ -46,12 +39,12 @@ const HeroBanner = ({name, classes}) => {
   }
 
   return (  
-    <div className={classes.heroImage}>
-      <div className={classes.heroText}>
+    <Grid container className={classes.heroImage}>
+      <Grid item xs={8} className={classes.heroText}>
         {getMessage()}
         <h4>throw your pebble</h4>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 }
 

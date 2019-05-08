@@ -23,10 +23,6 @@ module.exports = {
         test: /\.css$/,
         include: SRC_DIR,
         use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/,
-        use: 'file-loader',
       }
     ]
   },
