@@ -57,15 +57,8 @@ export default class App extends Component {
     return (
       <>
         <LandingPage topics={[]}/>
-        <h1>Welcome to Blue Ocean!</h1>
-        <LandingPage topics={[]} />
         <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
         <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
-        <ul>
-          {this.state.seaCreatures.map((creature, index) => (
-            <li key={index}>{creature}</li>
-          ))}
-        </ul>
       </>
     );
   }
