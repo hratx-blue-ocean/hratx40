@@ -101,11 +101,29 @@ const deleteFavorite = (topicId, userId, cb) => {
 };
 
 const getFavoritedTopics = (userId, cb) => {
-<<<<<<< HEAD
   pool.query(
     `select b.* from users_topics a join topics b on a.topic_id=b.topic_id where a.user_id = ${userId};`,
     (err, data) => {
       if (err) {
+        cb(err);
+      } else {
+        cb(null, data);
+      }
+    }
+  );
+};
+//  where not exists (select * from users where username = '${userInfo.username}');
+const handleSignup = (userInfo, cb) => {
+  console.log(">>>>userInfo", userInfo);
+  pool.query(
+    `insert into users (first_name, last_name, username, email, hashedpw) values ('${
+      userInfo.first_name
+    }', '${userInfo.last_name}', '${userInfo.username}', '${
+      userInfo.email
+    }', '${userInfo.password}');`,
+    (err, data) => {
+      if (err) {
+        console.log("IT FAILED!", err);
         cb(err);
       } else {
         cb(null, data);
@@ -122,31 +140,6 @@ module.exports = {
   addFavorite,
   getFavoritedTopics,
   deleteFavorite,
-  getHashedPassword
+  getHashedPassword,
+  handleSignup
 };
-=======
-    pool.query(`select b.* from users_topics a join topics b on a.topic_id=b.topic_id where a.user_id = ${userId};`, (err, data) => {
-        if (err) {
-            cb(err)
-        } else {
-            cb(null, data);
-        }
-    })
-}
-//  where not exists (select * from users where username = '${userInfo.username}'); 
-const handleSignup = (userInfo, cb) => {
-    console.log('>>>>userInfo', userInfo)
-    pool.query(`insert into users (first_name, last_name, username, email, hashedpw) values ('${userInfo.first_name}', '${userInfo.last_name}', '${userInfo.username}', '${userInfo.email}', '${userInfo.password}');`, (err, data)=>{
-        if (err){
-            console.log('IT FAILED!', err)
-            cb(err)
-        }
-        else {
-            cb(null, data)
-        }
-    })
-}
-        
-
-module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite, getHashedPassword, handleSignup }
->>>>>>> 9ed0dd512e8f7b3499447899fda5a1f9a382c070

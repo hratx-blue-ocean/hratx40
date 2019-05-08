@@ -1,24 +1,23 @@
-import React, { Component } from 'react';
-import fetch from 'node-fetch';
-import SearchAppBar from './Components/Header.js';
-import LandingPage from './Components/LandingPage.js'
+import React, { Component } from "react";
+import fetch from "node-fetch";
+import SearchAppBar from "./Components/Header.js";
+import LandingPage from "./Components/LandingPage.js";
 // import './App.css';
 import Modal from "./Components/Modal.js";
+import axios from "axios";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
+import TopicTiles from "./topicTiles";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seaCreatures: [],
       allTopics: [],
-      currentTopic: "",
-      testingOnly: false,
       isOpen: false,
       modalType: "login",
-      page: "home", 
+      page: "home",
       currentTopic: "homeless services",
-      location: '',
+      location: "",
       isLoggedIn: false,
       firstName: "",
       favorites: [],
@@ -33,12 +32,13 @@ export default class App extends Component {
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
   }
   componentDidMount() {
+    this.geolocate();
     axios
       .get("http://localhost:8000/api/getAllTopics")
       .then(results => {
         let allDBTopics = results.data;
         allDBTopics.sort((a, b) => {
-          const temp = this.state.favoritedTopics;
+          const temp = this.state.favorites;
           for (let i = 0; i < temp.length; i++) {
             if (temp[i].topic_name === a.topic_name) return -1;
           }
@@ -58,7 +58,7 @@ export default class App extends Component {
       });
     } else if (target === "fav") {
       let foundFavorite = false;
-      this.state.favoritedTopics.forEach(topic => {
+      this.state.favorites.forEach(topic => {
         if (topic.topic_name === target_name) {
           foundFavorite = true;
           axios
@@ -69,7 +69,7 @@ export default class App extends Component {
             })
             .then(results => {
               const allFavorites = results.data;
-              this.setState({ favoritedTopics: allFavorites });
+              this.setState({ favorites: allFavorites });
             })
             .catch();
         }
@@ -83,17 +83,12 @@ export default class App extends Component {
           })
           .then(results => {
             const allFavorites = results.data;
-            this.setState({ favoritedTopics: allFavorites });
+            this.setState({ favorites: allFavorites });
           })
           .catch();
       }
-    this.geolocate();
-    // fetch(this.api)
-    //   .then(res => res.json())
-    //   .then(seaCreatures => {
-    //     this.setState({ seaCreatures: seaCreatures.data });
-    //   });
-  
+    }
+  }
 
   geolocate() {
     if (window.navigator && window.navigator.geolocation) {
@@ -111,15 +106,14 @@ export default class App extends Component {
     });
   }
 
-
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
-  toggleModal (event, type) {
+  toggleModal(event, type) {
     if (event) event.preventDefault();
     let open = !this.state.isOpen;
-    if(open) {
-      this.setState({ 
-        isOpen: open, 
+    if (open) {
+      this.setState({
+        isOpen: open,
         modalType: type
       });
     } else {
@@ -128,7 +122,7 @@ export default class App extends Component {
       });
     }
   }
-  
+
   setLoginState(data) {
     this.setState(data);
   }
@@ -158,36 +152,37 @@ export default class App extends Component {
     if (this.state.page === "home") {
       return (
         <>
-          <LandingPage topics={[]} />
+          <SearchAppBar toggleModal={this.toggleModal} />
+          <LandingPage topics={[]} toggleModal={this.toggleModal} />
           <TopicTiles
             allTopics={this.state.allTopics}
             handleTopicTileClick={this.handleTopicTileClick}
-            favoritedTopics={this.state.favoritedTopics}
+            favoritedTopics={this.state.favorites}
           />
-          <button name="volunteer" onClick={event => this.toggleModal(event)}>
-            Press Me!
-          </button>
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}
             toggleOpen={this.toggleModal}
+            setLogin={this.setLoginState}
           />
           <button name="action" onClick={e => this.handlePageChange(e)}>
             Go To Action Page
           </button>
-          <SearchAppBar toggleModal={this.toggleModal} />
-          <LandingPage topics={[]} toggleModal={this.toggleModal}/>
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
-          <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
         </>
       );
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} />
-          <TopicPageContainer currentTopic={this.state.currentTopic}/>
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
-          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
+          <TopicPageContainer currentTopic={this.state.currentTopic} />
+          <Modal
+            modalType={this.state.modalType}
+            isOpen={this.state.isOpen}
+            toggleOpen={this.toggleModal}
+            setLogin={this.setLoginState}
+          />
+          <button name="home" onClick={e => this.handlePageChange(e)}>
+            Go To Home Page
+          </button>
         </>
       );
     }

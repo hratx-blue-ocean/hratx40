@@ -61,7 +61,6 @@ const TopicTile = props => {
   }
   return (
     <Grid item xs={3}>
-      {props.topic.topic_id}
       <GridListTile
         key={props.topic["topic_imageurl"]}
         value={props.topic["topic_name"]}
