@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ActionsContainer from './ActionsContainer';
+import NewsFeedContainer from "./Newsfeed.js"
 
 const styles = theme => ({
   root: {
@@ -24,7 +25,9 @@ const TopicPageContainer = (props) => {
           <ActionsContainer />
         </Grid>
         <Grid item xs={12} sm={6}>
-          {/* <NewsFeedContainer /> */}
+          <div style={{overflow:"scroll", height:"100vh"}}>
+            <NewsFeedContainer currentTopic={props.currentTopic} />
+          </div>
         </Grid>
       </Grid>
     </div>

@@ -5,10 +5,10 @@ import Paper from '@material-ui/core/Paper';
 import Login from './ChildModals/Login.js'
 
 // Import child modals
-const chooseChild = (type, toggleOpen) => {
+const chooseChild = (type, toggleOpen, setLogin) => {
   if (type === "login") {
     return (
-      <Login toggleOpen={toggleOpen}/>
+      <Login toggleOpen={toggleOpen} setLogin={setLogin}/>
     );
   } else if (type === "signup") {
     return (
@@ -28,8 +28,20 @@ const chooseChild = (type, toggleOpen) => {
     );
   } else if (type === "info") {
     return (
-      <div id="child-modal">info</div>
+      <div id="child-modal">infsdfasdfo</div>
     );
+  } else if (type === "location") {
+    return (
+      <div>
+        <h3>Austin, Tx</h3>
+      </div>
+    )
+  } else if (type === 'contact') {
+    return (
+      <div>
+        <h3>Contact Information</h3>
+      </div>
+    )
   }
 }
 
@@ -48,7 +60,7 @@ const ModalDiv = (props) => {
           <Paper 
             style={{height:"400px"}}
             square={true}>
-            {chooseChild(props.modalType, props.toggleOpen)}
+            {chooseChild(props.modalType, props.toggleOpen, props.setLogin)}
           </Paper>
         </Grid>
       </Grid>
