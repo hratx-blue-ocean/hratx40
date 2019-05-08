@@ -19,7 +19,6 @@ const styles = theme => ({
     textAlign: 'center',
     fontSize: '2.5vmax',
     color: 'black',
-    fontFamily: '"Comfortaa", cursive',
     paddingBottom: '150px'
   }
 })
