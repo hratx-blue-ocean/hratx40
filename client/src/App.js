@@ -14,7 +14,7 @@ export default class App extends Component {
     this.state = {
       seaCreatures: [],
       allTopics: [],
-      currentPage: "landingPage",
+      page: "landingPage",
       currentTopic: "",
       testingOnly: false,
       isOpen: false,
