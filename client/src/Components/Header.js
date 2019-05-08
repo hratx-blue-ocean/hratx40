@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
@@ -81,7 +81,7 @@ function SearchAppBar(props) {
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <SearchIcon />
+              {/* <SearchIcon /> */}
             </div>
             <InputBase
               placeholder="Search…"
