@@ -16,13 +16,18 @@ export default class App extends Component {
       modalType: "login",
       page: "home", 
       currentTopic: "homeless services",
-      location: ''
+      location: '',
+      isLoggedIn: false,
+      firstName: "",
+      favorites: [],
+      username: ""
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.geolocate = this.geolocate.bind(this);
     this.geolocateSuccess = this.geolocateSuccess.bind(this);
+    this.setLoginState = this.setLoginState.bind(this);
   }
   componentDidMount() {
     this.geolocate();
@@ -66,6 +71,10 @@ export default class App extends Component {
       });
     }
   }
+  
+  setLoginState(data) {
+    this.setState(data);
+  }
 
   // This is a global handleChange function
   // make sure whatever is utilizing it has an e.target.name and e.target.value
@@ -95,7 +104,7 @@ export default class App extends Component {
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
           <LandingPage topics={[]} toggleModal={this.toggleModal}/>
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
           <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
         </>
       );
@@ -103,7 +112,7 @@ export default class App extends Component {
       return (
         <>
           <TopicPageContainer currentTopic={this.state.currentTopic}/>
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
           <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       )
