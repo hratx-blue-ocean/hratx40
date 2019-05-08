@@ -58,11 +58,8 @@ export default class App extends Component {
   render() {
     return (
       <>
-<<<<<<< HEAD
         <SearchAppBar />
-=======
         <LandingPage topics={[]}/>
->>>>>>> 0d52d93efb8afb5fa828b0c87479e890d9089ecf
         <h1>Welcome to Blue Ocean!</h1>
         <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
         <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
