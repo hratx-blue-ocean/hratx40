@@ -30,7 +30,7 @@ export default class App extends Component {
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
   toggleModal (event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     let open = !this.state.isOpen;
     if(open) {
       let name = event.target.name;
