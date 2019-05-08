@@ -12,10 +12,12 @@ it('Should pass', async () => {
     const hero = await waitForElement(() => getByText(/Welcome/i))
     expect(hero).toBeTruthy();
 
+});
+
 xit('CheckboxWithLabel changes the text after click', async () => {
     const { getByText } = render(<App/>,);
 
     const dolphin = await waitForElement(() => getByText(/dolphin/i),)
 
     expect(dolphin).toBeTruthy();
-})
+});
