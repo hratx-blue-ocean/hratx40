@@ -41,6 +41,7 @@ class DonateModal extends React.Component {
         <Typography variant = 'h3' >
           Donate to these Charities!
         </Typography>
+        <hr/>
         <div style={{overflowY:"scroll", height: '35vh'}}>
         {this.state.Donating.map((opportunity, index) => {
           return (

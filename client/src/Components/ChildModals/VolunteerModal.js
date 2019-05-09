@@ -42,6 +42,7 @@ class VolunteerModal extends React.Component {
         <Typography variant = 'h3' >
           Volunteering Opportunities in your area
         </Typography>
+        <hr/>
         <div style={{overflowY:"scroll", height: '35vh'}}>
         {this.state.volunteering.map((opportunity, index) => {
           return (
