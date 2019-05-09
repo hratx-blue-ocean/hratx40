@@ -20,8 +20,9 @@ const signupReq = (e, toggleOpen) => {
       .catch((err) => {
         document.getElementById(`error`).innerHTML = `Invalid signup credentials`;
       })
+  } else {
+    document.getElementById(`error`).innerHTML = `Passwords don't match`;
   }
-  console.log(document.getElementById(`error`).innerHTML = `Passwords don't match`);
 }
 const Signup = (props) => {
   return (
