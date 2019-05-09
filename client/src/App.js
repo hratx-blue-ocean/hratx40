@@ -157,7 +157,7 @@ export default class App extends Component {
     if (this.state.page === "home") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} />
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
           <LandingPage
             topics={[]}
             toggleModal={this.toggleModal}
@@ -179,7 +179,7 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} />
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
           <TopicPageContainer currentTopic={this.state.currentTopic} />
           <Modal
             modalType={this.state.modalType}
