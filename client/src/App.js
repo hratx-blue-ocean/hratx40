@@ -14,7 +14,7 @@ export default class App extends Component {
       seaCreatures: [],
       isOpen: false,
       modalType: "login",
-      page: "home", 
+      page: "home",
       currentTopic: "homeless services",
       location: '',
       isLoggedIn: false,
@@ -57,21 +57,21 @@ export default class App extends Component {
 
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
-  toggleModal (event, type) {
+  toggleModal(event, type) {
     if (event) event.preventDefault();
     let open = !this.state.isOpen;
-    if(open) {
-      this.setState({ 
-        isOpen: open, 
+    if (open) {
+      this.setState({
+        isOpen: open,
         modalType: type
       });
     } else {
-      this.setState({ 
-        isOpen: open 
+      this.setState({
+        isOpen: open
       });
     }
   }
-  
+
   setLoginState(data) {
     this.setState(data);
   }
@@ -103,8 +103,8 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
-          <LandingPage topics={[]} toggleModal={this.toggleModal}/>
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
+          <LandingPage topics={[]} toggleModal={this.toggleModal} />
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState} />
           <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
         </>
       );
@@ -112,8 +112,8 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
-          <TopicPageContainer currentTopic={this.state.currentTopic}/>
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
+          <TopicPageContainer currentTopic={this.state.currentTopic} />
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState} />
           <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       )
