@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
-const url = `http://localhost:8000`
+// const url = `http://localhost:8000`
 
-const loginReq = (event, toggleOpen, setLogin, allDBTopics) => {
+const loginReq = (event, toggleOpen, setLogin, allDBTopics, serverUrl) => {
   event.preventDefault();
-  axios.get(`${url}/api/logins`, {
+  axios.get(`${serverUrl}/api/logins`, {
     params: {
       password: document.getElementById('password').value,
       username: document.getElementById('username').value
@@ -48,7 +48,7 @@ const Login = (props) => {
       <input type="password" placeholder="password" id="password" style={{ width: "200px" }}></input>
       <br />
       <br />
-      <button onClick={(event) => { loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics) }}>Login</button>
+      <button onClick={(event) => { loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics, props.serverUrl) }}>Login</button>
       <br />
       <span id="success"></span>
       <span id="error" style={{ color: "red" }}></span>
