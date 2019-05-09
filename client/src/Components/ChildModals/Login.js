@@ -5,10 +5,12 @@ const url = `http://localhost:8000`
 
 const loginReq = (event, toggleOpen, setLogin, allDBTopics) => {
   event.preventDefault();
-  axios.get(`${url}/api/logins`, {params: {
-    password: document.getElementById('password').value,
-    username: document.getElementById('username').value
-  }})
+  axios.get(`${url}/api/logins`, {
+    params: {
+      password: document.getElementById('password').value,
+      username: document.getElementById('username').value
+    }
+  })
     .then((response) => {
       document.getElementById('success').innerHTML = "Success!";
       allDBTopics.sort((a, b) => {
@@ -31,26 +33,25 @@ const loginReq = (event, toggleOpen, setLogin, allDBTopics) => {
       }, 1000);
     })
     .catch((error) => {
-      console.log(error)
       document.getElementById('error').innerHTML = "Incorrect username/password :(";
     })
 }
 
 const Login = (props) => {
   return (
-    <div id="child-modal" style={{justify: "center", marginLeft:"15vw"}}>
+    <div id="child-modal" style={{ justify: "center", marginLeft: "15vw" }}>
       <br />
       <h1>Login</h1>
       <br />
-      <input placeholder="username/email" id="username" style={{width: "200px"}}></input>
+      <input placeholder="username/email" id="username" style={{ width: "200px" }}></input>
       <br />
-      <input type="password" placeholder="password" id="password" style={{width: "200px"}}></input>
+      <input type="password" placeholder="password" id="password" style={{ width: "200px" }}></input>
       <br />
       <br />
-      <button onClick={(event) => {loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics)}}>Login</button>
+      <button onClick={(event) => { loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics) }}>Login</button>
       <br />
       <span id="success"></span>
-      <span id="error" style={{color: "red"}}></span>
+      <span id="error" style={{ color: "red" }}></span>
     </div>
   )
 }
