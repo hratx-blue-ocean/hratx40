@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import fetch from "node-fetch";
-import SearchAppBar from "./Components/Header.js";
-import LandingPage from "./Components/LandingPage.js";
+import React, { Component } from 'react';
+import SearchAppBar from './Components/Header.js';
+import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from "./Components/Modal.js";
 import axios from "axios";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
+
+const url = `http://localhost:8000`
 
 export default class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class App extends Component {
       location: "",
       isLoggedIn: false,
       firstName: "",
+      user_id: 0,
       favorites: [],
       username: ""
     };
@@ -34,7 +36,7 @@ export default class App extends Component {
   componentDidMount() {
     this.geolocate();
     axios
-      .get("http://localhost:8000/api/getAllTopics")
+      .get(`${url}/api/getAllTopics`)
       .then(results => {
         let allDBTopics = results.data;
         allDBTopics.sort((a, b) => {
@@ -57,10 +59,10 @@ export default class App extends Component {
         if (topic.topic_name === target_name) {
           foundFavorite = true;
           axios
-            .post("http://localhost:8000/api/deleteFavorites", {
+            .post(`${url}/api/deleteFavorites`, {
               topic_id: topic_id,
               //user_id is hardcoded, change when login is implemented
-              user_id: 1
+              user_id: this.state.user_id
             })
             .then(results => {
               const allFavorites = results.data;
@@ -74,10 +76,10 @@ export default class App extends Component {
       });
       if (foundFavorite === false) {
         axios
-          .post("http://localhost:8000/api/addFavorites", {
+          .post(`${url}/api/addFavorites`, {
             topic_id: topic_id,
             //user_id is hardcoded, change when login is implemented
-            user_id: 1
+            user_id: this.state.user_id
           })
           .then(results => {
             const allFavorites = results.data;
@@ -184,6 +186,7 @@ export default class App extends Component {
             isOpen={this.state.isOpen}
             toggleOpen={this.toggleModal}
             setLogin={this.setLoginState}
+            allDBTopics={this.state.allTopics}
           />
           <button name="action" onClick={e => this.handlePageChange(e)}>
             Go To Action Page
@@ -193,7 +196,7 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} />
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
           <TopicPageContainer 
             currentTopic={this.state.currentTopic}
             footerPageChange={this.footerPageChange}
@@ -203,10 +206,11 @@ export default class App extends Component {
             isOpen={this.state.isOpen}
             toggleOpen={this.toggleModal}
             setLogin={this.setLoginState}
+            location={this.state.location}
+            currentTopic={this.state.currentTopic}
+            allDBTopics={this.state.allTopics}
           />
-          <button name="home" onClick={e => this.handlePageChange(e)}>
-            Go To Home Page
-          </button>
+          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       );
     }
