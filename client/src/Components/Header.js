@@ -85,34 +85,7 @@ function SearchAppBar(props) {
     props.handlePageChange(e);
   }
 
-  return props.isLogged ? (
-    <div className={classes.root} style={{position: 'fixed', top: 0}}>
-    <AppBar position="static" style={{background: '#C4ADAE'}}>
-      <Toolbar>
-        <a href='_' className={classes.title} onClick={goHome}>
-          <img alt='' src="brand_assets/logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
-          <img alt='' src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
-        </a>
-        <div className={classes.grow} />
-        <div className={classes.search}>
-          <div className={classes.searchIcon}>
-            {/* <SearchIcon /> */}
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-          />
-        </div>
-        <Button onClick={(event) => {props.logout(event)}} className={classes.button}>
-          Logout
-        </Button>
-      </Toolbar>
-    </AppBar>
-  </div>
-  ) : (
+  return (
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
         <Toolbar className={classes.header}>
@@ -133,14 +106,22 @@ function SearchAppBar(props) {
               }}
             />
           </div>
-          <div>
-            <Button onClick={(event) => {props.toggleModal(event,"login")}} className={classes.button}>
-              Login
-            </Button>
-            <Button onClick={(event) => {props.toggleModal(event,"signup")}} className={classes.button}>
-              Signup
-            </Button>
-          </div>
+          {
+            props.isLogged ? (
+              <Button onClick={(event) => {props.logout(event)}} className={classes.button}>
+                Logout
+              </Button>
+            ) : (
+              <div>
+                <Button onClick={(event) => {props.toggleModal(event,"login")}} className={classes.button}>
+                  Login
+                </Button>
+                <Button onClick={(event) => {props.toggleModal(event,"signup")}} className={classes.button}>
+                  Signup
+                </Button>
+              </div>
+            )
+          }
         </Toolbar>
       </AppBar>
     </div>
