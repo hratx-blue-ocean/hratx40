@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-
+import { Typography } from '@material-ui/core';
+import VolunteerModalItem from './VolunteerModalItem'
 // const loginReq = (event, toggleOpen, setLogin) => {
 //   event.preventDefault();
 //   axios.get('http://localhost:8000/api/logins', {params: {
@@ -23,27 +24,55 @@ import axios from 'axios';
 //     })
 // }
 
-const VolunteerModal = (props) => {
-  console.log('Props:', props);
-  const getData = function() {
+class VolunteerModal extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      volunteering: [{name: 'Loading..', description: '', time: '', url: ''}]
+    }
+  }
+
+  componentDidMount() {
     axios.get('http://localhost:8000/api/volunteers', {params: {
-      location: props.location,
-      topic_name: props.topic
+      location: this.props.location,
+      topic_name: this.props.topic
     }})
       .then((response) => {
-        console.log('Response: ', response);
-        return <div>Got it!</div>
+        if (response.data.length) {
+          this.setState({
+            volunteering: response.data
+          })
+        } else {
+          this.setState({
+            volunteering: [{name: 'No events in the near future', description: 'Please check out the charity pages!', time: '', url: ''}]
+          })
+        }
       })
       .catch((error) => {
-        console.error(error);
+        this.setState({
+          volunteering: [{name: 'Error', description: '', time: '', url: ''}]
+        })
       })
-  }
-  return (
-    <div id="child-modal" style={{justify: "center", marginLeft:"15vw"}}>
-      <h3>Howdy howdy howdy!</h3>
-      {getData()}
-    </div>
-  )
-}
 
+  }
+
+  render() {
+    return (
+      <div id="child-modal" style={{textAlign: "center"}}>
+        <Typography variant = 'h3' >
+          Volunteering Opportunities in your area
+        </Typography>
+        <div style={{overflowY:"scroll", height: '35vh'}}>
+        {this.state.volunteering.map((opportunity, index) => {
+          return (
+            <VolunteerModalItem opportunity = {opportunity} key = {index} />
+          )
+        })}
+        </div>
+
+      </div>
+    )
+  }
+}
 export default VolunteerModal;
