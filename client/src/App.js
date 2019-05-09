@@ -20,8 +20,7 @@ export default class App extends Component {
       isLoggedIn: false,
       firstName: "",
       favorites: [],
-      username: "",
-      topicTileTimeout: false
+      username: ""
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -51,31 +50,13 @@ export default class App extends Component {
   }
 
   handleTopicTileClick(e, target, topic_id, target_name) {
-    if (!this.state.topicTileTimeout) {
-      if (target === "fav") {
-        let foundFavorite = false;
-        this.state.favorites.forEach(topic => {
-          if (topic.topic_name === target_name) {
-            foundFavorite = true;
-            axios
-              .post("http://localhost:8000/api/deleteFavorites", {
-                topic_id: topic_id,
-                //user_id is hardcoded, change when login is implemented
-                user_id: 1
-              })
-              .then(results => {
-                const allFavorites = results.data;
-                this.setState({
-                  favorites: allFavorites,
-                  topicTileTimeout: true
-                });
-              })
-              .catch();
-          }
-        });
-        if (foundFavorite === false) {
+    if (target === "fav") {
+      let foundFavorite = false;
+      this.state.favorites.forEach(topic => {
+        if (topic.topic_name === target_name) {
+          foundFavorite = true;
           axios
-            .post("http://localhost:8000/api/addFavorites", {
+            .post("http://localhost:8000/api/deleteFavorites", {
               topic_id: topic_id,
               //user_id is hardcoded, change when login is implemented
               user_id: 1
@@ -89,12 +70,28 @@ export default class App extends Component {
             })
             .catch();
         }
-      } else if (target === "topicTile") {
-        this.setState({
-          page: "action",
-          currentTopic: target_name
-        });
+      });
+      if (foundFavorite === false) {
+        axios
+          .post("http://localhost:8000/api/addFavorites", {
+            topic_id: topic_id,
+            //user_id is hardcoded, change when login is implemented
+            user_id: 1
+          })
+          .then(results => {
+            const allFavorites = results.data;
+            this.setState({
+              favorites: allFavorites,
+              topicTileTimeout: true
+            });
+          })
+          .catch();
       }
+    } else if (target === "topicTile") {
+      this.setState({
+        page: "action",
+        currentTopic: target_name
+      });
     }
   }
 
