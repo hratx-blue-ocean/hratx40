@@ -71,8 +71,10 @@ class Footer extends React.Component {
       return (
         <Paper>
           <div>
+            <br />
             <h2 style={paperStyle}>Contact</h2>
-
+            <h4 style={paperStyle}>makeaaripl@gmail.com</h4>
+            <br />
           </div>
         </Paper>
       )
@@ -84,8 +86,10 @@ class Footer extends React.Component {
       return (
         <Paper>
           <div>
+            <br />
             <h2 style={paperStyle}>Location</h2>
             <h4 style={paperStyle}>Autstin, TX</h4>
+            <br />
           </div>
         </Paper>
       )
@@ -105,6 +109,7 @@ class Footer extends React.Component {
         contact: false,
         location: false
       })
+      this.scrollToBottom()
     }
   }
 
@@ -121,6 +126,7 @@ class Footer extends React.Component {
         location: false,
         info: false
       })
+      this.scrollToBottom()
     }
   }
 
@@ -137,9 +143,9 @@ class Footer extends React.Component {
         info: false,
         location: true,
       })
+      this.scrollToBottom();
     }
   }
-  
 
   render() {
     if (this.state.icons === true) {
