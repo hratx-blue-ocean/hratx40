@@ -39,6 +39,10 @@ class Footer extends React.Component {
     this.handleLocation = this.handleLocation.bind(this);
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0,document.body.scrollHeight);
+  }
+
   checkInfo() {
     if (this.state.info) {
       return (
@@ -164,5 +168,4 @@ class Footer extends React.Component {
     }
   } 
 }
-
 export default Footer;
