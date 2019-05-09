@@ -7,20 +7,20 @@ const passwordHash = require('password-hash');
 router.get('/', (req, res) => {
   let login = req.query;
 
-  getHashedPassword(login, (err, data)=>{
-    if (err || !data.rows[0]){
+  getHashedPassword(login, (err, data) => {
+    if (err || !data.rows[0]) {
       res.status(401).end();
     }
     else {
       let userInfo = data.rows[0];
       let validated = passwordHash.verify(login.password, userInfo.hashedpw);
-      
-      if (validated === true){
-        getFavoritedTopics(data.rows[0].user_id, (err, data)=>{
-          if (err){
+
+      if (validated === true) {
+        getFavoritedTopics(data.rows[0].user_id, (err, data) => {
+          if (err) {
             res.status(401).end();
           }
-          else{
+          else {
             userInfo.hashedpw = undefined;
             userInfo.favorites = data.rows;
             res.status(200).send(userInfo);
