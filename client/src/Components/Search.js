@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import Popper from '@material-ui/core/Popper';
 import { withStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
 
 const suggestions = [ 
   { label: 'Children\'s and Family Services' },
@@ -152,7 +153,7 @@ class IntegrationAutosuggest extends React.Component {
       ? []
       : suggestions.filter(suggestion => {
           const keep =
-            count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
+            count < 5 && suggestion.label.toLowerCase().includes(inputValue.toLowerCase());
   
           if (keep) {
             count += 1;
@@ -167,17 +168,6 @@ class IntegrationAutosuggest extends React.Component {
       suggestions: this.props.topics
     })
   }
-  // state = {
-  //   single: '',
-  //   popper: '',
-  //   suggestions: [],
-  // };
-
-  // handleSuggestionsFetchRequested = ({ value }) => {
-  //   this.setState({
-  //     suggestions: getSuggestions(value),
-  //   });
-  // };
 
   handleSuggestionsFetchRequested({ value }) {
     this.setState({
@@ -185,23 +175,11 @@ class IntegrationAutosuggest extends React.Component {
     });
   }
 
-  // handleSuggestionsClearRequested = () => {
-  //   this.setState({
-  //     suggestions: [],
-  //   });
-  // };
-
   handleSuggestionsClearRequested() {
     this.setState({
       suggestions: [],
     });
   }
-
-  // handleChange = name => (event, { newValue }) => {
-  //   this.setState({
-  //     [name]: newValue,
-  //   });
-  // };
 
   handleChange(name) {
     return (event, {newValue}) => {
@@ -210,13 +188,6 @@ class IntegrationAutosuggest extends React.Component {
       });
     }
   }
-
-  // handleChange(e) {
-  //   this.setState({
-  //     query: e.target.value
-  //   })
-  // }
-
 
   render() {
     const { classes } = this.props;
@@ -231,27 +202,32 @@ class IntegrationAutosuggest extends React.Component {
     };    
 
     return (
-      <div className={classes.root}>
-        <Autosuggest
-          {...autosuggestProps}
-          inputProps={{
-            classes,
-            placeholder: 'Search by topic',
-            value: this.state.single,
-            onChange: this.handleChange('single'),
-          }}
-          theme={{
-            container: classes.container,
-            suggestionsContainerOpen: classes.suggestionsContainerOpen,
-            suggestionsList: classes.suggestionsList,
-            suggestion: classes.suggestion,
-          }}
-          renderSuggestionsContainer={options => (
-            <Paper {...options.containerProps} square>
-              {options.children}
-            </Paper>
-          )}
-        />
+      <div>
+        <div className={classes.searchIcon}>
+          <SearchIcon />
+        </div>
+        <div className={classes.root}>
+          <Autosuggest
+            {...autosuggestProps}
+            inputProps={{
+              classes,
+              placeholder: 'Search by topic',
+              value: this.state.single,
+              onChange: this.handleChange('single'),
+            }}
+            theme={{
+              container: classes.container,
+              suggestionsContainerOpen: classes.suggestionsContainerOpen,
+              suggestionsList: classes.suggestionsList,
+              suggestion: classes.suggestion,
+            }}
+            renderSuggestionsContainer={options => (
+              <Paper {...options.containerProps} square>
+                {options.children}
+              </Paper>
+            )}
+          />
+        </div>
       </div>
     );
   }
