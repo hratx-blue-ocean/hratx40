@@ -163,11 +163,11 @@ class IntegrationAutosuggest extends React.Component {
         });
   }
 
-  componentDidMount() {
-    this.setState({
-      suggestions: this.props.topics
-    })
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     suggestions: this.props.topics
+  //   })
+  // }
 
   handleSuggestionsFetchRequested({ value }) {
     this.setState({
@@ -204,7 +204,7 @@ class IntegrationAutosuggest extends React.Component {
     return (
       <div>
         <div className={classes.searchIcon}>
-          <SearchIcon />
+          <SearchIcon /*onClick={this.props.handleSearchSubmit}*//>
         </div>
         <div className={classes.root}>
           <Autosuggest

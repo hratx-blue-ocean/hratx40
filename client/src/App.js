@@ -5,6 +5,7 @@ import LandingPage from './Components/LandingPage.js'
 import Modal from "./Components/Modal.js";
 import axios from "axios";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
+import deburr from 'lodash/deburr';
 
 const url = `http://localhost:8000`
 
@@ -13,6 +14,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       allTopics: [],
+      displayTopics: [],
       isOpen: false,
       modalType: "login",
       page: "home",
@@ -32,6 +34,7 @@ export default class App extends Component {
     this.setLoginState = this.setLoginState.bind(this);
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
     this.footerPageChange = this.footerPageChange.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
   componentDidMount() {
     this.geolocate();
@@ -167,12 +170,30 @@ export default class App extends Component {
     }
   }
 
+  handleSearchSubmit(value) {
+    const inputValue = deburr(value.trim()).toLowerCase();
+    const inputLength = inputValue.length;
+  
+    let filtered = inputLength === 0
+      ? []
+      : this.state.suggestions.filter(suggestion => {
+          const keep =
+            suggestion.label.toLowerCase().includes(inputValue.toLowerCase());
+  
+          return keep;
+        });
+    this.setState({
+      displayTopics: filtered
+    })
+    
+  }
+
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
     if (this.state.page === "home") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} topics={this.state.allTopics}/>
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} handleSearchSubmit={this.handleSearchSubmit}/>
           <LandingPage
             topics={[]}
             toggleModal={this.toggleModal}
@@ -196,7 +217,7 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} topics={this.state.allTopics}/>
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} />
           <TopicPageContainer 
             currentTopic={this.state.currentTopic}
             footerPageChange={this.footerPageChange}
