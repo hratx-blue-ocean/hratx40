@@ -38,10 +38,25 @@ class Footer extends React.Component {
     if (this.state.info) {
       return (
         <Paper>
-          <h1>hratx40</h1>
-
-
-
+          <div>
+            <br />
+            <h2>HRATX40</h2>
+            <ul>
+              <li>Austin Anderson</li>
+              <li>David Castillo</li>
+              <li>Drew DiStefano</li>
+              <li>Drew Lockliear</li>
+              <li>Jarrod Miller</li>
+              <li>Jay Kannaiyan</li>
+              <li>Jonathan Becker</li>
+              <li>Jonathon Lopez</li>
+              <li>Maggie Gray</li>
+              <li>Mathew Feinberg</li>
+              <li>Nicholas Miron</li>
+              <li>Ryan Ferrer</li>
+            </ul>
+            <br />
+          </div>
         </Paper>
       )
     }
@@ -50,9 +65,12 @@ class Footer extends React.Component {
   checkContact() {
     if (this.state.contact) {
       return (
-        <div>
-          <p>Contact</p>
-        </div>
+        <Paper>
+          <div>
+            <h2>Contact</h2>
+
+          </div>
+        </Paper>
       )
     }
   }
@@ -60,9 +78,12 @@ class Footer extends React.Component {
   checkLocation() {
     if (this.state.location) {
       return (
-        <div>
-          <p>location</p>
-        </div>
+        <Paper>
+          <div>
+            <h2>Location</h2>
+            <h4>Autstin, TX</h4>
+          </div>
+        </Paper>
       )
     }
   }
