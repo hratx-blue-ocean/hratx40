@@ -13,6 +13,10 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
   root: {
     flexGrow: 1,
+<<<<<<< HEAD
+=======
+    fontFamily: "'Comfortaa', cursive",
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
   },
   paper: {
     padding: theme.spacing.unit * 2,
@@ -29,9 +33,17 @@ const ActionsContainer = (props) => {
 
   return (
     <div>
+<<<<<<< HEAD
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <Card className={classes.card}>
+=======
+      <h2 style={{textAlign:"center", borderBottom:"solid", borderColor:"#C4ADAE"}}>{props.currentTopic}</h2>
+      <br/>
+      <Grid container spacing={24}>
+        <Grid item xs={12} sm={12}>
+          <Card onClick={() => props.toggleModal(null, 'volunteer')}>
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
             <CardActionArea>
               <CardMedia
                 className={classes.media}
@@ -39,7 +51,12 @@ const ActionsContainer = (props) => {
                 title="Volunteer"
               />
               <CardContent>
+<<<<<<< HEAD
                 <Typography gutterBottom variant="h5" component="h2">
+=======
+                {/* <h2>Volunteer</h2> */}
+                <Typography className={classes.root} gutterBottom variant="h5" component="h2">
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
                   Volunteer
                 </Typography>
                 <Typography component="p">
@@ -47,6 +64,7 @@ const ActionsContainer = (props) => {
                 </Typography>
               </CardContent>
             </CardActionArea>
+<<<<<<< HEAD
             <CardActions>
               <Button size="small" color="primary">
                 Learn More
@@ -56,6 +74,12 @@ const ActionsContainer = (props) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Card className={classes.card}>
+=======
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <Card className={classes.card} onClick={() => props.toggleModal(null, 'donate')}>
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
             <CardActionArea>
               <CardMedia
                 className={classes.media}
@@ -63,7 +87,11 @@ const ActionsContainer = (props) => {
                 title="Volunteer"
               />
               <CardContent>
+<<<<<<< HEAD
                 <Typography gutterBottom variant="h5" component="h2">
+=======
+                <Typography className={classes.root} gutterBottom variant="h5" component="h2">
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
                   Donate
                 </Typography>
                 <Typography component="p">
@@ -71,6 +99,7 @@ const ActionsContainer = (props) => {
                 </Typography>
               </CardContent>
             </CardActionArea>
+<<<<<<< HEAD
             <CardActions>
               <Button size="small" color="primary">
                 Learn More
@@ -79,6 +108,11 @@ const ActionsContainer = (props) => {
           </Card>
         </Grid>
         <Grid item xs={12} sm={6}>
+=======
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={12}>
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
@@ -87,6 +121,7 @@ const ActionsContainer = (props) => {
                 title="Volunteer"
               />
               <CardContent>
+<<<<<<< HEAD
                 <Typography gutterBottom variant="h5" component="h2">
                   General Info
                 </Typography>
@@ -112,6 +147,9 @@ const ActionsContainer = (props) => {
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
+=======
+                <Typography className={classes.root} gutterBottom variant="h5" component="h2">
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
                   General Info
                 </Typography>
                 <Typography component="p">
@@ -119,11 +157,14 @@ const ActionsContainer = (props) => {
                 </Typography>
               </CardContent>
             </CardActionArea>
+<<<<<<< HEAD
             <CardActions>
               <Button size="small" color="primary">
                 Learn More
               </Button>
             </CardActions>
+=======
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
           </Card>
         </Grid>
       </Grid>
