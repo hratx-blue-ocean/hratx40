@@ -8,10 +8,10 @@ import DonateModal from './ChildModals/DonateModal.js';
 import Signup from './ChildModals/Signup';
 
 // Import child modals
-const chooseChild = (type, toggleOpen, setLogin, location, topic) => {
+const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics) => {
   if (type === "login") {
     return (
-      <Login toggleOpen={toggleOpen} setLogin={setLogin} />
+      <Login toggleOpen={toggleOpen} setLogin={setLogin} allDBTopics = {allDBTopics}/>
     );
   } else if (type === "signup") {
     return (
@@ -86,7 +86,7 @@ const ModalDiv = (props) => {
           <Paper
             style={{ height: "400px" }}
             square={true}>
-            {chooseChild(props.modalType, props.toggleOpen, props.setLogin, props.location, props.currentTopic)}
+            {chooseChild(props.modalType, props.toggleOpen, props.setLogin, props.location, props.currentTopic, props.allDBTopics)}
           </Paper>
         </Grid>
       </Grid>
