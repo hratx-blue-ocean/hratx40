@@ -22,16 +22,16 @@ const TopicPageContainer = (props) => {
   const { classes } = props;
 
   return (
-    <div style={{position:"fixed"}}>
+    <div >
       <Grid 
         container 
         spacing={16}
         className={classes.root}  
       >
-        <Grid item xs={12} sm={6} className={classes.container}>
+        <Grid item xs={12} sm={5} className={classes.container}>
           <ActionsContainer toggleModal={props.toggleModal} currentTopic={props.currentTopic} />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={7}>
           <div>
             <NewsFeedContainer currentTopic={props.currentTopic} />
           </div>
