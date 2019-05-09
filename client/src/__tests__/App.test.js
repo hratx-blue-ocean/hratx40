@@ -12,8 +12,8 @@ import App from "../App";
 
 afterEach(cleanup);
 
-it("CheckboxWithLabel changes the text after click", async () => {
-  const { getByText } = render(<App />);
+// it("CheckboxWithLabel changes the text after click", async () => {
+//   const { getByText } = render(<App />);
 
 // xit('CheckboxWithLabel changes the text after click', async () => {
 //     const { getByText } = render(<App/>,);
@@ -23,6 +23,6 @@ it("CheckboxWithLabel changes the text after click", async () => {
 //     expect(dolphin).toBeTruthy();
 // });
 
-xit('Is a dummy test', async () => {
-    expect(true).toBe(true);
-  });
+xit("Is a dummy test", async () => {
+  expect(true).toBe(true);
+});
