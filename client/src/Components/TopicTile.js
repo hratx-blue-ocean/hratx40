@@ -95,7 +95,7 @@ const TopicTile = props => {
             }
             style={{ textAlign: "center" }}
           >
-            {props.topic["topic_name"]}
+            {'' + props.topic["topic_name"]}
           </div>
         </div>
       </GridListTile>
