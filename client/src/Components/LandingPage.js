@@ -7,7 +7,7 @@ import TopicTiles from "./TopicTiles";
 
 const LandingPage = props => {
   return (
-    <Grid container>
+    <Grid>
       {/* <Header /> */}
       <Grid item sm={12}>
         <HeroBanner name={props.name} />
