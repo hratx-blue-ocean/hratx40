@@ -21,7 +21,7 @@ CREATE TABLE topics(
     topic_name varchar(100) unique not null,
     topic_imageUrl varchar(200) not null,
     website_url varchar(200) not null,
-    topic_description varchar(500) not null,
+    topic_description varchar(500) not null
 );
 
 CREATE TABLE users_topics(
