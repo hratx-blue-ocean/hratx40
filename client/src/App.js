@@ -111,9 +111,21 @@ export default class App extends Component {
     } else if (this.state.page === 'action') {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} />
-          <TopicPageContainer currentTopic={this.state.currentTopic}/>
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState}/>
+          <SearchAppBar
+            toggleModal={this.toggleModal}
+          />
+          <TopicPageContainer
+            currentTopic={this.state.currentTopic}
+            toggleModal={this.toggleModal}
+            />
+          <Modal
+            modalType={this.state.modalType}
+            isOpen={this.state.isOpen}
+            toggleOpen={this.toggleModal}
+            setLogin={this.setLoginState}
+            location={this.state.location}
+            currentTopic={this.state.currentTopic}
+          />
           <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       )
