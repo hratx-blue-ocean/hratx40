@@ -14,13 +14,23 @@ export default class App extends Component {
       seaCreatures: [],
       isOpen: false,
       modalType: "login",
-      page: 'home'
+      page: "home",
+      currentTopic: "homeless services",
+      location: '',
+      isLoggedIn: false,
+      firstName: "",
+      favorites: [],
+      username: ""
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.geolocate = this.geolocate.bind(this);
+    this.geolocateSuccess = this.geolocateSuccess.bind(this);
+    this.setLoginState = this.setLoginState.bind(this);
   }
   componentDidMount() {
+    this.geolocate();
     // fetch(this.api)
     //   .then(res => res.json())
     //   .then(seaCreatures => {
@@ -28,21 +38,42 @@ export default class App extends Component {
     //   });
   }
 
+  geolocate() {
+    if (window.navigator && window.navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this.geolocateSuccess,
+        this.onGeolocateError
+      );
+    }
+  }
+
+  geolocateSuccess(coordinates) {
+    const { latitude, longitude } = coordinates.coords;
+    this.setState({
+      location: `${latitude},${longitude}`
+    });
+  }
+
+
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
-  toggleModal (event, type) {
+  toggleModal(event, type) {
     if (event) event.preventDefault();
     let open = !this.state.isOpen;
-    if(open) {
-      this.setState({ 
-        isOpen: open, 
+    if (open) {
+      this.setState({
+        isOpen: open,
         modalType: type
       });
     } else {
-      this.setState({ 
-        isOpen: open 
+      this.setState({
+        isOpen: open
       });
     }
+  }
+
+  setLoginState(data) {
+    this.setState(data);
   }
 
   // This is a global handleChange function
@@ -72,17 +103,17 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
-          <LandingPage topics={[]}/>
-          <button name="volunteer" onClick={(event) => this.toggleModal(event, "login")}>Press Me!</button>
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
+          <LandingPage topics={[]} toggleModal={this.toggleModal} />
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState} />
           <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
         </>
       );
     } else if (this.state.page === 'action') {
       return (
         <>
-          <TopicPageContainer />
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
+          <SearchAppBar toggleModal={this.toggleModal} />
+          <TopicPageContainer currentTopic={this.state.currentTopic} />
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState} />
           <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       )

@@ -17,9 +17,9 @@ const divStyle = {
 const Footer = (props) => {
   return (
     <div style={divStyle}>
-      <FontAwesomeIcon name='info' onClick={(event) => {props.toggleModal(event)}} icon={faInfoCircle} size='2x'/>
-      <FontAwesomeIcon name='contact' onClick={(event) => {props.toggleModal(event)}} icon={faEnvelope} size='2x'/>
-      <FontAwesomeIcon name='location' onClick={(event) => {props.toggleModal(event)}} icon={faMapMarkerAlt} size='2x'/>
+      <FontAwesomeIcon name='info' onClick={(event) => {props.toggleModal(event, "info")}} icon={faInfoCircle} size='2x'/>
+      <FontAwesomeIcon name='contact' onClick={(event) => {props.toggleModal(event, "contact")}} icon={faEnvelope} size='2x'/>
+      <FontAwesomeIcon name='location' onClick={(event) => {props.toggleModal(event, "location")}} icon={faMapMarkerAlt} size='2x'/>
       <FontAwesomeIcon onClick={() => {window.open('https://github.com/hratx-blue-ocean/hratx40',"_blank")}} icon={faGithub} size='2x'/>
     </div>
   );

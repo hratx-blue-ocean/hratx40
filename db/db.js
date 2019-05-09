@@ -1,5 +1,5 @@
 const Pool = require('pg').Pool;
-require('dotenv').config({path: '../.env'});
+require('dotenv').config({ path: '../.env' });
 
 //.env file must be inside the server folder
 const pool = new Pool({
@@ -22,8 +22,8 @@ const getAll = (cb) => {
 
 const getHashedPassword = (login, cb) => {
 
-    pool.query(`select * from users where username = '${login.username}'`, (err, data)=>{
-        if (err){
+    pool.query(`select * from users where username = '${login.username}'`, (err, data) => {
+        if (err) {
             cb(err);
         }
         else {
@@ -36,21 +36,21 @@ const getHashedPassword = (login, cb) => {
 const insertTopic = (causeObj, cb) => {
     pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
     ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}')`, (err, data) => {
-        if (err) {
-            cb(err)
-        } else {
-            cb(null,data)
-        }
-    });
+            if (err) {
+                cb(err)
+            } else {
+                cb(null, data)
+            }
+        });
 };
 
 const getTopic = (topicName, cb) => {
-    topicName = topicName.replace(`'`,`''`)
+    topicName = topicName.replace(`'`, `''`)
     pool.query(`select * from topics where lower(topic_name) like lower('%${topicName}%');`, (err, data) => {
         if (err) {
             cb(err);
         } else {
-            cb(null,data);
+            cb(null, data);
         }
     });
 };
@@ -60,12 +60,12 @@ const getAllTopics = (cb) => {
         if (err) {
             cb(err);
         } else {
-            cb(null,data);
+            cb(null, data);
         }
     });
 };
 
-const addFavorite = (topicId,userId, cb) => {
+const addFavorite = (topicId, userId, cb) => {
     pool.query(`insert into users_topics(user_id, topic_id) values (${userId}, ${topicId});`, (err, data) => {
         if (err) {
             cb(err);
@@ -75,7 +75,7 @@ const addFavorite = (topicId,userId, cb) => {
     })
 }
 
-const deleteFavorite = (topicId,userId, cb) => {
+const deleteFavorite = (topicId, userId, cb) => {
     pool.query(`delete from users_topics where user_id = ${userId} and topic_id = ${topicId};`, (err, data) => {
         if (err) {
             cb(err);
@@ -97,8 +97,8 @@ const getFavoritedTopics = (userId, cb) => {
 //  where not exists (select * from users where username = '${userInfo.username}'); 
 const handleSignup = (userInfo, cb) => {
     console.log('>>>>userInfo', userInfo)
-    pool.query(`insert into users (first_name, last_name, username, email, hashedpw) values ('${userInfo.first_name}', '${userInfo.last_name}', '${userInfo.username}', '${userInfo.email}', '${userInfo.password}');`, (err, data)=>{
-        if (err){
+    pool.query(`insert into users (first_name, last_name, username, email, hashedpw) values ('${userInfo.first_name}', '${userInfo.last_name}', '${userInfo.username}', '${userInfo.email}', '${userInfo.password}');`, (err, data) => {
+        if (err) {
             console.log('IT FAILED!', err)
             cb(err)
         }
@@ -107,6 +107,6 @@ const handleSignup = (userInfo, cb) => {
         }
     })
 }
-        
+
 
 module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite, getHashedPassword, handleSignup }

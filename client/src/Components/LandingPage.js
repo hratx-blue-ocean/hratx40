@@ -6,11 +6,11 @@ import Grid from '@material-ui/core/Grid';
 // import TopicTiles from './TopicTiles.js';
 
 const LandingPage = (props) => {
-  return (  
+  return (
     <Grid container>
       {/* <Header /> */}
       <Grid item sm={12}>
-        <HeroBanner name={'Octavius'}/>
+        <HeroBanner name={'Octavius'} />
       </Grid>
       {/* {props.topics.map((topic, i) => (
         <TopicTiles topic={topic} key={i}/>
@@ -24,5 +24,5 @@ LandingPage.propTypes = {
   topics: PropTypes.array,
   // toggleModal: PropTypes.func
 }
- 
+
 export default LandingPage;
