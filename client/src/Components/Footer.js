@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { faInfoCircle, faEnvelope, faMapMarkerAlt, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
+import IconButton from '@material-ui/core/IconButton';
 
 const divStyle = {
   width: '100vw',
@@ -109,7 +110,6 @@ class Footer extends React.Component {
         contact: false,
         location: false
       })
-      this.scrollToBottom()
     }
   }
 
@@ -126,7 +126,6 @@ class Footer extends React.Component {
         location: false,
         info: false
       })
-      this.scrollToBottom()
     }
   }
 
@@ -143,7 +142,6 @@ class Footer extends React.Component {
         info: false,
         location: true,
       })
-      this.scrollToBottom();
     }
   }
 
