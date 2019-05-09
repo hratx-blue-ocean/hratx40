@@ -3,10 +3,11 @@ import Modal from '@material-ui/core/Modal';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Login from './ChildModals/Login.js'
+import VolunteerModal from './ChildModals/VolunteerModal.js'
 import Signup from './ChildModals/Signup';
 
 // Import child modals
-const chooseChild = (type, toggleOpen, setLogin) => {
+const chooseChild = (type, toggleOpen, setLogin, location, topic) => {
   if (type === "login") {
     return (
       <Login toggleOpen={toggleOpen} setLogin={setLogin} />
@@ -21,7 +22,7 @@ const chooseChild = (type, toggleOpen, setLogin) => {
     )
   } else if (type === "volunteer") {
     return (
-      <div id="child-modal">volunteer</div>
+      <VolunteerModal location={location} topic={topic}/>
     );
   } else if (type === "charities") {
     return (
@@ -84,7 +85,7 @@ const ModalDiv = (props) => {
           <Paper
             style={{ height: "400px" }}
             square={true}>
-            {chooseChild(props.modalType, props.toggleOpen, props.setLogin)}
+            {chooseChild(props.modalType, props.toggleOpen, props.setLogin, props.location, props.currentTopic)}
           </Paper>
         </Grid>
       </Grid>

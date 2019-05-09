@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import fetch from "node-fetch";
 import SearchAppBar from "./Components/Header.js";
 import LandingPage from "./Components/LandingPage.js";
+=======
+import React, { Component } from 'react';
+import SearchAppBar from './Components/Header.js';
+import LandingPage from './Components/LandingPage.js'
+>>>>>>> 9aa359d54ab3e1a1c80626e3cf46286fa2b7a70e
 // import './App.css';
 import Modal from "./Components/Modal.js";
 import axios from "axios";
@@ -179,17 +185,34 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
+<<<<<<< HEAD
           <SearchAppBar toggleModal={this.toggleModal} />
           <TopicPageContainer currentTopic={this.state.currentTopic} />
+=======
+          <SearchAppBar
+            toggleModal={this.toggleModal}
+          />
+          <TopicPageContainer
+            currentTopic={this.state.currentTopic}
+            toggleModal={this.toggleModal}
+            />
+>>>>>>> 9aa359d54ab3e1a1c80626e3cf46286fa2b7a70e
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}
             toggleOpen={this.toggleModal}
             setLogin={this.setLoginState}
+<<<<<<< HEAD
           />
           <button name="home" onClick={e => this.handlePageChange(e)}>
             Go To Home Page
           </button>
+=======
+            location={this.state.location}
+            currentTopic={this.state.currentTopic}
+          />
+          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
+>>>>>>> 9aa359d54ab3e1a1c80626e3cf46286fa2b7a70e
         </>
       );
     }
