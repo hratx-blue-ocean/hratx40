@@ -22,11 +22,12 @@ const TopicTiles = props => {
     <div className={classes.root}>
       <Grid container>
         <GridList>
-          {props.allTopics.map(topic => (
+          {props.allTopics.map((topic, i) => (
             <TopicTile
               topic={topic}
               handleTopicTileClick={props.handleTopicTileClick}
               favorites={props.favorites}
+              key={i}
             />
           ))}
         </GridList>

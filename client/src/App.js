@@ -22,7 +22,8 @@ export default class App extends Component {
       firstName: "",
       user_id: 0,
       favorites: [],
-      username: ""
+      username: "",
+      serverUrl: "http://localhost:8000"
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -36,7 +37,7 @@ export default class App extends Component {
   componentDidMount() {
     this.geolocate();
     axios
-      .get(`${url}/api/getAllTopics`)
+      .get(`${this.state.serverUrl}/api/getAllTopics`)
       .then(results => {
         let allDBTopics = results.data;
         allDBTopics.sort((a, b) => {
@@ -187,6 +188,7 @@ export default class App extends Component {
             toggleOpen={this.toggleModal}
             setLogin={this.setLoginState}
             allDBTopics={this.state.allTopics}
+            serverUrl={this.state.serverUrl}
           />
           <button name="action" onClick={e => this.handlePageChange(e)}>
             Go To Action Page
@@ -196,10 +198,11 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} />
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
           <TopicPageContainer 
             currentTopic={this.state.currentTopic}
             footerPageChange={this.footerPageChange}
+            toggleModal={this.toggleModal}
           />
           <Modal
             modalType={this.state.modalType}
@@ -209,6 +212,7 @@ export default class App extends Component {
             location={this.state.location}
             currentTopic={this.state.currentTopic}
             allDBTopics={this.state.allTopics}
+            serverUrl={this.state.serverUrl}
           />
           <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>

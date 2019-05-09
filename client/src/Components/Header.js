@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
@@ -22,10 +21,13 @@ const styles = theme => ({
     marginRight: 20,
   },
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    // [theme.breakpoints.up('sm')]: {
+    //   display: 'block',
+    // },
+    display: 'flex',
+    flexDirection: 'row',
+    height: '50px',
+    alignItems: 'center',
     cursor: 'pointer',
   },
   search: {
@@ -83,10 +85,10 @@ function SearchAppBar(props) {
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
         <Toolbar>
-          <div style={{display: "flex", flexDirection: "row", height: "50px", alignItems: "center"}}>
-            <img src="brand_assets/logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
-            <img src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
-          </div>
+          <a href='_' className={classes.title} onClick={goHome}>
+            <img alt='' src="brand_assets/logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
+            <img alt='' src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
+          </a>
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>

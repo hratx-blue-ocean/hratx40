@@ -13,7 +13,7 @@ class VolunteerModal extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/api/volunteers', {params: {
+    axios.get(`${this.props.serverUrl}/api/volunteers`, {params: {
       location: this.props.location,
       topic_name: this.props.topic
     }})
