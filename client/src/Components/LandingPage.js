@@ -19,10 +19,7 @@ const LandingPage = props => {
           favorites={props.favorites}
         />
       </Grid>
-      <Footer 
-        toggleModal={props.toggleModal}
-        footerPageChange={props.footerPageChange}
-      />
+      <Footer toggleModal={props.toggleModal} footerPageChange={props.footerPageChange}/>
     </Grid>
   );
 };
