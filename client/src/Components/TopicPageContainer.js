@@ -15,7 +15,7 @@ const TopicPageContainer = (props) => {
   const { classes } = props;
 
   return (
-    <div>
+    <div style={{position:"fixed"}}>
       <Grid 
         container 
         spacing={16}
@@ -25,7 +25,7 @@ const TopicPageContainer = (props) => {
           <ActionsContainer />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <div style={{overflow:"scroll", height:"100vh"}}>
+          <div>
             <NewsFeedContainer currentTopic={props.currentTopic} />
           </div>
         </Grid>
