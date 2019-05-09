@@ -36,11 +36,11 @@ const TopicPageContainer = (props) => {
             <NewsFeedContainer currentTopic={props.currentTopic} />
           </div>
         </Grid>
-      </Grid>
       <Footer 
         toggleModal={props.toggleModal} 
         footerPageChange={props.footerPageChange}
       />
+      </Grid>
     </div>
   )
 }
