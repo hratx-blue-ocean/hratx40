@@ -1,25 +1,37 @@
 import React from 'react';
 import axios from 'axios';
 
-const loginReq = (event, toggleOpen, setLogin) => {
+const url = `http://localhost:8000`
+
+const loginReq = (event, toggleOpen, setLogin, allDBTopics) => {
   event.preventDefault();
-  axios.get('http://localhost:8000/api/logins', {params: {
+  axios.get(`${url}/api/logins`, {params: {
     password: document.getElementById('password').value,
     username: document.getElementById('username').value
   }})
     .then((response) => {
       document.getElementById('success').innerHTML = "Success!";
+      allDBTopics.sort((a, b) => {
+        const temp = response.data.favorites;
+        for (let i = 0; i < temp.length; i++) {
+          if (temp[i].topic_name === a.topic_name) return -1;
+        }
+        if (a.topic_name < b.topic_name) return -1;
+        else return 1;
+      });
       setLogin({
         isLoggedIn: true,
-        firstName: response.data[0].first_name,
-        username: response.data[0].username,
-        favorites: response.data[0].favorites
+        user_id: response.data.user_id,
+        firstName: response.data.first_name,
+        username: response.data.username,
+        favorites: response.data.favorites
       });
       setTimeout(() => {
         toggleOpen();
-      }, 3000);
+      }, 1000);
     })
     .catch((error) => {
+      console.log(error)
       document.getElementById('error').innerHTML = "Incorrect username/password :(";
     })
 }
@@ -35,7 +47,7 @@ const Login = (props) => {
       <input type="password" placeholder="password" id="password" style={{width: "200px"}}></input>
       <br />
       <br />
-      <button onClick={(event) => {loginReq(event, props.toggleOpen, props.setLogin)}}>Login</button>
+      <button onClick={(event) => {loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics)}}>Login</button>
       <br />
       <span id="success"></span>
       <span id="error" style={{color: "red"}}></span>
