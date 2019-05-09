@@ -26,6 +26,7 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    cursor: 'pointer',
   },
   search: {
     position: 'relative',
@@ -72,6 +73,12 @@ const styles = theme => ({
 
 function SearchAppBar(props) {
   const { classes } = props;
+
+  const goHome = (e) => {
+    e.target.name = 'home';
+    props.handlePageChange(e);
+  }
+
   return (
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
@@ -82,8 +89,8 @@ function SearchAppBar(props) {
             <img src="text_only_transparent.png" style={{height: "2vMax", paddingLeft: "8%", paddingBottom: "15%"}}/>
           </span> */}
           <div style={{display: "flex", flexDirection: "row", height: "50px", alignItems: "center"}}>
-            <img src="logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
-            <img src="text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
+            <img src="brand_assets/logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
+            <img src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
           {/* </Typography> */}
           </div>
           <div className={classes.grow} />

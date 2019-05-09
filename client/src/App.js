@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import fetch from "node-fetch";
-import SearchAppBar from "./Components/Header.js";
-import LandingPage from "./Components/LandingPage.js";
+import React, { Component } from 'react';
+import SearchAppBar from './Components/Header.js';
+import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from "./Components/Modal.js";
 import axios from "axios";
@@ -29,6 +28,7 @@ export default class App extends Component {
     this.geolocateSuccess = this.geolocateSuccess.bind(this);
     this.setLoginState = this.setLoginState.bind(this);
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
+    this.footerPageChange = this.footerPageChange.bind(this);
   }
   componentDidMount() {
     this.geolocate();
@@ -152,18 +152,31 @@ export default class App extends Component {
     });
   }
 
+  footerPageChange() {
+    if (this.state.page === 'home') {
+      this.setState({
+        page: 'action'
+      })
+    } else {
+      this.setState({
+        page: 'home'
+      })
+    }
+  }
+
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
     if (this.state.page === "home") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} />
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
           <LandingPage
             topics={[]}
             toggleModal={this.toggleModal}
             allTopics={this.state.allTopics}
             handleTopicTileClick={this.handleTopicTileClick}
             favorites={this.state.favorites}
+            footerPageChange={this.footerPageChange}
           />
           <Modal
             modalType={this.state.modalType}
@@ -180,16 +193,19 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
-          <TopicPageContainer currentTopic={this.state.currentTopic} />
+          <TopicPageContainer 
+            currentTopic={this.state.currentTopic}
+            footerPageChange={this.footerPageChange}
+          />
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}
             toggleOpen={this.toggleModal}
             setLogin={this.setLoginState}
+            location={this.state.location}
+            currentTopic={this.state.currentTopic}
           />
-          <button name="home" onClick={e => this.handlePageChange(e)}>
-            Go To Home Page
-          </button>
+          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       );
     }
