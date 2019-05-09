@@ -83,9 +83,10 @@ function SearchAppBar(props) {
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
         <Toolbar>
-          <Typography className={classes.title} variant="h3"  noWrap onClick={goHome}>
-            RIPL
-          </Typography>
+          <div style={{display: "flex", flexDirection: "row", height: "50px", alignItems: "center"}}>
+            <img src="brand_assets/logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
+            <img src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
+          </div>
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>

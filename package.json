@@ -6,7 +6,11 @@
   "scripts": {
     "setup": "npm install && cd ./client && npm install ; cd ../server && npm install",
     "test": "cd ./client && npm test && cd ../server && npm test",
+<<<<<<< HEAD
     "launch-app": "cd ./client && npm run build-public ; cd ../server/bin && PM2 www",
+=======
+    "laucnh-app": "cd ./client && npm run build-public ; cd ../server/bin && PM2 www",
+>>>>>>> 09bb682b0d86bce36e7f5bcd0ce2740ec2a8ee8d
     "launch-server": "cd ./server && node bin/www &",
     "launch-client": "cd ./client && npm run build && npm run server &",
     "lint:client": "cd ./client && ./node_modules/.bin/eslint \"src/**/*.{js,jsx}\" && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
