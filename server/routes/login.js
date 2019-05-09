@@ -8,20 +8,27 @@ router.get('/', (req, res) => {
   let login = req.query;
 
   getHashedPassword(login, (err, data) => {
-    if (err) {
-      res.end();
+    if (err || !data.rows[0]) {
+      res.status(401).end();
     }
     else {
-      let validated = passwordHash.verify(login.password, data.rows[0].hashedpw);
+      let userInfo = data.rows[0];
+      let validated = passwordHash.verify(login.password, userInfo.hashedpw);
+
       if (validated === true) {
         getFavoritedTopics(data.rows[0].user_id, (err, data) => {
           if (err) {
             res.status(401).end();
           }
           else {
-            res.status(200).send(data.rows);
+            userInfo.hashedpw = undefined;
+            userInfo.favorites = data.rows;
+            res.status(200).send(userInfo);
           }
         })
+      }
+      else {
+        res.status(401).end();
       }
     }
   });
