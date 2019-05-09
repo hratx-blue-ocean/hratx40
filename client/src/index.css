@@ -1,9 +1,15 @@
 body {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif; */
+=======
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif;
+>>>>>>> 34bfbedf9f9bf366d128a12ccfe1613079119ec8
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,7 +31,11 @@ code {
     monospace;
 }
 
+<<<<<<< HEAD
 /* .landingPage {
+=======
+.landingPage {
+>>>>>>> 34bfbedf9f9bf366d128a12ccfe1613079119ec8
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
@@ -55,4 +65,8 @@ code {
   text-align: center;
   color: #000000;
   font-size: 50px;
+<<<<<<< HEAD
 } */
+=======
+}
+>>>>>>> 34bfbedf9f9bf366d128a12ccfe1613079119ec8
