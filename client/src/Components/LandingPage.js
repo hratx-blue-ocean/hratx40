@@ -10,7 +10,7 @@ const LandingPage = props => {
     <Grid container>
       {/* <Header /> */}
       <Grid item sm={12}>
-        <HeroBanner name={"Octavius"} />
+        <HeroBanner name={props.name} />
       </Grid>
       <Grid style={{ paddingBottom: 5 }}>
         <TopicTiles
@@ -19,10 +19,7 @@ const LandingPage = props => {
           favorites={props.favorites}
         />
       </Grid>
-      <Footer 
-        toggleModal={props.toggleModal}
-        footerPageChange={props.footerPageChange}
-      />
+      <Footer toggleModal={props.toggleModal} footerPageChange={props.footerPageChange}/>
     </Grid>
   );
 };
