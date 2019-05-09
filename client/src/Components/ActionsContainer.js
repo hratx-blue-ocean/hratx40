@@ -30,8 +30,10 @@ const ActionsContainer = (props) => {
 
   return (
     <div>
+      <h2 style={{textAlign:"center", borderBottom:"solid", borderColor:"#C4ADAE"}}>{props.currentTopic}</h2>
+      <br/>
       <Grid container spacing={24}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
           <Card onClick={() => props.toggleModal(null, 'volunteer')}>
             <CardActionArea>
               <CardMedia
@@ -49,14 +51,9 @@ const ActionsContainer = (props) => {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </CardActions>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
           <Card className={classes.card} onClick={() => props.toggleModal(null, 'donate')}>
             <CardActionArea>
               <CardMedia
@@ -73,14 +70,9 @@ const ActionsContainer = (props) => {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </CardActions>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
@@ -97,35 +89,6 @@ const ActionsContainer = (props) => {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="https://photos.smugmug.com/photos/i-FSck9J2/0/75c871c2/L/i-FSck9J2-L.jpg"
-                title="Volunteer"
-              />
-              <CardContent>
-                <Typography className={classes.root} gutterBottom variant="h5" component="h2">
-                  Charities List
-                </Typography>
-                <Typography component="p">
-                  
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </CardActions>
           </Card>
         </Grid>
       </Grid>
