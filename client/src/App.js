@@ -170,7 +170,7 @@ export default class App extends Component {
     if (this.state.page === "home") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} />
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
           <LandingPage
             topics={[]}
             toggleModal={this.toggleModal}
