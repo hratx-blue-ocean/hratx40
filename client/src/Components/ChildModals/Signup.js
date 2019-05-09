@@ -15,7 +15,7 @@ const signupReq = (e, toggleOpen, serverUrl) => {
         document.getElementById(`success`).innerHTML = `Success!`;
         setTimeout(() => {
           toggleOpen();
-        }, 3000);
+        }, 1000);
       })
       .catch((err) => {
         document.getElementById(`error`).innerHTML = `Invalid signup credentials`;
