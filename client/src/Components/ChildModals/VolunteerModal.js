@@ -2,27 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { Typography } from '@material-ui/core';
 import VolunteerModalItem from './VolunteerModalItem'
-// const loginReq = (event, toggleOpen, setLogin) => {
-//   event.preventDefault();
-//   axios.get('http://localhost:8000/api/logins', {params: {
-//     password: document.getElementById('password').value,
-//     username: document.getElementById('username').value
-//   }})
-//     .then((response) => {
-//       document.getElementById('success').innerHTML = "Success!";
-//       setLogin({
-//         firstName: response.data[0].first_name,
-//         username: response.data[0].username,
-//         favorites: response.data[0].favorites
-//       });
-//       setTimeout(() => {
-//         toggleOpen();
-//       }, 3000);
-//     })
-//     .catch((error) => {
-//       document.getElementById('error').innerHTML = "Incorrect username/password :(";
-//     })
-// }
 
 class VolunteerModal extends React.Component {
   constructor(props) {
