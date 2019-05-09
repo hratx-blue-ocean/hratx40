@@ -72,10 +72,6 @@ const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, s
   }
 }
 
-// const handleClickAway = () => {
-//   toggleOpen();
-// }
-
 const ModalDiv = (props) => {
   return (
     <Modal open={props.isOpen}>

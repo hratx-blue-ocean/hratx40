@@ -16,7 +16,7 @@ export default class App extends Component {
       isOpen: false,
       modalType: "login",
       page: "home",
-      currentTopic: "homeless services",
+      currentTopic: "Homeless Services",
       location: "",
       isLoggedIn: false,
       firstName: "",
@@ -33,7 +33,9 @@ export default class App extends Component {
     this.setLoginState = this.setLoginState.bind(this);
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
     this.footerPageChange = this.footerPageChange.bind(this);
+    this.logout = this.logout.bind(this);
   }
+
   componentDidMount() {
     this.geolocate();
     axios
@@ -99,6 +101,17 @@ export default class App extends Component {
     }
   }
 
+  logout (e) {
+    e.preventDefault();
+    this.setState({
+      isLoggedIn: false,
+      user_id: 0,
+      firstName: "",
+      username: "",
+      favorites: []
+    });
+  }
+
   geolocate() {
     if (window.navigator && window.navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -157,15 +170,9 @@ export default class App extends Component {
   }
 
   footerPageChange() {
-    if (this.state.page === 'home') {
-      this.setState({
-        page: 'action'
-      })
-    } else {
-      this.setState({
-        page: 'home'
-      })
-    }
+    this.setState({
+      page: 'home'
+    })
   }
 
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
@@ -173,7 +180,7 @@ export default class App extends Component {
     if (this.state.page === "home") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} logout={this.logout}  isLogged={this.state.isLoggedIn}/>
           <LandingPage
             topics={[]}
             toggleModal={this.toggleModal}
@@ -181,6 +188,7 @@ export default class App extends Component {
             handleTopicTileClick={this.handleTopicTileClick}
             favorites={this.state.favorites}
             footerPageChange={this.footerPageChange}
+            name={this.state.firstName}
           />
           <Modal
             modalType={this.state.modalType}
@@ -190,15 +198,15 @@ export default class App extends Component {
             allDBTopics={this.state.allTopics}
             serverUrl={this.state.serverUrl}
           />
-          <button name="action" onClick={e => this.handlePageChange(e)}>
+          {/* <button name="action" onClick={e => this.handlePageChange(e)}>
             Go To Action Page
-          </button>
+          </button> */}
         </>
       );
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} logout={this.logout} isLogged={this.state.isLoggedIn}/>
           <TopicPageContainer 
             currentTopic={this.state.currentTopic}
             footerPageChange={this.footerPageChange}
@@ -214,7 +222,7 @@ export default class App extends Component {
             allDBTopics={this.state.allTopics}
             serverUrl={this.state.serverUrl}
           />
-          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
+          {/* <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button> */}
         </>
       );
     }

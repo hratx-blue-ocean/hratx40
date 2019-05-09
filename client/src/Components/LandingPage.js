@@ -10,7 +10,7 @@ const LandingPage = props => {
     <Grid container>
       {/* <Header /> */}
       <Grid item sm={12}>
-        <HeroBanner name={"Octavius"} />
+        <HeroBanner name={props.name} />
       </Grid>
       <Grid style={{ paddingBottom: 5 }}>
         <TopicTiles
