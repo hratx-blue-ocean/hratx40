@@ -6,7 +6,6 @@ import LandingPage from "./Components/LandingPage.js";
 import Modal from "./Components/Modal.js";
 import axios from "axios";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
-import TopicTiles from "./topicTiles";
 
 export default class App extends Component {
   constructor(props) {
@@ -21,7 +20,8 @@ export default class App extends Component {
       isLoggedIn: false,
       firstName: "",
       favorites: [],
-      username: ""
+      username: "",
+      topicTileTimeout: false
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -51,42 +51,50 @@ export default class App extends Component {
   }
 
   handleTopicTileClick(e, target, topic_id, target_name) {
-    if (target === "fav") {
-      let foundFavorite = false;
-      this.state.favorites.forEach(topic => {
-        if (topic.topic_name === target_name) {
-          foundFavorite = true;
+    if (!this.state.topicTileTimeout) {
+      if (target === "fav") {
+        let foundFavorite = false;
+        this.state.favorites.forEach(topic => {
+          if (topic.topic_name === target_name) {
+            foundFavorite = true;
+            axios
+              .post("http://localhost:8000/api/deleteFavorites", {
+                topic_id: topic_id,
+                //user_id is hardcoded, change when login is implemented
+                user_id: 1
+              })
+              .then(results => {
+                const allFavorites = results.data;
+                this.setState({
+                  favorites: allFavorites,
+                  topicTileTimeout: true
+                });
+              })
+              .catch();
+          }
+        });
+        if (foundFavorite === false) {
           axios
-            .post("http://localhost:8000/api/deleteFavorites", {
+            .post("http://localhost:8000/api/addFavorites", {
               topic_id: topic_id,
               //user_id is hardcoded, change when login is implemented
               user_id: 1
             })
             .then(results => {
               const allFavorites = results.data;
-              this.setState({ favorites: allFavorites });
+              this.setState({
+                favorites: allFavorites,
+                topicTileTimeout: true
+              });
             })
             .catch();
         }
-      });
-      if (foundFavorite === false) {
-        axios
-          .post("http://localhost:8000/api/addFavorites", {
-            topic_id: topic_id,
-            //user_id is hardcoded, change when login is implemented
-            user_id: 1
-          })
-          .then(results => {
-            const allFavorites = results.data;
-            this.setState({ favorites: allFavorites });
-          })
-          .catch();
+      } else if (target === "topicTile") {
+        this.setState({
+          page: "action",
+          currentTopic: target_name
+        });
       }
-    } else if (target === "topicTile") {
-      this.setState({
-        page: "action",
-        currentTopic: target_name
-      });
     }
   }
 
@@ -153,7 +161,13 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
-          <LandingPage topics={[]} toggleModal={this.toggleModal} />
+          <LandingPage
+            topics={[]}
+            toggleModal={this.toggleModal}
+            allTopics={this.state.allTopics}
+            handleTopicTileClick={this.handleTopicTileClick}
+            favorites={this.state.favorites}
+          />
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}

@@ -65,14 +65,6 @@ const TopicTile = props => {
       <GridListTile
         key={props.topic["topic_imageurl"]}
         value={props.topic["topic_name"]}
-        onClick={e =>
-          props.handleTopicTileClick(
-            e,
-            "topicTile",
-            props.topic.topic_id,
-            props.topic.topic_name
-          )
-        }
         style={{ cursor: faHandPointer }}
       >
         <div
@@ -92,7 +84,19 @@ const TopicTile = props => {
           topic_id={props.topic["topic_id"]}
         >
           <div style={{ paddingTop: 5, color: "white" }}>{favIcon}</div>
-          <div style={{ textAlign: "center" }}>{props.topic["topic_name"]}</div>
+          <div
+            onClick={e =>
+              props.handleTopicTileClick(
+                e,
+                "topicTile",
+                props.topic.topic_id,
+                props.topic.topic_name
+              )
+            }
+            style={{ textAlign: "center" }}
+          >
+            {props.topic["topic_name"]}
+          </div>
         </div>
       </GridListTile>
     </Grid>

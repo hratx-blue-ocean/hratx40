@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Footer from "./Footer.js";
 import HeroBanner from "./HeroBanner.js";
 import Grid from "@material-ui/core/Grid";
-import TopicTiles from "../topicTiles";
+import TopicTiles from "./TopicTiles";
 
 const LandingPage = props => {
   return (
