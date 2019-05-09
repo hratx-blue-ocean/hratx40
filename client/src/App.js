@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 import SearchAppBar from './Components/Header.js';
-import LandingPage from './Components/LandingPage.js'
+import LandingPage from './Components/LandingPage.js';
 // import './App.css';
 import Modal from './Components/Modal.js';
 import TopicPageContainer from './Components/TopicPageContainer.js';
+import Axios from 'axios';
 
 
 export default class App extends Component {
@@ -14,7 +15,8 @@ export default class App extends Component {
       seaCreatures: [],
       isOpen: false,
       modalType: "login",
-      page: 'home'
+      page: 'home',
+      allTopics: []
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -25,6 +27,15 @@ export default class App extends Component {
     //   .then(seaCreatures => {
     //     this.setState({ seaCreatures: seaCreatures.data });
     //   });
+    Axios.get("http://localhost:8000/api/getAllTopics")
+      .then(results => {
+        const allDBTopics = results.data;
+        // console.log("AT :");
+        this.setState({ allTopics: allDBTopics });
+      })
+      .catch(error => {
+        // console.log(error);
+      });
   }
 
   // Toggles if the Modal is open or closed
@@ -71,7 +82,7 @@ export default class App extends Component {
     if (this.state.page === 'home') {
       return (
         <>
-          <SearchAppBar />
+          <SearchAppBar topics={this.state.allTopics}/>
           <LandingPage topics={[]}/>
           <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>

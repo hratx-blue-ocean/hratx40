@@ -8,6 +8,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 // import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
+import IntegrationAutoSuggest from '../Components/Search.js'
 
 const styles = theme => ({
   root: {
@@ -84,13 +85,7 @@ function SearchAppBar(props) {
             <div className={classes.searchIcon}>
               {/* <SearchIcon /> */}
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
+            <IntegrationAutoSuggest topics={props.topics}/>
           </div>
           <Button href="#text-buttons" className={classes.button}>
             Login
