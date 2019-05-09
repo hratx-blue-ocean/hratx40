@@ -87,10 +87,10 @@ function SearchAppBar(props) {
             </div>
             <IntegrationAutoSuggest topics={props.topics}/>
           </div>
-          <Button href="#text-buttons" className={classes.button}>
+          <Button onClick={(event) => {props.toggleModal(event,"login")}} className={classes.button}>
             Login
           </Button>
-          <Button href="#text-buttons" className={classes.button}>
+          <Button onClick={(event) => {props.toggleModal(event,"signup")}} className={classes.button}>
             Signup
           </Button>
         </Toolbar>
