@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-const signupReq = (e, toggleOpen) => {
+const signupReq = (e, toggleOpen, serverUrl) => {
   e.preventDefault();
   if (document.getElementById('password').value === document.getElementById('password-check').value) {
-    axios.post(`http://localhost:8000/api/signups`, {
+    axios.post(`${serverUrl}/api/signups`, {
       first_name: document.getElementById(`first-name`).value,
       last_name: document.getElementById(`last-name`).value,
       email: document.getElementById(`email`).value,
@@ -42,7 +42,7 @@ const Signup = (props) => {
       <br />
       <input id='password-check' type='password' placeholder='Enter password again' style={{ width: "200px" }}></input>
       <br />
-      <button onClick={(e) => { signupReq(e, props.toggleOpen) }}>Signup!</button>
+      <button onClick={(e) => { signupReq(e, props.toggleOpen, props.serverUrl) }}>Signup!</button>
       <span id='success'></span>
       <span id='error' style={{ color: 'red' }}></span>
     </div>

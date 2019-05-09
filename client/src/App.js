@@ -22,7 +22,8 @@ export default class App extends Component {
       firstName: "",
       user_id: 0,
       favorites: [],
-      username: ""
+      username: "",
+      serverUrl: "http://localhost:8000"
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -32,11 +33,13 @@ export default class App extends Component {
     this.setLoginState = this.setLoginState.bind(this);
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
     this.footerPageChange = this.footerPageChange.bind(this);
+    this.logout = this.logout.bind(this);
   }
+
   componentDidMount() {
     this.geolocate();
     axios
-      .get(`${url}/api/getAllTopics`)
+      .get(`${this.state.serverUrl}/api/getAllTopics`)
       .then(results => {
         let allDBTopics = results.data;
         allDBTopics.sort((a, b) => {
@@ -96,6 +99,17 @@ export default class App extends Component {
         currentTopic: target_name
       });
     }
+  }
+
+  logout (e) {
+    e.preventDefault();
+    this.setState({
+      isLoggedIn: false,
+      user_id: 0,
+      firstName: "",
+      username: "",
+      favorites: []
+    });
   }
 
   geolocate() {
@@ -166,7 +180,7 @@ export default class App extends Component {
     if (this.state.page === "home") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} logout={this.logout}  isLogged={this.state.isLoggedIn}/>
           <LandingPage
             topics={[]}
             toggleModal={this.toggleModal}
@@ -174,6 +188,7 @@ export default class App extends Component {
             handleTopicTileClick={this.handleTopicTileClick}
             favorites={this.state.favorites}
             footerPageChange={this.footerPageChange}
+            name={this.state.firstName}
           />
           <Modal
             modalType={this.state.modalType}
@@ -181,6 +196,7 @@ export default class App extends Component {
             toggleOpen={this.toggleModal}
             setLogin={this.setLoginState}
             allDBTopics={this.state.allTopics}
+            serverUrl={this.state.serverUrl}
           />
           <button name="action" onClick={e => this.handlePageChange(e)}>
             Go To Action Page
@@ -190,10 +206,11 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} logout={this.logout} isLogged={this.state.isLoggedIn}/>
           <TopicPageContainer 
             currentTopic={this.state.currentTopic}
             footerPageChange={this.footerPageChange}
+            toggleModal={this.toggleModal}
           />
           <Modal
             modalType={this.state.modalType}
@@ -203,6 +220,7 @@ export default class App extends Component {
             location={this.state.location}
             currentTopic={this.state.currentTopic}
             allDBTopics={this.state.allTopics}
+            serverUrl={this.state.serverUrl}
           />
           <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
