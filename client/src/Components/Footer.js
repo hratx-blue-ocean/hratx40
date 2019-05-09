@@ -78,7 +78,7 @@ class Footer extends React.Component {
           <div>
             <br />
             <h2 style={paperStyle}>Contact</h2>
-            <h4 style={paperStyle}>makeaaripl@gmail.com</h4>
+            <h4 style={paperStyle}>makearipl@gmail.com</h4>
             <br />
           </div>
         </Paper>
