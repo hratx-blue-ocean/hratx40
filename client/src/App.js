@@ -29,6 +29,7 @@ export default class App extends Component {
     this.geolocateSuccess = this.geolocateSuccess.bind(this);
     this.setLoginState = this.setLoginState.bind(this);
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
+    this.footerPageChange = this.footerPageChange.bind(this);
   }
   componentDidMount() {
     this.geolocate();
@@ -152,6 +153,18 @@ export default class App extends Component {
     });
   }
 
+  footerPageChange() {
+    if (this.state.page === 'home') {
+      this.setState({
+        page: 'action'
+      })
+    } else {
+      this.setState({
+        page: 'home'
+      })
+    }
+  }
+
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
     if (this.state.page === "home") {
@@ -164,6 +177,7 @@ export default class App extends Component {
             allTopics={this.state.allTopics}
             handleTopicTileClick={this.handleTopicTileClick}
             favorites={this.state.favorites}
+            footerPageChange={this.footerPageChange}
           />
           <Modal
             modalType={this.state.modalType}
@@ -179,8 +193,11 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
-          <TopicPageContainer currentTopic={this.state.currentTopic} />
+          <SearchAppBar toggleModal={this.toggleModal} />
+          <TopicPageContainer 
+            currentTopic={this.state.currentTopic}
+            footerPageChange={this.footerPageChange}
+          />
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}
