@@ -14,8 +14,8 @@ const divStyle = {
   alignItems: 'center',
   justifyContent: 'space-around',
   listStyle: 'none',
-  padding: '20px 0',
-  backgroundColor: '#D8DBD0',
+  height: '64px',
+  backgroundColor: '#C4ADAE',
   opacity: '.90'
 }
 

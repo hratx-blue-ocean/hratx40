@@ -156,15 +156,9 @@ export default class App extends Component {
   }
 
   footerPageChange() {
-    if (this.state.page === 'home') {
-      this.setState({
-        page: 'action'
-      })
-    } else {
-      this.setState({
-        page: 'home'
-      })
-    }
+    this.setState({
+      page: 'home'
+    })
   }
 
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
