@@ -18,7 +18,6 @@ const LandingPage = props => {
           handleTopicTileClick={props.handleTopicTileClick}
           favorites={props.favorites}
         />
-        <HeroBanner name={"Octavius"} />
       </Grid>
       <Footer toggleModal={props.toggleModal} />
     </Grid>
