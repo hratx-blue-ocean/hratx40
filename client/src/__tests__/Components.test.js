@@ -8,7 +8,7 @@ import App from '../App';
 afterEach(cleanup);
 
 it('Should load the hero banner text', async () => {
-  const { getByText } = render(<App />,);
+  const { getByText } = render(<App />);
   const hero = await waitForElement(() => getByText(/throw your pebble/i))
   expect(hero).toBeTruthy();
 });

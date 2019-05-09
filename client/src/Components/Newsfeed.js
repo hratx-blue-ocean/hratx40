@@ -271,7 +271,7 @@ class Newsfeed extends React.Component {
       ]
     }
   }
-
+  // Uncomment the code below to use NEWS API
   // componentDidMount() {
   //   axios.get(`http://localhost:8000/api/news?topic=${this.props.currentTopic}`)
   //     .then((res) => {
