@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 const Pool = require("pg").Pool;
 require("dotenv").config({ path: "../.env" });
-=======
-const Pool = require('pg').Pool;
-require('dotenv').config({ path: '../.env' });
->>>>>>> e4295b61458106a54a3001f3814b218b1faeadbe
 
 //.env file must be inside the server folder
 const pool = new Pool({
@@ -26,7 +21,6 @@ const getAll = cb => {
 };
 
 const getHashedPassword = (login, cb) => {
-<<<<<<< HEAD
   pool.query(
     `select * from users where username = '${login.username}'`,
     (err, data) => {
@@ -37,21 +31,9 @@ const getHashedPassword = (login, cb) => {
       }
     }
   );
-=======
-
-    pool.query(`select * from users where username = '${login.username}'`, (err, data) => {
-        if (err) {
-            cb(err);
-        }
-        else {
-            cb(null, data)
-        }
-    })
->>>>>>> e4295b61458106a54a3001f3814b218b1faeadbe
 };
 
 const insertTopic = (causeObj, cb) => {
-<<<<<<< HEAD
   pool.query(
     `insert into topics(topic_name,topic_imageUrl,website_url) values 
     ('${causeObj.causeName}','${causeObj.image}','${
@@ -84,7 +66,6 @@ const getTopic = (topicName, cb) => {
 const getAllTopics = cb => {
   pool.query(`select * from topics;`, (err, data) => {
     if (err) {
-      console.log("Error db :", err);
       cb(err);
     } else {
       cb(null, data);
@@ -117,58 +98,6 @@ const deleteFavorite = (topicId, userId, cb) => {
     }
   );
 };
-=======
-    pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
-    ('${causeObj.causeName}','${causeObj.image}','${causeObj.charityNavigatorURL}')`, (err, data) => {
-            if (err) {
-                cb(err)
-            } else {
-                cb(null, data)
-            }
-        });
-};
-
-const getTopic = (topicName, cb) => {
-    topicName = topicName.replace(`'`, `''`)
-    pool.query(`select * from topics where lower(topic_name) like lower('%${topicName}%');`, (err, data) => {
-        if (err) {
-            cb(err);
-        } else {
-            cb(null, data);
-        }
-    });
-};
-
-const getAllTopics = (cb) => {
-    pool.query(`select * from topics;`, (err, data) => {
-        if (err) {
-            cb(err);
-        } else {
-            cb(null, data);
-        }
-    });
-};
-
-const addFavorite = (topicId, userId, cb) => {
-    pool.query(`insert into users_topics(user_id, topic_id) values (${userId}, ${topicId});`, (err, data) => {
-        if (err) {
-            cb(err);
-        } else {
-            cb(null, data);
-        }
-    })
-}
-
-const deleteFavorite = (topicId, userId, cb) => {
-    pool.query(`delete from users_topics where user_id = ${userId} and topic_id = ${topicId};`, (err, data) => {
-        if (err) {
-            cb(err);
-        } else {
-            cb(null, data);
-        }
-    })
-}
->>>>>>> e4295b61458106a54a3001f3814b218b1faeadbe
 
 const getFavoritedTopics = (userId, cb) => {
   pool.query(
@@ -184,7 +113,6 @@ const getFavoritedTopics = (userId, cb) => {
 };
 //  where not exists (select * from users where username = '${userInfo.username}');
 const handleSignup = (userInfo, cb) => {
-<<<<<<< HEAD
   console.log(">>>>userInfo", userInfo);
   pool.query(
     `insert into users (first_name, last_name, username, email, hashedpw) values ('${
@@ -202,20 +130,6 @@ const handleSignup = (userInfo, cb) => {
     }
   );
 };
-=======
-    console.log('>>>>userInfo', userInfo)
-    pool.query(`insert into users (first_name, last_name, username, email, hashedpw) values ('${userInfo.first_name}', '${userInfo.last_name}', '${userInfo.username}', '${userInfo.email}', '${userInfo.password}');`, (err, data) => {
-        if (err) {
-            console.log('IT FAILED!', err)
-            cb(err)
-        }
-        else {
-            cb(null, data)
-        }
-    })
-}
-
->>>>>>> e4295b61458106a54a3001f3814b218b1faeadbe
 
 module.exports = {
   getAll,
