@@ -3,24 +3,26 @@ import axios from 'axios';
 
 const signupReq = (e, toggleOpen) => {
   e.preventDefault();
-  axios.post(`http://localhost:8000/api/signups`, {
-    first_name: document.getElementById(`first-name`).value,
-    last_name: document.getElementById(`last-name`).value,
-    email: document.getElementById(`email`).value,
-    username: document.getElementById(`username`).value,
-    password: document.getElementById(`password`).value,
-  })
-    .then((res) => {
-      document.getElementById(`success`).innerHTML = `Success!`;
-      setTimeout(() => {
-        toggleOpen();
-      }, 3000);
+  if (document.getElementById('password').value === document.getElementById('password-check').value) {
+    axios.post(`http://localhost:8000/api/signups`, {
+      first_name: document.getElementById(`first-name`).value,
+      last_name: document.getElementById(`last-name`).value,
+      email: document.getElementById(`email`).value,
+      username: document.getElementById(`username`).value,
+      password: document.getElementById(`password`).value,
     })
-    .catch((err) => {
-      document.getElementById(`error`).innerHTML = `Invalid signup credentials`;
-    })
+      .then((res) => {
+        document.getElementById(`success`).innerHTML = `Success!`;
+        setTimeout(() => {
+          toggleOpen();
+        }, 3000);
+      })
+      .catch((err) => {
+        document.getElementById(`error`).innerHTML = `Invalid signup credentials`;
+      })
+  }
+  console.log(document.getElementById(`error`).innerHTML = `Passwords don't match`);
 }
-
 const Signup = (props) => {
   return (
     <div id='child-modal' style={{ justify: 'center', marginLeft: '15vw' }}>
@@ -37,6 +39,7 @@ const Signup = (props) => {
       <br />
       <input id='password' type='password' placeholder='Enter password' style={{ width: "200px" }}></input>
       <br />
+      <input id='password-check' type='password' placeholder='Enter password again' style={{ width: "200px" }}></input>
       <br />
       <button onClick={(e) => { signupReq(e, props.toggleOpen) }}>Signup!</button>
       <span id='success'></span>
