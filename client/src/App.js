@@ -16,7 +16,7 @@ export default class App extends Component {
       isOpen: false,
       modalType: "login",
       page: "home",
-      currentTopic: "homeless services",
+      currentTopic: "Homeless Services",
       location: "",
       isLoggedIn: false,
       firstName: "",
@@ -198,9 +198,9 @@ export default class App extends Component {
             allDBTopics={this.state.allTopics}
             serverUrl={this.state.serverUrl}
           />
-          <button name="action" onClick={e => this.handlePageChange(e)}>
+          {/* <button name="action" onClick={e => this.handlePageChange(e)}>
             Go To Action Page
-          </button>
+          </button> */}
         </>
       );
     } else if (this.state.page === "action") {
@@ -222,7 +222,7 @@ export default class App extends Component {
             allDBTopics={this.state.allTopics}
             serverUrl={this.state.serverUrl}
           />
-          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
+          {/* <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button> */}
         </>
       );
     }
