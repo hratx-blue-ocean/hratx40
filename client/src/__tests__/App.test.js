@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import {
   render,
@@ -5,6 +6,10 @@ import {
   cleanup,
   waitForElement
 } from "react-testing-library";
+=======
+import React from 'react'
+import { render, fireEvent, cleanup, waitForElement } from 'react-testing-library'
+>>>>>>> e4295b61458106a54a3001f3814b218b1faeadbe
 
 // this adds custom jest matchers from jest-dom
 import "jest-dom/extend-expect";
@@ -23,6 +28,11 @@ afterEach(cleanup);
 //     expect(dolphin).toBeTruthy();
 // });
 
+<<<<<<< HEAD
 xit("Is a dummy test", async () => {
   expect(true).toBe(true);
+=======
+xit('Is a dummy test', async () => {
+    expect(true).toBe(true);
+>>>>>>> e4295b61458106a54a3001f3814b218b1faeadbe
 });

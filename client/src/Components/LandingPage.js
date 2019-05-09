@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import TopicTiles from "../topicTiles";
 
 const LandingPage = props => {
-  console.log(props);
   return (
     <Grid container>
       {/* <Header /> */}
@@ -19,6 +18,7 @@ const LandingPage = props => {
           handleTopicTileClick={props.handleTopicTileClick}
           favorites={props.favorites}
         />
+        <HeroBanner name={"Octavius"} />
       </Grid>
       <Footer toggleModal={props.toggleModal} />
     </Grid>
