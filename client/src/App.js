@@ -6,7 +6,6 @@ import LandingPage from "./Components/LandingPage.js";
 import Modal from "./Components/Modal.js";
 import axios from "axios";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
-import TopicTiles from "./topicTiles";
 
 export default class App extends Component {
   constructor(props) {
@@ -64,7 +63,10 @@ export default class App extends Component {
             })
             .then(results => {
               const allFavorites = results.data;
-              this.setState({ favorites: allFavorites });
+              this.setState({
+                favorites: allFavorites,
+                topicTileTimeout: true
+              });
             })
             .catch();
         }
@@ -78,7 +80,10 @@ export default class App extends Component {
           })
           .then(results => {
             const allFavorites = results.data;
-            this.setState({ favorites: allFavorites });
+            this.setState({
+              favorites: allFavorites,
+              topicTileTimeout: true
+            });
           })
           .catch();
       }
@@ -153,7 +158,13 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
-          <LandingPage topics={[]} toggleModal={this.toggleModal} />
+          <LandingPage
+            topics={[]}
+            toggleModal={this.toggleModal}
+            allTopics={this.state.allTopics}
+            handleTopicTileClick={this.handleTopicTileClick}
+            favorites={this.state.favorites}
+          />
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}
