@@ -25,14 +25,23 @@ import axios from 'axios';
 
 const VolunteerModal = (props) => {
   console.log('Props:', props);
-  // const getData = function() {
-  //   axios.get('http://localhost:8000/api/volunteers?', {params: {
-  //     location
-  //   }})
-  // }
+  const getData = function() {
+    axios.get('http://localhost:8000/api/volunteers', {params: {
+      location: props.location,
+      topic_name: props.topic
+    }})
+      .then((response) => {
+        console.log('Response: ', response);
+        return <div>Got it!</div>
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  }
   return (
     <div id="child-modal" style={{justify: "center", marginLeft:"15vw"}}>
       <h3>Howdy howdy howdy!</h3>
+      {getData()}
     </div>
   )
 }
