@@ -88,7 +88,7 @@ export default class App extends Component {
           <LandingPage topics={[]} footerPageChange={this.footerPageChange}/>
           <button name="volunteer" onClick={(event) => this.toggleModal(event, "login")}>Press Me!</button>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
-          <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
+          {/* <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button> */}
         </>
       );
     } else if (this.state.page === 'action') {
@@ -96,7 +96,7 @@ export default class App extends Component {
         <>
           <TopicPageContainer footerPageChange={this.footerPageChange}/>
           <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
-          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
+          {/* <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button> */}
         </>
       )
     }
