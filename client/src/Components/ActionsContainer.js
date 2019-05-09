@@ -32,7 +32,7 @@ const ActionsContainer = (props) => {
     <div>
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
-          <Card>
+          <Card onClick={() => props.toggleModal(null, 'volunteer')}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
@@ -57,7 +57,7 @@ const ActionsContainer = (props) => {
           </Card>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Card className={classes.card}>
+          <Card className={classes.card} onClick={() => props.toggleModal(null, 'donate')}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
