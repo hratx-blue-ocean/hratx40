@@ -179,7 +179,7 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
-          <TopicPageContainer currentTopic={this.state.currentTopic} />
+          <TopicPageContainer currentTopic={this.state.currentTopic} toggleModal = {this.toggleModal} />
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}
