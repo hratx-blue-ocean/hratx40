@@ -85,7 +85,7 @@ const TopicTile = props => {
         >
           <div style={{ paddingTop: 5, color: "white" }}>{favIcon}</div>
           <a
-            href="_"
+            href="#"
             onClick={e =>
               props.handleTopicTileClick(
                 e,
