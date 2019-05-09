@@ -25,7 +25,7 @@ const TopicTiles = props => {
             <TopicTile
               topic={topic}
               handleTopicTileClick={props.handleTopicTileClick}
-              favoritedTopics={props.favoritedTopics}
+              favorites={props.favorites}
             />
           ))}
         </GridList>

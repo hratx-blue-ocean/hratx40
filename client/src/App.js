@@ -51,12 +51,7 @@ export default class App extends Component {
   }
 
   handleTopicTileClick(e, target, topic_id, target_name) {
-    if (target === "topicTile") {
-      this.setState({
-        page: "action",
-        currentTopic: target_name
-      });
-    } else if (target === "fav") {
+    if (target === "fav") {
       let foundFavorite = false;
       this.state.favorites.forEach(topic => {
         if (topic.topic_name === target_name) {
@@ -87,6 +82,11 @@ export default class App extends Component {
           })
           .catch();
       }
+    } else if (target === "topicTile") {
+      this.setState({
+        page: "action",
+        currentTopic: target_name
+      });
     }
   }
 
@@ -158,7 +158,7 @@ export default class App extends Component {
             toggleModal={this.toggleModal}
             allTopics={this.state.allTopics}
             handleTopicTileClick={this.handleTopicTileClick}
-            favoritedTopics={this.state.favorites}
+            favorites={this.state.favorites}
           />
           <Modal
             modalType={this.state.modalType}
