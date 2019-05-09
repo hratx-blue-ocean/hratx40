@@ -32,7 +32,9 @@ export default class App extends Component {
     this.setLoginState = this.setLoginState.bind(this);
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
     this.footerPageChange = this.footerPageChange.bind(this);
+    this.logout = this.logout.bind(this);
   }
+
   componentDidMount() {
     this.geolocate();
     axios
@@ -96,6 +98,17 @@ export default class App extends Component {
         currentTopic: target_name
       });
     }
+  }
+
+  logout (e) {
+    e.preventDefault();
+    this.setState({
+      isLoggedIn: false,
+      user_id: 0,
+      firstName: "",
+      username: "",
+      favorites: []
+    });
   }
 
   geolocate() {
@@ -172,7 +185,7 @@ export default class App extends Component {
     if (this.state.page === "home") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} logout={this.logout}  isLogged={this.state.isLoggedIn}/>
           <LandingPage
             topics={[]}
             toggleModal={this.toggleModal}
@@ -197,7 +210,7 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
+          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} logout={this.logout} isLogged={this.state.isLoggedIn}/>
           <TopicPageContainer 
             currentTopic={this.state.currentTopic}
             footerPageChange={this.footerPageChange}
