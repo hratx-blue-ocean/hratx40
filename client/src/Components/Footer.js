@@ -18,6 +18,10 @@ const divStyle = {
   opacity: '.90'
 }
 
+const paperStyle = {
+  textAlign: 'center'
+}
+
 class Footer extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +44,7 @@ class Footer extends React.Component {
         <Paper>
           <div>
             <br />
-            <h2>HRATX40</h2>
+            <h2 style={paperStyle}>HRATX40</h2>
             <ul>
               <li>Austin Anderson</li>
               <li>David Castillo</li>
@@ -67,7 +71,7 @@ class Footer extends React.Component {
       return (
         <Paper>
           <div>
-            <h2>Contact</h2>
+            <h2 style={paperStyle}>Contact</h2>
 
           </div>
         </Paper>
@@ -80,8 +84,8 @@ class Footer extends React.Component {
       return (
         <Paper>
           <div>
-            <h2>Location</h2>
-            <h4>Autstin, TX</h4>
+            <h2 style={paperStyle}>Location</h2>
+            <h4 style={paperStyle}>Autstin, TX</h4>
           </div>
         </Paper>
       )
