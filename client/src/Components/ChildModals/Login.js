@@ -10,6 +10,7 @@ const loginReq = (event, toggleOpen, setLogin) => {
     .then((response) => {
       document.getElementById('success').innerHTML = "Success!";
       setLogin({
+        isLoggedIn: true,
         firstName: response.data[0].first_name,
         username: response.data[0].username,
         favorites: response.data[0].favorites
