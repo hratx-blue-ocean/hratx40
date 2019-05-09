@@ -26,6 +26,7 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    cursor: 'pointer',
   },
   search: {
     position: 'relative',
@@ -72,11 +73,17 @@ const styles = theme => ({
 
 function SearchAppBar(props) {
   const { classes } = props;
+
+  const goHome = (e) => {
+    e.target.name = 'home';
+    props.handlePageChange(e);
+  }
+
   return (
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
         <Toolbar>
-          <Typography className={classes.title} variant="h3" color="black" noWrap>
+          <Typography className={classes.title} variant="h3"  noWrap onClick={goHome}>
             RIPL
           </Typography>
           <div className={classes.grow} />
