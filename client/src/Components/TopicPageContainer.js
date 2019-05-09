@@ -11,7 +11,8 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    marginTop: 50
+    marginTop: 50,
+    justifyContent: "space-around"
   },
   container: {
     backgroundColor: '#fff'
@@ -28,10 +29,10 @@ const TopicPageContainer = (props) => {
         spacing={16}
         className={classes.root}  
       >
-        <Grid item xs={12} sm={5} className={classes.container}>
+        <Grid item xs={12} sm={4} className={classes.container}>
           <ActionsContainer toggleModal={props.toggleModal} currentTopic={props.currentTopic} />
         </Grid>
-        <Grid item xs={12} sm={7}>
+        <Grid item xs={12} sm={6}>
           <div>
             <NewsFeedContainer currentTopic={props.currentTopic} />
           </div>
