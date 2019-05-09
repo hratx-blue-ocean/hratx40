@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
-import SearchAppBar from './Components/Header.js';
-import LandingPage from './Components/LandingPage.js'
+import React, { Component } from "react";
+import SearchAppBar from "./Components/Header.js";
+import LandingPage from "./Components/LandingPage.js";
 // import './App.css';
 import Modal from "./Components/Modal.js";
 import axios from "axios";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
 
-const url = `http://localhost:8000`
+const url = `http://localhost:8000`;
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      displayTopics: [],
       allTopics: [],
       isOpen: false,
       modalType: "login",
@@ -23,7 +24,7 @@ export default class App extends Component {
       user_id: 0,
       favorites: [],
       username: "",
-      serverUrl: "http://localhost:8000"
+      serverUrl: "http://18.191.186.111"
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -50,7 +51,7 @@ export default class App extends Component {
           if (a.topic_name < b.topic_name) return -1;
           else return 1;
         });
-        this.setState({ allTopics: allDBTopics });
+        this.setState({ allTopics: allDBTopics, displayTopics: allDBTopics });
       })
       .catch();
   }
@@ -101,7 +102,7 @@ export default class App extends Component {
     }
   }
 
-  logout (e) {
+  logout(e) {
     e.preventDefault();
     this.setState({
       isLoggedIn: false,
@@ -171,8 +172,8 @@ export default class App extends Component {
 
   footerPageChange() {
     this.setState({
-      page: 'home'
-    })
+      page: "home"
+    });
   }
 
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
@@ -180,11 +181,16 @@ export default class App extends Component {
     if (this.state.page === "home") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} logout={this.logout}  isLogged={this.state.isLoggedIn}/>
+          <SearchAppBar
+            toggleModal={this.toggleModal}
+            handlePageChange={this.handlePageChange.bind(this)}
+            logout={this.logout}
+            isLogged={this.state.isLoggedIn}
+          />
           <LandingPage
             topics={[]}
             toggleModal={this.toggleModal}
-            allTopics={this.state.allTopics}
+            displayTopics={this.state.displayTopics}
             handleTopicTileClick={this.handleTopicTileClick}
             favorites={this.state.favorites}
             footerPageChange={this.footerPageChange}
@@ -206,8 +212,13 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)} logout={this.logout} isLogged={this.state.isLoggedIn}/>
-          <TopicPageContainer 
+          <SearchAppBar
+            toggleModal={this.toggleModal}
+            handlePageChange={this.handlePageChange.bind(this)}
+            logout={this.logout}
+            isLogged={this.state.isLoggedIn}
+          />
+          <TopicPageContainer
             currentTopic={this.state.currentTopic}
             footerPageChange={this.footerPageChange}
             toggleModal={this.toggleModal}
