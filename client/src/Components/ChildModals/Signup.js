@@ -1,19 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import PasswordMask from 'react-password-mask';
 
 const signupReq = (e, toggleOpen) => {
   e.preventDefault();
-  axios.get(`http://localhost:8000/api/signups`, {
-    params: {
-      firstName: document.getElementById(`first-name`).value,
-      lastName: document.getElementById(`last-name`).value,
-      email: document.getElementById(`email`).value,
-      username: document.getElementById(`username`).value,
-      password: document.getElementById(`password`).value,
-    }
+  axios.post(`http://localhost:8000/api/signups`, {
+    first_name: document.getElementById(`first-name`).value,
+    last_name: document.getElementById(`last-name`).value,
+    email: document.getElementById(`email`).value,
+    username: document.getElementById(`username`).value,
+    password: document.getElementById(`password`).value,
   })
-    .then((results) => {
+    .then((res) => {
       document.getElementById(`success`).innerHTML = `Success!`;
       setTimeout(() => {
         toggleOpen();
@@ -38,7 +35,8 @@ const Signup = (props) => {
       <br />
       <input id='username' placeholder='Enter a username' style={{ width: "200px" }}></input>
       <br />
-      <PasswordMask id='password' name='password' placeholder='Enter password' useVendorStyles={false} inputStyles={{ width: "200px" }} />
+      <input id='password' type='password' placeholder='Enter password' style={{ width: "200px" }}></input>
+      <br />
       <br />
       <button onClick={(e) => { signupReq(e, props.toggleOpen) }}>Signup!</button>
       <span id='success'></span>
