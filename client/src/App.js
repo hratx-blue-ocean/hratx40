@@ -192,16 +192,11 @@ export default class App extends Component {
     } else if (this.state.page === "action") {
       return (
         <>
-<<<<<<< HEAD
-          <SearchAppBar toggleModal={this.toggleModal} handlePageChange={this.handlePageChange.bind(this)}/>
-          <TopicPageContainer currentTopic={this.state.currentTopic} toggleModal = {this.toggleModal} />
-=======
           <SearchAppBar toggleModal={this.toggleModal} />
           <TopicPageContainer 
             currentTopic={this.state.currentTopic}
             footerPageChange={this.footerPageChange}
           />
->>>>>>> 296eeed6b3cfa8c8eb0a39a567b580f3eaf01ab5
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}
