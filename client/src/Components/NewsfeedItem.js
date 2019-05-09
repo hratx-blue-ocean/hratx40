@@ -4,7 +4,7 @@ import CardContent from "@material-ui/core/CardContent";
 import React from "react";
 
 const NewsFeedItem = (props) => (
-  <a href={`${props.article.url}`} style={{color:"black", textDecoration:"none", margin:"5px"}}>
+  <a href={`${props.article.url}`} rel="noopener" target="_blank" style={{color:"black", textDecoration:"none", margin:"5px"}}>
     <Card style={{display:"flex", flexDirection:"row", alignItems:"center", justify:"center", width:"100%"}}>
         <CardContent style={{width:"50%"}}>
           <h2>{props.article.title}</h2>
