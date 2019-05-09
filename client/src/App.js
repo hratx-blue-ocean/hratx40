@@ -180,6 +180,7 @@ export default class App extends Component {
             handleTopicTileClick={this.handleTopicTileClick}
             favorites={this.state.favorites}
             footerPageChange={this.footerPageChange}
+            name={this.state.firstName}
           />
           <Modal
             modalType={this.state.modalType}
