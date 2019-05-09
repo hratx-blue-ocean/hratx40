@@ -153,14 +153,7 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
-<<<<<<< HEAD
-          <LandingPage
-            topics={[]}
-            toggleModal={this.toggleModal}
-            allTopics={this.state.allTopics}
-            handleTopicTileClick={this.handleTopicTileClick}
-            favorites={this.state.favorites}
-          />
+          <LandingPage topics={[]} toggleModal={this.toggleModal} />
           <Modal
             modalType={this.state.modalType}
             isOpen={this.state.isOpen}
@@ -170,17 +163,12 @@ export default class App extends Component {
           <button name="action" onClick={e => this.handlePageChange(e)}>
             Go To Action Page
           </button>
-=======
-          <LandingPage topics={[]} toggleModal={this.toggleModal} />
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState} />
-          <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
->>>>>>> e4295b61458106a54a3001f3814b218b1faeadbe
         </>
       );
     } else if (this.state.page === "action") {
       return (
         <>
-<<<<<<< HEAD
+          <SearchAppBar toggleModal={this.toggleModal} />
           <TopicPageContainer currentTopic={this.state.currentTopic} />
           <Modal
             modalType={this.state.modalType}
@@ -191,12 +179,6 @@ export default class App extends Component {
           <button name="home" onClick={e => this.handlePageChange(e)}>
             Go To Home Page
           </button>
-=======
-          <SearchAppBar toggleModal={this.toggleModal} />
-          <TopicPageContainer currentTopic={this.state.currentTopic} />
-          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal} setLogin={this.setLoginState} />
-          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
->>>>>>> e4295b61458106a54a3001f3814b218b1faeadbe
         </>
       );
     }
