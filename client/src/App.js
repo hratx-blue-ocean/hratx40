@@ -12,6 +12,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      displayTopics: [],
       allTopics: [],
       isOpen: false,
       modalType: "login",
