@@ -29,7 +29,7 @@ const TopicPageContainer = (props) => {
         className={classes.root}  
       >
         <Grid item xs={12} sm={6} className={classes.container}>
-          <ActionsContainer />
+          <ActionsContainer toggleModal={props.toggleModal} currentTopic={props.currentTopic} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <div>
@@ -37,7 +37,10 @@ const TopicPageContainer = (props) => {
           </div>
         </Grid>
       </Grid>
-      <Footer toggleModal={props.toggleModal} />
+      <Footer 
+        toggleModal={props.toggleModal} 
+        footerPageChange={props.footerPageChange}
+      />
     </div>
   )
 }
