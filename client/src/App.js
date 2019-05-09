@@ -53,7 +53,7 @@ export default class App extends Component {
   handleTopicTileClick(e, target, topic_id, target_name) {
     if (target === "topicTile") {
       this.setState({
-        currentPage: "topicPage",
+        page: "action",
         currentTopic: target_name
       });
     } else if (target === "fav") {
@@ -153,8 +153,9 @@ export default class App extends Component {
       return (
         <>
           <SearchAppBar toggleModal={this.toggleModal} />
-          <LandingPage topics={[]} toggleModal={this.toggleModal} />
-          <TopicTiles
+          <LandingPage
+            topics={[]}
+            toggleModal={this.toggleModal}
             allTopics={this.state.allTopics}
             handleTopicTileClick={this.handleTopicTileClick}
             favoritedTopics={this.state.favorites}
