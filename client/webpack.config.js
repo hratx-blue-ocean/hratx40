@@ -12,7 +12,7 @@ module.exports = {
       {
         test: /\.(js|mjs|jsx)$/,
         enforce: "pre",
-        loader: "eslint-loader"
+        // loader: "eslint-loader"
       },
       {
         test: /\.js?/,
