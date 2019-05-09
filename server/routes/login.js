@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { getHashedPassword } = require('../../db/db.js')
-const { getFavoritedTopics } = require('../../db/db.js')
+const { getFavoritedTopics, getHashedPassword } = require('../../db/db.js')
 const passwordHash = require('password-hash');
 
 //for frontend, pass in params as `{params: {loginInfo: <input>}}`

@@ -21,8 +21,9 @@ const getAll = (cb) => {
 };
 
 const getHashedPassword = (login, cb) => {
+    let usingEmail = login.username.includes("@");
 
-    pool.query(`select * from users where username = '${login.username}'`, (err, data)=>{
+    pool.query(`select * from users where ${usingEmail ? 'email' : 'username'} = '${login.username}'`, (err, data)=>{
         if (err){
             cb(err);
         }
@@ -31,7 +32,6 @@ const getHashedPassword = (login, cb) => {
         }
     })
 };
-
 
 const insertTopic = (causeObj, cb) => {
     pool.query(`insert into topics(topic_name,topic_imageUrl,website_url) values 
