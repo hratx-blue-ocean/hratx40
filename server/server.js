@@ -3,6 +3,8 @@ const logger = require("morgan");
 const express = require("express");
 const app = express();
 
+app.use(express.static('../client/public'));
+
 // open up CORS
 app.use((_, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
