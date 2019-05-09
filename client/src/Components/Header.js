@@ -85,10 +85,10 @@ function SearchAppBar(props) {
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
         <Toolbar>
-          <div className={classes.title} onClick={goHome}>
+          <a href='_' className={classes.title} onClick={goHome} onKeyDown={goHome}>
             <img alt='' src="brand_assets/logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
             <img alt='' src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
-          </div>
+          </a>
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
