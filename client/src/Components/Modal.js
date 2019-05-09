@@ -8,11 +8,7 @@ import DonateModal from './ChildModals/DonateModal.js';
 import Signup from './ChildModals/Signup';
 
 // Import child modals
-<<<<<<< HEAD
 const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics) => {
-=======
-const chooseChild = (type, toggleOpen, setLogin, location, topic) => {
->>>>>>> 30a0c96d5dedfaca5d75443b0d6cd9e8e3992d9f
   if (type === "login") {
     return (
       <Login toggleOpen={toggleOpen} setLogin={setLogin} allDBTopics = {allDBTopics}/>
