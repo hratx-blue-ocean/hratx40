@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import fetch from "node-fetch";
-import SearchAppBar from "./Components/Header.js";
-import LandingPage from "./Components/LandingPage.js";
+import React, { Component } from 'react';
+import SearchAppBar from './Components/Header.js';
+import LandingPage from './Components/LandingPage.js'
 // import './App.css';
 import Modal from "./Components/Modal.js";
 import axios from "axios";
@@ -203,10 +202,10 @@ export default class App extends Component {
             isOpen={this.state.isOpen}
             toggleOpen={this.toggleModal}
             setLogin={this.setLoginState}
+            location={this.state.location}
+            currentTopic={this.state.currentTopic}
           />
-          <button name="home" onClick={e => this.handlePageChange(e)}>
-            Go To Home Page
-          </button>
+          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
         </>
       );
     }
