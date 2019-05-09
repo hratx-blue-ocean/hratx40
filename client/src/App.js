@@ -50,7 +50,7 @@ export default class App extends Component {
           if (a.topic_name < b.topic_name) return -1;
           else return 1;
         });
-        this.setState({ allTopics: allDBTopics });
+        this.setState({ allTopics: allDBTopics, displayTopics: allDBTopics });
       })
       .catch();
   }
