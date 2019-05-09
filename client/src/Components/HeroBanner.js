@@ -23,10 +23,10 @@ const styles = theme => ({
   }
 })
 
-const HeroBanner = ({name, classes}) => {
+const HeroBanner = ({ name, classes }) => {
 
   const getMessage = () => {
-    if(name) {
+    if (name) {
       return (
         <h1>Welcome Back, {name}</h1>
       )
@@ -37,7 +37,7 @@ const HeroBanner = ({name, classes}) => {
     }
   }
 
-  return (  
+  return (
     <Grid container className={classes.heroImage}>
       <Grid item xs={8} className={classes.heroText}>
         {getMessage()}
@@ -50,5 +50,5 @@ const HeroBanner = ({name, classes}) => {
 HeroBanner.propTypes = {
   name: PropTypes.string,
 }
- 
+
 export default withStyles(styles)(HeroBanner);

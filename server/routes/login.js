@@ -6,8 +6,8 @@ const passwordHash = require('password-hash');
 router.get('/', (req, res) => {
   let login = req.query;
 
-  getHashedPassword(login, (err, data)=>{
-    if (err || !data.rows[0]){
+  getHashedPassword(login, (err, data) => {
+    if (err || !data.rows[0]) {
       res.status(401).end();
     }
     else {
