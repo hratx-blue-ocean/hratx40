@@ -83,7 +83,7 @@ function SearchAppBar(props) {
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
         <Toolbar>
-          <Typography className={classes.title} variant="h3" noWrap onClick={goHome}>
+          <Typography className={classes.title} variant="h3"  noWrap onClick={goHome}>
             RIPL
           </Typography>
           <div className={classes.grow} />
