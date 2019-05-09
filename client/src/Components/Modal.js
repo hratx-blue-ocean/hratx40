@@ -8,22 +8,22 @@ import DonateModal from './ChildModals/DonateModal.js';
 import Signup from './ChildModals/Signup';
 
 // Import child modals
-const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics) => {
+const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, serverUrl) => {
   if (type === "login") {
     return (
-      <Login toggleOpen={toggleOpen} setLogin={setLogin} allDBTopics = {allDBTopics}/>
+      <Login toggleOpen={toggleOpen} setLogin={setLogin} allDBTopics = {allDBTopics} serverUrl={serverUrl} />
     );
   } else if (type === "signup") {
     return (
-      <Signup toggleOpen={toggleOpen} />
+      <Signup toggleOpen={toggleOpen} serverUrl={serverUrl}  />
     );
   } else if (type === "donate") {
     return (
-      <DonateModal topic = {topic}/>
+      <DonateModal topic = {topic} serverUrl={serverUrl} />
     )
   } else if (type === "volunteer") {
     return (
-      <VolunteerModal location={location} topic={topic}/>
+      <VolunteerModal location={location} topic={topic} serverUrl={serverUrl} />
     );
   } else if (type === "charities") {
     return (
@@ -86,7 +86,7 @@ const ModalDiv = (props) => {
           <Paper
             style={{ height: "400px" }}
             square={true}>
-            {chooseChild(props.modalType, props.toggleOpen, props.setLogin, props.location, props.currentTopic, props.allDBTopics)}
+            {chooseChild(props.modalType, props.toggleOpen, props.setLogin, props.location, props.currentTopic, props.allDBTopics, props.serverUrl)}
           </Paper>
         </Grid>
       </Grid>
