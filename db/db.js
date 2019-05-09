@@ -21,16 +21,16 @@ const getAll = cb => {
 };
 
 const getHashedPassword = (login, cb) => {
-  pool.query(
-    `select * from users where username = '${login.username}'`,
-    (err, data) => {
-      if (err) {
-        cb(err);
-      } else {
-        cb(null, data);
-      }
-    }
-  );
+    let usingEmail = login.username.includes("@");
+
+    pool.query(`select * from users where ${usingEmail ? 'email' : 'username'} = '${login.username}'`, (err, data)=>{
+        if (err){
+            cb(err);
+        }
+        else {
+            cb(null, data)
+        }
+    })
 };
 
 const insertTopic = (causeObj, cb) => {

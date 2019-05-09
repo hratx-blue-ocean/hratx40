@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { getHashedPassword } = require('../../db/db.js')
-const { getFavoritedTopics } = require('../../db/db.js')
+const { getFavoritedTopics, getHashedPassword } = require('../../db/db.js')
 const passwordHash = require('password-hash');
 
 //for frontend, pass in params as `{params: {loginInfo: <input>}}`
@@ -14,13 +13,13 @@ router.get('/', (req, res) => {
     else {
       let userInfo = data.rows[0];
       let validated = passwordHash.verify(login.password, userInfo.hashedpw);
-
-      if (validated === true) {
-        getFavoritedTopics(data.rows[0].user_id, (err, data) => {
-          if (err) {
+      
+      if (validated === true){
+        getFavoritedTopics(data.rows[0].user_id, (err, data)=>{
+          if (err){
             res.status(401).end();
           }
-          else {
+          else{
             userInfo.hashedpw = undefined;
             userInfo.favorites = data.rows;
             res.status(200).send(userInfo);
