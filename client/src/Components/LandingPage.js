@@ -15,7 +15,7 @@ const LandingPage = (props) => {
       {/* {props.topics.map((topic, i) => (
         <TopicTiles topic={topic} key={i}/>
       ))} */}
-      <Footer toggleModal={props.toggleModal} />
+      <Footer toggleModal={props.toggleModal} footerPageChange={props.footerPageChange}/>
     </Grid>
   );
 }

@@ -37,7 +37,7 @@ const TopicPageContainer = (props) => {
           </div>
         </Grid>
       </Grid>
-      <Footer toggleModal={props.toggleModal} />
+      <Footer footerPageChange={props.footerPageChange} toggleModal={props.toggleModal} />
     </div>
   )
 }
