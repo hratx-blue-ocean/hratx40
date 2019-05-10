@@ -63,6 +63,9 @@ export default class App extends Component {
             })
           })
         })
+        
+    }
+    
     axios
       .get(`${this.state.serverUrl}/api/getAllTopics`)
       .then(results => {
