@@ -108,9 +108,14 @@ function SearchAppBar(props) {
           </div>
           {
             props.isLogged ? (
-              <Button onClick={(event) => {props.logout(event)}} className={classes.button}>
-                Logout
-              </Button>
+              <div>
+                <span>
+                  What's up, {props.firstName}! 
+                </span>&nbsp;&nbsp;
+                <Button onClick={(event) => {props.logout(event)}} className={classes.button}>
+                  Logout
+                </Button>
+              </div>
             ) : (
               <div>
                 <Button onClick={(event) => {props.toggleModal(event,"login")}} className={classes.button}>
