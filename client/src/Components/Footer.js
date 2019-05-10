@@ -1,12 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import { faInfoCircle, faEnvelope, faMapMarkerAlt, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
-import IconButton from '@material-ui/core/IconButton';
 
 const divStyle = {
   width: '100vw',
@@ -31,16 +27,13 @@ class Footer extends React.Component {
       icons: true,
       info: false,
       contact: false,
-      location: false
+      location: false,
+      scroll: false
     }
     
     this.handleContact = this.handleContact.bind(this);
     this.handleInfo = this.handleInfo.bind(this);
     this.handleLocation = this.handleLocation.bind(this);
-  }
-
-  componentDidUpdate() {
-    window.scrollTo(0,document.body.scrollHeight);
   }
 
   checkInfo() {
@@ -78,7 +71,7 @@ class Footer extends React.Component {
           <div>
             <br />
             <h2 style={paperStyle}>Contact</h2>
-            <h4 style={paperStyle}>makearipl@gmail.com</h4>
+            <h4 style={paperStyle}>contact@repl.today</h4>
             <br />
           </div>
         </Paper>
@@ -113,7 +106,7 @@ class Footer extends React.Component {
         info: true,
         contact: false,
         location: false
-      })
+      },() => window.scrollTo(0,document.body.scrollHeight))
     }
   }
 
@@ -129,7 +122,7 @@ class Footer extends React.Component {
         contact: true,
         location: false,
         info: false
-      })
+      }, () => window.scrollTo(0,document.body.scrollHeight))
     }
   }
 
@@ -145,7 +138,7 @@ class Footer extends React.Component {
         contact: false,
         info: false,
         location: true,
-      })
+      }, () => window.scrollTo(0,document.body.scrollHeight))
     }
   }
 
