@@ -10,11 +10,6 @@ const pool = new Pool({
   port: process.env.DB_PORT //port, please put 5432 unless you have need to use another
 });
 
-<<<<<<< HEAD
-const getAll = (cb) => {
-    pool.query('select * from users', (err, data) => {
-        if (err) {
-=======
 const getAll = cb => {
   pool.query("select * from users", (err, data) => {
     if (err) {
@@ -30,21 +25,8 @@ const getHashedPassword = (login, cb) => {
 
     pool.query(`select * from users where ${usingEmail ? 'email' : 'username'} = '${login.username}'`, (err, data)=>{
         if (err){
->>>>>>> 2478f37bb4e9d03c1714d4c44fde55665a461b6a
             cb(err);
         }
-<<<<<<< HEAD
-    })
-};
-
-const getHashedPassword = (login, cb) => {
-
-    pool.query(`select * from users where username = '${login.username}'`, (err, data)=>{
-        if (err){
-            cb(err);
-        }
-=======
->>>>>>> 2478f37bb4e9d03c1714d4c44fde55665a461b6a
         else {
             cb(null, data)
         }
@@ -69,59 +51,6 @@ const insertTopic = (causeObj, cb) => {
 };
 
 const getTopic = (topicName, cb) => {
-<<<<<<< HEAD
-    topicName = topicName.replace(`'`,`''`)
-    pool.query(`select * from topics where lower(topic_name) like lower('%${topicName}%');`, (err, data) => {
-        if (err) {
-            cb(err);
-        } else {
-            cb(null,data);
-        }
-    });
-};
-
-const getAllTopics = (cb) => {
-    pool.query(`select * from topics;`, (err, data) => {
-        if (err) {
-            cb(err);
-        } else {
-            cb(null,data);
-        }
-    });
-};
-
-const addFavorite = (topicId,userId, cb) => {
-    pool.query(`insert into users_topics(user_id, topic_id) values (${userId}, ${topicId});`, (err, data) => {
-        if (err) {
-            cb(err);
-        } else {
-            cb(null, data);
-        }
-    })
-}
-
-const deleteFavorite = (topicId,userId, cb) => {
-    pool.query(`delete from users_topics where user_id = ${userId} and topic_id = ${topicId};`, (err, data) => {
-        if (err) {
-            cb(err);
-        } else {
-            cb(null, data);
-        }
-    })
-}
-
-const getFavoritedTopics = (userId, cb) => {
-    pool.query(`select b.* from users_topics a join topics b on a.topic_id=b.topic_id where a.user_id = ${userId};`, (err, data) => {
-        if (err) {
-            cb(err)
-        } else {
-            cb(null, data);
-        }
-    })
-}
-
-module.exports = { getAll, getTopic, getAllTopics, insertTopic, addFavorite, getFavoritedTopics, deleteFavorite, getHashedPassword }
-=======
   topicName = topicName.replace(`'`, `''`);
   pool.query(
     `select * from topics where lower(topic_name) like lower('%${topicName}%');`,
@@ -214,4 +143,3 @@ module.exports = {
   getHashedPassword,
   handleSignup
 };
->>>>>>> 2478f37bb4e9d03c1714d4c44fde55665a461b6a

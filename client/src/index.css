@@ -1,12 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-sans-serif;
-=======
->>>>>>> 2478f37bb4e9d03c1714d4c44fde55665a461b6a
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
