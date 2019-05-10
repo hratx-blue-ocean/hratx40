@@ -65,10 +65,8 @@ typings/
 
 # Webpack
 bundle.js
-<<<<<<< HEAD
-=======
+
 client/public/*.png
->>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
 
 # API Keys
 .env
