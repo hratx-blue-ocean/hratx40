@@ -39,7 +39,7 @@ export default class App extends Component {
   componentDidMount() {
     this.geolocate();
     axios
-      .get(`${url}/api/getAllTopics`)
+      .get(`http://18.191.186.111/api/getAllTopics`)
       .then(results => {
         let allDBTopics = results.data;
         allDBTopics.sort((a, b) => {
@@ -171,12 +171,13 @@ export default class App extends Component {
   }
 
   handleSearchSubmit(value) {
+    console.log('i am a hippo');
     const inputValue = deburr(value.trim()).toLowerCase();
     const inputLength = inputValue.length;
   
     let filtered = inputLength === 0
       ? []
-      : this.state.suggestions.filter(suggestion => {
+      : this.state.allTopics.filter(suggestion => {
           const keep =
             suggestion.label.toLowerCase().includes(inputValue.toLowerCase());
   

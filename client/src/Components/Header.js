@@ -95,7 +95,7 @@ function SearchAppBar(props) {
             <div className={classes.searchIcon}>
               {/* <SearchIcon /> */}
             </div>
-            <IntegrationAutoSuggest topics={props.topics}/>
+            <IntegrationAutoSuggest topics={props.topics} handleSearchSubmit={props.handleSearchSubmit}/>
           </div>
           <Button onClick={(event) => {props.toggleModal(event,"login")}} className={classes.button}>
             Login
