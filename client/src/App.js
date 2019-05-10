@@ -24,8 +24,9 @@ export default class App extends Component {
       user_id: 0,
       favorites: [],
       username: "",
-      serverUrl: "http://18.191.186.111"
+      serverUrl: "http://localhost:8000"
     };
+    const ip = 'http://18.191.186.111';
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
