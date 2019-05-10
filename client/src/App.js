@@ -59,6 +59,7 @@ export default class App extends Component {
   }
 
   handleTopicTileClick(e, target, topic_id, target_name) {
+    e.preventDefault();
     if (target === "fav") {
       let foundFavorite = false;
       this.state.favorites.forEach(topic => {

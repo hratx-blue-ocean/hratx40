@@ -73,7 +73,7 @@ const ActionsContainer = (props) => {
           </Card>
         </Grid>
         <Grid item xs={12} sm={12}>
-          <Card className={classes.card}>
+          <Card className={classes.card} onClick={() => props.toggleModal(null, 'more_info')}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
