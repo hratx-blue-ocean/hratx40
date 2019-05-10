@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-public": "webpack --mode production",
+    "build-app": "webpack --mode production",
     "build": "webpack -d",
     "test": "jest",
     "server": "webpack-dev-server --mode development --open --hot"
