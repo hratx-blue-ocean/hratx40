@@ -21,7 +21,7 @@ const TopicTiles = props => {
     <div className={classes.root}>
       <Grid container>
         <GridList>
-          {props.allTopics.map((topic, i) => (
+          {props.displayTopics.map((topic, i) => (
             <TopicTile
               topic={topic}
               handleTopicTileClick={props.handleTopicTileClick}
