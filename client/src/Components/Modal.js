@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Login from './ChildModals/Login.js'
 import VolunteerModal from './ChildModals/VolunteerModal.js'
 import DonateModal from './ChildModals/DonateModal.js';
+import MoreInfoModal from './ChildModals/MoreInfoModal';
 import Signup from './ChildModals/Signup';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
@@ -21,6 +22,10 @@ const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, s
   } else if (type === "donate") {
     return (
       <DonateModal topic={topic} serverUrl={serverUrl} />
+    )
+  } else if (type === "more_info") {
+    return (
+      <MoreInfoModal topic={topic} allDBTopics={allDBTopics} />
     )
   } else if (type === "volunteer") {
     return (
