@@ -216,6 +216,7 @@ export default class App extends Component {
             handlePageChange={this.handlePageChange.bind(this)}
             logout={this.logout}
             isLogged={this.state.isLoggedIn}
+            firstName={this.state.firstName}
           />
           <LandingPage
             topics={[]}
@@ -247,6 +248,7 @@ export default class App extends Component {
             handlePageChange={this.handlePageChange.bind(this)}
             logout={this.logout}
             isLogged={this.state.isLoggedIn}
+            firstName={this.state.firstName}
           />
           <TopicPageContainer
             currentTopic={this.state.currentTopic}
