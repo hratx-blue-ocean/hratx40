@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+import React, { Component } from "react";
+import SearchAppBar from "./Components/Header.js";
+import LandingPage from "./Components/LandingPage.js";
+=======
+<<<<<<< HEAD
+import React, { Component } from 'react';
+import fetch from 'node-fetch';
+import LandingPage from './Components/LandingPage.js'
+>>>>>>> 69990b84942d5fc04ab4deed09d438b99a037f01
+// import './App.css';
+import Modal from './Components/Modal.js';
+import TopicPageContainer from './Components/TopicPageContainer.js';
+
+=======
 import React, { Component } from "react";
 import SearchAppBar from "./Components/Header.js";
 import LandingPage from "./Components/LandingPage.js";
@@ -7,11 +22,27 @@ import axios from "axios";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
 
 const url = `http://localhost:8000`;
+<<<<<<< HEAD
+=======
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
+>>>>>>> 69990b84942d5fc04ab4deed09d438b99a037f01
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      seaCreatures: [],
+      isOpen: false,
+      modalType: "login",
+      page: 'home'
+    };
+    this.api = `http://localhost:8000/api/example`;
+    this.toggleModal = this.toggleModal.bind(this);
+=======
+>>>>>>> 69990b84942d5fc04ab4deed09d438b99a037f01
       displayTopics: [],
       allTopics: [],
       isOpen: false,
@@ -24,7 +55,7 @@ export default class App extends Component {
       user_id: 0,
       favorites: [],
       username: "",
-      serverUrl: "http://localhost:8000"
+      serverUrl: "http://18.191.186.111"
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -35,6 +66,7 @@ export default class App extends Component {
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
     this.footerPageChange = this.footerPageChange.bind(this);
     this.logout = this.logout.bind(this);
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
   }
 
   componentDidMount() {
@@ -57,6 +89,7 @@ export default class App extends Component {
   }
 
   handleTopicTileClick(e, target, topic_id, target_name) {
+    e.preventDefault();
     if (target === "fav") {
       let foundFavorite = false;
       this.state.favorites.forEach(topic => {
@@ -174,8 +207,70 @@ export default class App extends Component {
     this.setState({
       page: "home"
     });
+<<<<<<< HEAD
+=======
   }
 
+<<<<<<< HEAD
+  // Toggles if the Modal is open or closed
+  // upon open, sets the modalType using the element's name
+  toggleModal (event) {
+    event.preventDefault();
+    let open = !this.state.isOpen;
+    if(open) {
+      let name = event.target.name;
+      this.setState({ 
+        isOpen: open, 
+        modalType: name
+      });
+    } else {
+      this.setState({ 
+        isOpen: open 
+      });
+    }
+  }
+
+  // This is a global handleChange function
+  // make sure whatever is utilizing it has an e.target.name and e.target.value
+  handleChange(e) {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    const newState = {};
+    newState[name] = value;
+    this.setState(newState);
+  }
+
+  // Temporary change page state button (Jay)
+  handlePageChange(e) {
+    e.preventDefault();
+    // console.log('page:', e.target.name)
+    this.setState({
+      page: e.target.name
+    })
+
+>>>>>>> 69990b84942d5fc04ab4deed09d438b99a037f01
+  }
+
+  // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
+  render() {
+    if (this.state.page === 'home') {
+      return (
+        <>
+          <LandingPage topics={[]}/>
+          <button name="volunteer" onClick={(event) => this.toggleModal(event)}>Press Me!</button>
+          <Modal modalType={this.state.modalType} isOpen={this.state.isOpen} toggleOpen={this.toggleModal}/>
+          <button name="action" onClick={(e) => this.handlePageChange(e)}>Go To Action Page</button>
+        </>
+      );
+    } else if (this.state.page === 'action') {
+      return (
+        <>
+          <TopicPageContainer />
+          <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button>
+        </>
+      )
+=======
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
     if (this.state.page === "home") {
@@ -236,6 +331,7 @@ export default class App extends Component {
           {/* <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button> */}
         </>
       );
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
     }
   }
 }

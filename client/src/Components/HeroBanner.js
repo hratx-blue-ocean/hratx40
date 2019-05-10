@@ -1,5 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+<<<<<<< HEAD
+
+const HeroBanner = ({name}) => {
+
+  const getMessage = () => {
+    if(name) {
+=======
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -27,6 +34,7 @@ const HeroBanner = ({ name, classes }) => {
 
   const getMessage = () => {
     if (name) {
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
       return (
         <h1>Welcome Back, {name}</h1>
       )
@@ -37,6 +45,14 @@ const HeroBanner = ({ name, classes }) => {
     }
   }
 
+<<<<<<< HEAD
+  return (  
+    <div className={'heroImage'}>
+      <div className={'heroText'}>
+        {getMessage()}
+      </div>
+    </div>
+=======
   return (
     <Grid container className={classes.heroImage}>
       <Grid item xs={8} className={classes.heroText}>
@@ -44,11 +60,17 @@ const HeroBanner = ({ name, classes }) => {
         <h4>throw your pebble</h4>
       </Grid>
     </Grid>
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e
   );
 }
 
 HeroBanner.propTypes = {
   name: PropTypes.string,
 }
+<<<<<<< HEAD
+ 
+export default HeroBanner;
+=======
 
 export default withStyles(styles)(HeroBanner);
+>>>>>>> 8fdd2aecc2c5834643500b038aba9e8200b4d78e

@@ -61,14 +61,13 @@ const TopicTile = props => {
   }
 
   return (
-    <Grid item xs={4}>
+    <Grid item xs={12} sm={6} md={4}>
       <GridListTile
         key={props.topic["topic_imageurl"]}
         value={props.topic["topic_name"]}
         style={{ cursor: faHandPointer }}
       >
         <div
-          xs={4}
           style={{
             backgroundColor: "#d8dbd0",
             height: 130,
