@@ -289,7 +289,6 @@ class Newsfeed extends React.Component {
     return (
       <div onLoad={window.scrollTo(0,0)}>
         <h2 style={{textAlign:"center", borderBottom:"solid", borderColor:"#C4ADAE"}}>Newsfeed</h2>
-        <div style={{overflowY:"scroll", width: "100%", height:"100vh", paddingRight: "1vw"}}>
           { this.state.articles.map((article, index)=>( 
             <NewsFeedItem article={article} key={index} />
           ))}
