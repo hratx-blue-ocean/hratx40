@@ -24,7 +24,7 @@ export default class App extends Component {
       user_id: 0,
       favorites: [],
       username: "",
-      serverUrl: "http://18.191.186.111"
+      serverUrl: 'http://localhost:8000'//"http://18.191.186.111"
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -39,6 +39,33 @@ export default class App extends Component {
 
   componentDidMount() {
     this.geolocate();
+    if (window.localStorage.getItem('userId')) {
+        this.setState({
+          user_id: window.localStorage.getItem('userId'),
+          firstName: window.localStorage.getItem('userFName'),
+          username: window.localStorage.getItem('username'),
+          isLoggedIn: true
+        }, () => {
+          axios.get(`${this.state.serverUrl}/api/getFavorites?user_id=${this.state.user_id}`)
+          .then(data => {
+            let tempAllTopics = this.state.allTopics
+            tempAllTopics.sort((a, b) => {
+              const temp = data.data;
+              for (let i = 0; i < temp.length; i++) {
+                if (temp[i].topic_name === a.topic_name) return -1;
+              }
+              if (a.topic_name < b.topic_name) return -1;
+              else return 1;
+            });
+            this.setState({
+              favorites: data.data,
+              allTopics: tempAllTopics
+            })
+          })
+        })
+        
+    }
+    
     axios
       .get(`${this.state.serverUrl}/api/getAllTopics`)
       .then(results => {
@@ -112,6 +139,7 @@ export default class App extends Component {
       username: "",
       favorites: []
     });
+    localStorage.clear()
   }
 
   geolocate() {
