@@ -199,12 +199,12 @@ class IntegrationAutosuggest extends React.Component {
       onSuggestionsClearRequested: this.handleSuggestionsClearRequested.bind(this),
       getSuggestionValue,
       renderSuggestion,
-    };    
+    };   
 
     return (
       <div>
         <div className={classes.searchIcon}>
-          <SearchIcon /*onClick={this.props.handleSearchSubmit}*//>
+          <SearchIcon onClick={() => {this.props.handleSearchSubmit(this.state.single)}}/>
         </div>
         <div className={classes.root}>
           <Autosuggest

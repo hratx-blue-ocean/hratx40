@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import GridList from "@material-ui/core/GridList";
 import TopicTile from "./TopicTile";
-import { faHandPointer } from "@fortawesome/free-solid-svg-icons";
 
 const styles = theme => ({
   root: {
@@ -22,11 +21,12 @@ const TopicTiles = props => {
     <div className={classes.root}>
       <Grid container>
         <GridList>
-          {props.allTopics.map(topic => (
+          {props.displayTopics.map((topic, i) => (
             <TopicTile
               topic={topic}
               handleTopicTileClick={props.handleTopicTileClick}
               favorites={props.favorites}
+              key={i}
             />
           ))}
         </GridList>

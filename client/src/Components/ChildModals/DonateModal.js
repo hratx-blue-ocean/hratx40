@@ -13,7 +13,7 @@ class DonateModal extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/api/charities', {params: {
+    axios.get(`${this.props.serverUrl}/api/charities`, {params: {
       topicName: this.props.topic
     }})
       .then((response) => {

@@ -10,25 +10,25 @@ const LandingPage = props => {
     <Grid container>
       {/* <Header /> */}
       <Grid item sm={12}>
-        <HeroBanner name={"Octavius"} />
+        <HeroBanner name={props.name} />
       </Grid>
       <Grid style={{ paddingBottom: 5 }}>
         <TopicTiles
-          allTopics={props.allTopics}
+          displayTopics={props.displayTopics}
           handleTopicTileClick={props.handleTopicTileClick}
           favorites={props.favorites}
         />
       </Grid>
-      <Footer toggleModal={props.toggleModal} footerPageChange={props.footerPageChange}/>
+      <Footer
+        toggleModal={props.toggleModal}
+        footerPageChange={props.footerPageChange}
+      />
     </Grid>
   );
 };
 
 LandingPage.propTypes = {
-  topics: PropTypes.array,
-  allTopics: PropTypes.array,
-  handleTopicTileClick: PropTypes.func,
-  favoritedTopics: PropTypes.array
+  topics: PropTypes.array
   // toggleModal: PropTypes.func
 };
 

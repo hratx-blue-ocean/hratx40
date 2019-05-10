@@ -6,24 +6,25 @@ import Login from './ChildModals/Login.js'
 import VolunteerModal from './ChildModals/VolunteerModal.js'
 import DonateModal from './ChildModals/DonateModal.js';
 import Signup from './ChildModals/Signup';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 // Import child modals
-const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics) => {
+const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, serverUrl) => {
   if (type === "login") {
     return (
-      <Login toggleOpen={toggleOpen} setLogin={setLogin} allDBTopics = {allDBTopics}/>
+      <Login toggleOpen={toggleOpen} setLogin={setLogin} allDBTopics={allDBTopics} serverUrl={serverUrl} />
     );
   } else if (type === "signup") {
     return (
-      <Signup toggleOpen={toggleOpen} />
+      <Signup toggleOpen={toggleOpen} serverUrl={serverUrl} />
     );
   } else if (type === "donate") {
     return (
-      <DonateModal topic = {topic}/>
+      <DonateModal topic={topic} serverUrl={serverUrl} />
     )
   } else if (type === "volunteer") {
     return (
-      <VolunteerModal location={location} topic={topic}/>
+      <VolunteerModal location={location} topic={topic} serverUrl={serverUrl} />
     );
   } else if (type === "charities") {
     return (
@@ -76,21 +77,23 @@ const ModalDiv = (props) => {
     <Modal open={props.isOpen}>
       <Grid container
         justify="center"
-        style={{ marginTop: "20vh"}}>
-        <svg onClick={(event) => { props.toggleOpen(event) }} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          <path d="M0 0h24v24H0z" fill="none" />
-        </svg>
-        <Grid item xs={6}
-          styles={{ justify: "center" }}>
-          <Paper
-            style={{ height: "400px" }}
-            square={true}>
-            {chooseChild(props.modalType, props.toggleOpen, props.setLogin, props.location, props.currentTopic, props.allDBTopics)}
-          </Paper>
-        </Grid>
+        style={{ marginTop: "20vh", outline: "none" }}>
+        <ClickAwayListener onClickAway={() => { props.toggleOpen(); }}>
+          <Grid item xs={6}
+            styles={{ justify: "center" }}>
+            <Paper
+              style={{ height: "400px" }}
+              square={true}>
+              <svg onClick={(event) => { props.toggleOpen(event) }} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                <path d="M0 0h24v24H0z" fill="none" />
+              </svg>
+              {chooseChild(props.modalType, props.toggleOpen, props.setLogin, props.location, props.currentTopic, props.allDBTopics)}
+            </Paper>
+          </Grid>
+        </ClickAwayListener>
       </Grid>
-    </Modal>
+    </Modal >
   )
 }
 
