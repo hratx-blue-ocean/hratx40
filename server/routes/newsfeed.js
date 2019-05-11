@@ -5,14 +5,15 @@ require('dotenv').config({path: '../../.env'})
 router.get("/", (req, res) => {
   let keyword = req.query.topic;
   console.log(keyword, "key")
-  axios.get(`https://newsapi.org/v2/everything?q=(${keyword} AND charity)&sortBy=popularity&language=en&apiKey=${process.env.NEWS_KEY}`)
-    .then((results) => {
-      // console.log(results.data.articles)
-      res.send(results.data.articles)
-    })
-    .catch((err) => {
-      console.error(`ERROR: ${err}`)
-    })
-})
+  axios.readFile(`../cache/${keyword}.json`, (error, data) => {
+    if(error) {
+      console.error(error);
+      res.statusCode(404).end();
+    } else {
+      console.log(data);
+      res.send(data)
+    }
+  });
+});
 
 module.exports = router;
