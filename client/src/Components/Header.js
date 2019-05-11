@@ -6,6 +6,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import IntegrationAutoSuggest from '../Components/Search.js'
 
 const styles = theme => ({
   root: {
@@ -22,7 +23,6 @@ const styles = theme => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
@@ -69,13 +69,9 @@ function SearchAppBar(props) {
             <img alt='' src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
           </a>
           <div className={classes.search}>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
+            <div className={classes.searchIcon}>
+            </div>
+            <IntegrationAutoSuggest handleSearchSubmit={props.handleSearchSubmit}/>
           </div>
           {props.isLogged ? 
             (

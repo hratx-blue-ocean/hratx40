@@ -15,6 +15,7 @@ const LandingPage = props => {
         logout={props.logout}
         isLogged={props.isLoggedIn}
         firstName={props.firstName}
+        handleSearchSubmit={props.handleSearchSubmit}
       />
       <Grid item sm={12}>
         <HeroBanner name={props.name} />

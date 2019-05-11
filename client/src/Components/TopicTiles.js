@@ -18,7 +18,7 @@ const TopicTiles = props => {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id='topicContainer'>
       <Grid container>
         <GridList>
           {props.displayTopics.map((topic, i) => (

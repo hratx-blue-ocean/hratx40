@@ -3,6 +3,7 @@ import axios from 'axios';
 import TopicPageContainer from './Components/TopicPageContainer.js';
 import LandingPage from './Components/LandingPage.js';
 import Modal from './Components/Modal.js';
+import deburr from 'lodash/deburr';
 
 export default class App extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ export default class App extends Component {
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
     this.logout = this.logout.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -168,6 +170,30 @@ export default class App extends Component {
     this.setState({page: page});
   }
 
+  handleSearchSubmit(value) {
+    const inputValue = deburr(value.trim()).toLowerCase();
+    const inputLength = inputValue.length;
+  
+    let filtered = inputLength === 0
+      ? []
+      : this.state.allTopics.filter(suggestion => {
+          const keep =
+            suggestion.topic_name.toLowerCase().includes(inputValue.toLowerCase());
+  
+          return keep;
+        });
+    if (inputLength) {
+      this.setState({
+        displayTopics: filtered
+      })
+    } else {
+      this.setState({
+        displayTopics: this.state.allTopics
+      })
+    }
+  }
+
+  // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
     if (this.state.page === 'home') {
       return (
@@ -182,6 +208,7 @@ export default class App extends Component {
             logout={this.logout}
             isLogged={this.state.isLoggedIn}
             firstName={this.state.firstName}
+            handleSearchSubmit={this.handleSearchSubmit}
           />
           <Modal
             modalType={this.state.modalType}
@@ -202,6 +229,7 @@ export default class App extends Component {
             toggleModal={this.toggleModal}
             logout={this.logout}
             isLogged={this.state.isLoggedIn}
+            handleSearchSubmit={this.handleSearchSubmit}
             firstName={this.state.firstName}
           />
           <Modal
