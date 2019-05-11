@@ -11,7 +11,7 @@ const DonateModalItem = (props) => {
     }
 
     return (
-        <a href={`${props.opportunity.link}`} rel="noopener" target="_blank" style={{color:"black", textDecoration:"none", margin:"5px"}}>
+        <a href={`${props.opportunity.link}`} rel="noopener noreferrer" target="_blank" style={{color:"black", textDecoration:"none", margin:"5px"}}>
         <Card style={{display:"flex", flexDirection:"row", alignItems:"center", justify:"center", width:"100%"}}>
             <CardContent style={{width:"50%"}}>
               <h3>{props.opportunity.name}</h3>

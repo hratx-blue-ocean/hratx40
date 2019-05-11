@@ -178,34 +178,7 @@ class IntegrationAutosuggest extends React.Component {
     });
   }
 
-  // handleChange(name) {
-  //   const searchField = document.getElementById('searchField');
-  //   console.log('searchButton:', searchField);
-    
-  //   if (searchField) {
-  //     searchField.addEventListener('keyup', function(event) {
-  //       console.log('event.keyCode:', event.keyCode);
-  //       // Number 13 is the "Enter" key on the keyboard
-  //       if (event.keyCode === 13) {
-  //         // Cancel the default action, if needed
-  //         event.preventDefault();
-  //         // Trigger the button element with a click
-  //         this.props.handleSearchSubmit(this.state.single);
-  //       }
-  //     });
-  //   }
-
-  //   return (event, {newValue}) => {
-  //     this.setState({
-  //       [name]: newValue,
-  //     });
-  //   }
-  // }
-
   handleChange(event, {newValue, method}) {
-    console.log('method:', method);
-    console.log('newValue:', newValue);
-    console.log('event:', event.keyCode);
     this.setState({
       single: newValue
     })
