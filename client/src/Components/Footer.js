@@ -1,12 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import { faInfoCircle, faEnvelope, faMapMarkerAlt, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
-import IconButton from '@material-ui/core/IconButton';
 
 const divStyle = {
   width: '100vw',
@@ -42,10 +38,6 @@ class Footer extends React.Component {
     this.handleContact = this.handleContact.bind(this);
     this.handleInfo = this.handleInfo.bind(this);
     this.handleLocation = this.handleLocation.bind(this);
-  }
-
-  componentDidUpdate() {
-    window.scrollTo(0,document.body.scrollHeight);
   }
 
   checkInfo() {
@@ -106,7 +98,7 @@ class Footer extends React.Component {
         info: true,
         contact: false,
         location: false
-      })
+      }, () => window.scrollTo(0,document.body.scrollHeight))
     }
   }
 
@@ -122,7 +114,7 @@ class Footer extends React.Component {
         contact: true,
         location: false,
         info: false
-      })
+      }, () => window.scrollTo(0,document.body.scrollHeight))
     }
   }
 
@@ -138,7 +130,7 @@ class Footer extends React.Component {
         contact: false,
         info: false,
         location: true,
-      })
+      }, () => window.scrollTo(0,document.body.scrollHeight))
     }
   }
 
@@ -149,7 +141,7 @@ class Footer extends React.Component {
           <div style={divStyle}>
             <FontAwesomeIcon name='info' icon={faInfoCircle} size='2x' onClick={() => {this.handleInfo()}}/>
             <FontAwesomeIcon name='contact' icon={faEnvelope} size='2x' onClick={() => {this.handleContact()}}/>
-            <FontAwesomeIcon name='home' onClick={() => {this.props.footerPageChange()}} icon={faHome} size='2x'/>
+            <FontAwesomeIcon name='home' onClick={(e) => this.props.handlePageChange(e, 'home')} icon={faHome} size='2x'/>
             <FontAwesomeIcon name='location' icon={faMapMarkerAlt} size='2x' onClick={() => {this.handleLocation()}}/>
             <FontAwesomeIcon onClick={() => {window.open('https://github.com/hratx-blue-ocean/hratx40',"_blank")}} icon={faGithub} size='2x'/>
           </div>

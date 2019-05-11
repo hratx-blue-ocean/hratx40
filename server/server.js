@@ -30,7 +30,8 @@ const {
   login,
   signup,
   volunteering,
-  getFavorites
+  getFavorites,
+  newsCache
 } = require("./routes");
 app.use("/api/example", example);
 app.use("/api/seedTopics", seedTopics);
@@ -49,6 +50,9 @@ app.use(`/api/getFavorites`, getFavorites);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+// Uncomment when server is stable, this will run 37 API calls 10 times per day
+// newsCache();
 
 // error handler
 app.use(function(err, req, res, next) {
