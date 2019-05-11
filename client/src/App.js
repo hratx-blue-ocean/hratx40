@@ -85,6 +85,7 @@ export default class App extends Component {
 
   handleTopicTileClick(e, target, topic_id, target_name) {
     e.preventDefault();
+    
     if (target === "fav") {
       let foundFavorite = false;
       this.state.favorites.forEach(topic => {
@@ -193,7 +194,6 @@ export default class App extends Component {
   // Temporary change page state button (Jay)
   handlePageChange(e) {
     e.preventDefault();
-    // console.log('page:', e.target.name)
     this.setState({
       page: e.target.name
     });

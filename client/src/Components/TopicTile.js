@@ -2,7 +2,6 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import GridListTile from "@material-ui/core/GridListTile";
 import IconButton from "@material-ui/core/IconButton";
-import { faHandPointer } from "@fortawesome/free-solid-svg-icons";
 
 const TopicTile = props => {
   let favoriteTopic = false;
@@ -21,13 +20,16 @@ const TopicTile = props => {
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          onClick={e =>
-            props.handleTopicTileClick(
-              e,
-              "fav",
-              props.topic.topic_id,
-              props.topic.topic_name
-            )
+          onClick={
+            (e) => {
+              e.stopPropagation();
+              props.handleTopicTileClick(
+                e,
+                "fav",
+                props.topic.topic_id,
+                props.topic.topic_name
+              )
+            }
           }
         >
           <path d="M0 0h24v24H0z" fill="none" />
@@ -44,13 +46,15 @@ const TopicTile = props => {
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          onClick={e =>
-            props.handleTopicTileClick(
-              e,
-              "fav",
-              props.topic.topic_id,
-              props.topic.topic_name
-            )
+          onClick={(e) => {
+            e.stopPropagation();
+              props.handleTopicTileClick(
+                e,
+                "fav",
+                props.topic.topic_id,
+                props.topic.topic_name
+              )
+            }
           }
         >
           <path d="M0 0h24v24H0z" fill="none" />
@@ -61,7 +65,7 @@ const TopicTile = props => {
   }
 
   return (
-    <Grid item xs={12} sm={6} md={4}
+    <Grid style={{cursor: "pointer"}} item xs={12} sm={6} md={4}
     href="#"
     onClick={e =>
       props.handleTopicTileClick(
@@ -74,7 +78,6 @@ const TopicTile = props => {
       <GridListTile
         key={props.topic["topic_imageurl"]}
         value={props.topic["topic_name"]}
-        style={{ cursor: faHandPointer }}
       >
         <div
           style={{
@@ -86,7 +89,6 @@ const TopicTile = props => {
             bottom: "50%",
             fontFamily: "Comfortaa",
             fontSize: 20,
-            cursor: faHandPointer
           }}
           id={props.topic["topic_name"]}
           topic_id={props.topic["topic_id"]}
