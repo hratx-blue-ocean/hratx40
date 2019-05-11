@@ -19,6 +19,11 @@ const paperStyle = {
   textAlign: 'center'
 }
 
+const textStyle = {
+  padding: '20px 10vw',
+  lineHeight: '1.6'
+}
+
 class Footer extends React.Component {
   constructor(props) {
     super(props);
@@ -41,21 +46,9 @@ class Footer extends React.Component {
         <Paper>
           <div>
             <br />
-            <h2 style={paperStyle}>HRATX40</h2>
-            <ul>
-              <li>Austin Anderson</li>
-              <li>David Castillo</li>
-              <li>Drew DiStefano</li>
-              <li>Drew Lockliear</li>
-              <li>Jarrod Miller</li>
-              <li>Jay Kannaiyan</li>
-              <li>Jonathan Becker</li>
-              <li>Jonathon Lopez</li>
-              <li>Maggie Gray</li>
-              <li>Mathew Feinberg</li>
-              <li>Nicholas Miron</li>
-              <li>Ryan Ferrer</li>
-            </ul>
+            <h2 style={paperStyle}>About Ripl.Today</h2>
+            <p style={textStyle}>Ripl.Today is a service for users who want to contribute to helping make the world a better place. There are a lot of issues that need solving right now, ranging from homelessness, food waste, climate change, biodiversity loss, and the list goes on. It can seem overwhelming and lead to apathy. Ripl.Today wants to change that and show that everyone can help in getting humanity to a sustainable future. If you have time but no money, volunteer! If you have money, but no time, donate! Do what you can. Throw your pebble and make a ripple today. Click on one of the tiles above to get started.</p>
+            <p style={textStyle}>Get in touch with the Ripl.Today team by emailing us at contact@ripl.today</p>
             <br />
           </div>
         </Paper>
@@ -70,7 +63,7 @@ class Footer extends React.Component {
           <div>
             <br />
             <h2 style={paperStyle}>Contact</h2>
-            <h4 style={paperStyle}>makeaaripl@gmail.com</h4>
+            <p style={paperStyle}>contact@ripl.today</p>
             <br />
           </div>
         </Paper>
@@ -85,7 +78,7 @@ class Footer extends React.Component {
           <div>
             <br />
             <h2 style={paperStyle}>Location</h2>
-            <h4 style={paperStyle}>Autstin, TX</h4>
+            <h4 style={paperStyle}>Austin, TX</h4>
             <br />
           </div>
         </Paper>
