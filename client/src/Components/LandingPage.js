@@ -1,14 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Footer from "./Footer.js";
-import HeroBanner from "./HeroBanner.js";
-import Grid from "@material-ui/core/Grid";
-import TopicTiles from "./TopicTiles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Footer from './Footer.js';
+import HeroBanner from './HeroBanner.js';
+import Grid from '@material-ui/core/Grid';
+import TopicTiles from './TopicTiles';
+import SearchAppBar from './Header';
 
 const LandingPage = props => {
   return (
     <Grid>
-      {/* <Header /> */}
+      <SearchAppBar
+        toggleModal={props.toggleModal}
+        handlePageChange={props.handlePageChange.bind(props)}
+        logout={props.logout}
+        isLogged={props.isLoggedIn}
+        firstName={props.firstName}
+      />
       <Grid item sm={12}>
         <HeroBanner name={props.name} />
       </Grid>
@@ -21,7 +28,7 @@ const LandingPage = props => {
       </Grid>
       <Footer
         toggleModal={props.toggleModal}
-        footerPageChange={props.footerPageChange}
+        handlePageChange={props.handlePageChange}
       />
     </Grid>
   );

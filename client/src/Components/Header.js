@@ -5,7 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-// import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
@@ -13,17 +12,7 @@ const styles = theme => ({
     width: '100%',
     zIndex: '1',
   },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
   title: {
-    // [theme.breakpoints.up('sm')]: {
-    //   display: 'block',
-    // },
     display: 'flex',
     flexDirection: 'row',
     height: '50px',
@@ -43,15 +32,6 @@ const styles = theme => ({
       marginLeft: theme.spacing.unit,
       width: 'auto',
     },
-  },
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   inputRoot: {
     color: 'inherit',
@@ -80,24 +60,15 @@ const styles = theme => ({
 function SearchAppBar(props) {
   const { classes } = props;
 
-  const goHome = (e) => {
-    e.target.name = 'home';
-    props.handlePageChange(e);
-  }
-
   return (
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
         <Toolbar className={classes.header}>
-          <a href='_' className={classes.title} onClick={goHome}>
+          <a href='_' className={classes.title} onClick={(e) => props.handlePageChange(e, 'home')}>
             <img alt='' src="brand_assets/logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
             <img alt='' src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
           </a>
-          {/* <div className={classes.grow} /> */}
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              {/* <SearchIcon /> */}
-            </div>
             <InputBase
               placeholder="Search…"
               classes={{
@@ -106,8 +77,8 @@ function SearchAppBar(props) {
               }}
             />
           </div>
-          {
-            props.isLogged ? (
+          {props.isLogged ? 
+            (
               <div>
                 <span>
                   What's up, {props.firstName}! 
