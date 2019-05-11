@@ -87,12 +87,35 @@ export default class App extends Component {
 
   handleTopicTileClick(e, target, topic_id, target_name) {
     e.preventDefault();
+<<<<<<< HEAD
     if (target === 'fav') {
       let route = `${this.state.serverUrl}/api/addFavorites`;
       for (let favorite of this.state.favorites) {
         if (favorite.topic_name === target_name) {
           route = `${this.state.serverUrl}/api/deleteFavorites`;
           break;
+=======
+    
+    if (target === "fav") {
+      let foundFavorite = false;
+      this.state.favorites.forEach(topic => {
+        if (topic.topic_name === target_name) {
+          foundFavorite = true;
+          axios
+            .post(`${url}/api/deleteFavorites`, {
+              topic_id: topic_id,
+              //user_id is hardcoded, change when login is implemented
+              user_id: this.state.user_id
+            })
+            .then(results => {
+              const allFavorites = results.data;
+              this.setState({
+                favorites: allFavorites,
+                topicTileTimeout: true
+              });
+            })
+            .catch();
+>>>>>>> c370df2d2aeffec37a5bc40fd2ee037448515d64
         }
       }
       axios.post(route, {
@@ -165,9 +188,7 @@ export default class App extends Component {
 
   handlePageChange(e, page) {
     e.preventDefault();
-    this.setState({
-      page: page
-    });
+    this.setState({page: page});
   }
 
   render() {
