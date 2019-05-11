@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import ActionsContainer from './ActionsContainer';
 import NewsFeedContainer from "./Newsfeed.js"
 import Footer from './Footer.js'
-import Header from './Header.js'
+// import Header from './Header.js'
 
 const styles = theme => ({
   root: {
@@ -37,11 +37,11 @@ const TopicPageContainer = (props) => {
             <NewsFeedContainer currentTopic={props.currentTopic} />
           </div>
         </Grid>
+      </Grid>
       <Footer 
         toggleModal={props.toggleModal} 
-        footerPageChange={props.footerPageChange}
+        handlePageChange={props.handlePageChange}
       />
-      </Grid>
     </div>
   )
 }

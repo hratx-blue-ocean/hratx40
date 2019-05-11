@@ -80,16 +80,11 @@ const styles = theme => ({
 function SearchAppBar(props) {
   const { classes } = props;
 
-  const goHome = (e) => {
-    e.target.name = 'home';
-    props.handlePageChange(e);
-  }
-
   return (
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
         <Toolbar className={classes.header}>
-          <a href='_' className={classes.title} onClick={goHome}>
+          <a href='_' className={classes.title} onClick={(e) => props.handlePageChange(e, 'home')}>
             <img alt='' src="brand_assets/logo_only_transparent.png" style={{width: "50px", height: "50px"}}/>
             <img alt='' src="brand_assets/text_only_transparent.png" style={{height: "20px", paddingLeft: "8px", paddingRight: "8px"}}/>
           </a>

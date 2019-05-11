@@ -21,7 +21,7 @@ const LandingPage = props => {
       </Grid>
       <Footer
         toggleModal={props.toggleModal}
-        footerPageChange={props.footerPageChange}
+        handlePageChange={props.handlePageChange}
       />
     </Grid>
   );

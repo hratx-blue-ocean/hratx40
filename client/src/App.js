@@ -1,12 +1,9 @@
-import React, { Component } from "react";
-import SearchAppBar from "./Components/Header.js";
-import LandingPage from "./Components/LandingPage.js";
-// import './App.css';
-import Modal from "./Components/Modal.js";
-import axios from "axios";
-import TopicPageContainer from "./Components/TopicPageContainer.js";
-
-const url = `http://localhost:8000`;
+import React, { Component } from 'react';
+import SearchAppBar from './Components/Header.js';
+import LandingPage from './Components/LandingPage.js';
+import Modal from './Components/Modal.js';
+import axios from 'axios';
+import TopicPageContainer from './Components/TopicPageContainer.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -15,26 +12,25 @@ export default class App extends Component {
       displayTopics: [],
       allTopics: [],
       isOpen: false,
-      modalType: "login",
-      page: "home",
-      currentTopic: "Homeless Services",
-      location: "",
+      modalType: 'login',
+      page: 'home',
+      currentTopic: 'Homeless Services',
+      location: '',
       isLoggedIn: false,
-      firstName: "",
+      firstName: '',
       user_id: 0,
       favorites: [],
-      username: "",
-      serverUrl: 'http://localhost:8000'//"http://18.191.186.111"
+      username: '',
+      serverUrl: 'http://18.191.186.111'
     };
-    // this.api = `http://localhost:8000/api/example`;
+
     this.toggleModal = this.toggleModal.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.geolocate = this.geolocate.bind(this);
     this.geolocateSuccess = this.geolocateSuccess.bind(this);
     this.setLoginState = this.setLoginState.bind(this);
     this.handleTopicTileClick = this.handleTopicTileClick.bind(this);
-    this.footerPageChange = this.footerPageChange.bind(this);
     this.logout = this.logout.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {
@@ -48,83 +44,58 @@ export default class App extends Component {
         }, () => {
           axios.get(`${this.state.serverUrl}/api/getFavorites?user_id=${this.state.user_id}`)
           .then(data => {
-            let tempAllTopics = this.state.allTopics
-            tempAllTopics.sort((a, b) => {
-              const temp = data.data;
-              for (let i = 0; i < temp.length; i++) {
-                if (temp[i].topic_name === a.topic_name) return -1;
-              }
-              if (a.topic_name < b.topic_name) return -1;
-              else return 1;
-            });
             this.setState({
               favorites: data.data,
-              allTopics: tempAllTopics
             })
           })
+          .catch(err => {throw err})
         })
         
     }
-    
-    axios
-      .get(`${this.state.serverUrl}/api/getAllTopics`)
+
+    axios.get(`${this.state.serverUrl}/api/getAllTopics`)
       .then(results => {
         let allDBTopics = results.data;
         allDBTopics.sort((a, b) => {
-          const temp = this.state.favorites;
-          for (let i = 0; i < temp.length; i++) {
-            if (temp[i].topic_name === a.topic_name) return -1;
+          const currFavs = this.state.favorites;
+          for (let i = 0; i < currFavs.length; i++) {
+            if (currFavs[i].topic_name === a.topic_name) return -1;
           }
           if (a.topic_name < b.topic_name) return -1;
           else return 1;
         });
-        this.setState({ allTopics: allDBTopics, displayTopics: allDBTopics });
+        this.setState({ 
+          allTopics: allDBTopics, 
+          displayTopics: allDBTopics 
+        });
       })
-      .catch();
+      .catch(err => {throw err})
   }
 
   handleTopicTileClick(e, target, topic_id, target_name) {
     e.preventDefault();
-    if (target === "fav") {
-      let foundFavorite = false;
-      this.state.favorites.forEach(topic => {
-        if (topic.topic_name === target_name) {
-          foundFavorite = true;
-          axios
-            .post(`${url}/api/deleteFavorites`, {
-              topic_id: topic_id,
-              //user_id is hardcoded, change when login is implemented
-              user_id: this.state.user_id
-            })
-            .then(results => {
-              const allFavorites = results.data;
-              this.setState({
-                favorites: allFavorites,
-                topicTileTimeout: true
-              });
-            })
-            .catch();
+    if (target === 'fav') {
+      let route = `${this.state.serverUrl}/api/addFavorites`;
+      for (let favorite of this.state.favorites) {
+        if (favorite.topic_name === target_name) {
+          route = `${this.state.serverUrl}/api/deleteFavorites`;
+          break;
         }
-      });
-      if (foundFavorite === false) {
-        axios
-          .post(`${url}/api/addFavorites`, {
-            topic_id: topic_id,
-            //user_id is hardcoded, change when login is implemented
-            user_id: this.state.user_id
-          })
-          .then(results => {
-            const allFavorites = results.data;
-            this.setState({
-              favorites: allFavorites,
-              topicTileTimeout: true
-            });
-          })
-          .catch();
       }
-    } else if (target === "topicTile") {
+      axios.post(route, {
+        topic_id: topic_id,
+        user_id: this.state.user_id
+      })
+      .then(results => {
+        const allFavorites = results.data;
+        this.setState({
+          favorites: allFavorites,
+        });
+      })
+      .catch(err => {throw err});
+    } else if (target === 'topicTile') {
       this.setState({
-        page: "action",
+        page: 'action',
         currentTopic: target_name
       });
     }
@@ -135,11 +106,11 @@ export default class App extends Component {
     this.setState({
       isLoggedIn: false,
       user_id: 0,
-      firstName: "",
-      username: "",
+      firstName: '',
+      username: '',
       favorites: []
     });
-    localStorage.clear()
+    localStorage.clear();
   }
 
   geolocate() {
@@ -179,35 +150,15 @@ export default class App extends Component {
     this.setState(data);
   }
 
-  // This is a global handleChange function
-  // make sure whatever is utilizing it has an e.target.name and e.target.value
-  handleChange(e) {
+  handlePageChange(e, page) {
     e.preventDefault();
-    const name = e.target.name;
-    const value = e.target.value;
-    const newState = {};
-    newState[name] = value;
-    this.setState(newState);
-  }
-
-  // Temporary change page state button (Jay)
-  handlePageChange(e) {
-    e.preventDefault();
-    // console.log('page:', e.target.name)
     this.setState({
-      page: e.target.name
+      page: page
     });
   }
 
-  footerPageChange() {
-    this.setState({
-      page: "home"
-    });
-  }
-
-  // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
-    if (this.state.page === "home") {
+    if (this.state.page === 'home') {
       return (
         <>
           <SearchAppBar
@@ -223,7 +174,7 @@ export default class App extends Component {
             displayTopics={this.state.displayTopics}
             handleTopicTileClick={this.handleTopicTileClick}
             favorites={this.state.favorites}
-            footerPageChange={this.footerPageChange}
+            handlePageChange={this.handlePageChange}
             name={this.state.firstName}
           />
           <Modal
@@ -234,12 +185,12 @@ export default class App extends Component {
             allDBTopics={this.state.allTopics}
             serverUrl={this.state.serverUrl}
           />
-          {/* <button name="action" onClick={e => this.handlePageChange(e)}>
+          {/* <button name='action' onClick={e => this.handlePageChange(e)}>
             Go To Action Page
           </button> */}
         </>
       );
-    } else if (this.state.page === "action") {
+    } else if (this.state.page === 'action') {
       return (
         <>
           <SearchAppBar
@@ -251,7 +202,7 @@ export default class App extends Component {
           />
           <TopicPageContainer
             currentTopic={this.state.currentTopic}
-            footerPageChange={this.footerPageChange}
+            handlePageChange={this.handlePageChange}
             toggleModal={this.toggleModal}
           />
           <Modal
@@ -264,7 +215,6 @@ export default class App extends Component {
             allDBTopics={this.state.allTopics}
             serverUrl={this.state.serverUrl}
           />
-          {/* <button name="home" onClick={(e) => this.handlePageChange(e)}>Go To Home Page</button> */}
         </>
       );
     }
