@@ -25,7 +25,7 @@ const {
   addFavorite,
   deleteFavorite,
   getAllTopics,
-  newsfeed,
+  news,
   charity,
   login,
   signup,
@@ -40,7 +40,7 @@ app.use("/api/addFavorites", addFavorite);
 app.use("/api/logins", login);
 app.use("/api/deleteFavorites", deleteFavorite);
 app.use("/api/getAllTopics", getAllTopics);
-app.use("/api/news", newsfeed);
+app.use("/api/news", news);
 app.use(`/api/charities`, charity);
 app.use(`/api/signups`, signup);
 app.use(`/api/volunteers`, volunteering);

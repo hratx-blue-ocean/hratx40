@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const axios = require("axios");
+const fs = require("file-system");
 require('dotenv').config({path: '../../.env'})
 
 router.get("/", (req, res) => {
   let keyword = req.query.topic;
   console.log(keyword, "key")
-  axios.readFile(`../cache/${keyword}.json`, (error, data) => {
+  fs.readFile(`../cache/${keyword}.json`, (error, data) => {
     if(error) {
       console.error(error);
       res.statusCode(404).end();
