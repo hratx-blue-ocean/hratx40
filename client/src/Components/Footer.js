@@ -39,10 +39,6 @@ class Footer extends React.Component {
     this.handleLocation = this.handleLocation.bind(this);
   }
 
-  componentDidUpdate() {
-    window.scrollTo(0,document.body.scrollHeight);
-  }
-
   checkInfo() {
     if (this.state.info) {
       return (
@@ -113,7 +109,7 @@ class Footer extends React.Component {
         info: true,
         contact: false,
         location: false
-      })
+      }, () => window.scrollTo(0,document.body.scrollHeight))
     }
   }
 
@@ -129,7 +125,7 @@ class Footer extends React.Component {
         contact: true,
         location: false,
         info: false
-      })
+      }, () => window.scrollTo(0,document.body.scrollHeight))
     }
   }
 
@@ -145,11 +141,9 @@ class Footer extends React.Component {
         contact: false,
         info: false,
         location: true,
-      })
+      }, () => window.scrollTo(0,document.body.scrollHeight))
     }
   }
-
- 
 
   render() {
     if (this.state.icons === true) {

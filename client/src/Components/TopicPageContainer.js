@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import ActionsContainer from './ActionsContainer';
 import NewsFeedContainer from "./Newsfeed.js"
 import Footer from './Footer.js'
-// import Header from './Header.js'
+import SearchAppBar from './Header.js'
 
 const styles = theme => ({
   root: {
@@ -24,6 +24,13 @@ const TopicPageContainer = (props) => {
 
   return (
     <div >
+      <SearchAppBar
+            toggleModal={props.toggleModal}
+            handlePageChange={props.handlePageChange}
+            logout={props.logout}
+            isLogged={props.isLoggedIn}
+            firstName={props.firstName}
+          />
       <Grid 
         container 
         spacing={16}

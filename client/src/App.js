@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import SearchAppBar from './Components/Header.js';
-import LandingPage from './Components/LandingPage.js';
-import Modal from './Components/Modal.js';
 import axios from 'axios';
 import TopicPageContainer from './Components/TopicPageContainer.js';
+import LandingPage from './Components/LandingPage.js';
+import Modal from './Components/Modal.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -35,41 +34,55 @@ export default class App extends Component {
 
   componentDidMount() {
     this.geolocate();
-    if (window.localStorage.getItem('userId')) {
-        this.setState({
-          user_id: window.localStorage.getItem('userId'),
-          firstName: window.localStorage.getItem('userFName'),
-          username: window.localStorage.getItem('username'),
-          isLoggedIn: true
-        }, () => {
-          axios.get(`${this.state.serverUrl}/api/getFavorites?user_id=${this.state.user_id}`)
-          .then(data => {
-            this.setState({
-              favorites: data.data,
-            })
-          })
-          .catch(err => {throw err})
-        })
-        
-    }
+    this.getAllTopics();
+   
 
-    axios.get(`${this.state.serverUrl}/api/getAllTopics`)
-      .then(results => {
-        let allDBTopics = results.data;
-        allDBTopics.sort((a, b) => {
-          const currFavs = this.state.favorites;
-          for (let i = 0; i < currFavs.length; i++) {
-            if (currFavs[i].topic_name === a.topic_name) return -1;
-          }
-          if (a.topic_name < b.topic_name) return -1;
-          else return 1;
-        });
-        this.setState({ 
-          allTopics: allDBTopics, 
-          displayTopics: allDBTopics 
-        });
+    if (window.localStorage.getItem('userId')) {
+      this.setState({
+        user_id: window.localStorage.getItem('userId'),
+        firstName: window.localStorage.getItem('userFName'),
+        username: window.localStorage.getItem('username'),
+        isLoggedIn: true
+      }, () => {
+        axios.get(`${this.state.serverUrl}/api/getFavorites?user_id=${this.state.user_id}`)
+        .then(data => {
+          let tempAllTopics = this.state.allTopics;
+          tempAllTopics.sort((a,b) => {
+            const temp = data.data;
+            for (let i = 0; i < temp.length; i++) {
+              if (temp[i].topic_name === a.topic_name) return -1;
+            }
+            if (a.topic_name < b.topic_name) return -1;
+            else return 1;
+          });
+          this.setState({
+            favorites: data.data,
+            displayTopics: tempAllTopics,
+          })
+        })
+        .catch(err => {throw err})
       })
-      .catch(err => {throw err})
+    }
+  }
+
+  getAllTopics() {
+    axios.get(`${this.state.serverUrl}/api/getAllTopics`)
+    .then(results => {
+      let allDBTopics = results.data;
+      allDBTopics.sort((a, b) => {
+        const currFavs = this.state.favorites;
+        for (let i = 0; i < currFavs.length; i++) {
+          if (currFavs[i].topic_name === a.topic_name) return -1;
+        }
+        if (a.topic_name < b.topic_name) return -1;
+        else return 1;
+      });
+      this.setState({ 
+        allTopics: allDBTopics, 
+        displayTopics: allDBTopics 
+      });
+    })
+    .catch(err => {throw err})
   }
 
   handleTopicTileClick(e, target, topic_id, target_name) {
@@ -161,21 +174,16 @@ export default class App extends Component {
     if (this.state.page === 'home') {
       return (
         <>
-          <SearchAppBar
-            toggleModal={this.toggleModal}
-            handlePageChange={this.handlePageChange.bind(this)}
-            logout={this.logout}
-            isLogged={this.state.isLoggedIn}
-            firstName={this.state.firstName}
-          />
           <LandingPage
-            topics={[]}
             toggleModal={this.toggleModal}
             displayTopics={this.state.displayTopics}
             handleTopicTileClick={this.handleTopicTileClick}
             favorites={this.state.favorites}
             handlePageChange={this.handlePageChange}
             name={this.state.firstName}
+            logout={this.logout}
+            isLogged={this.state.isLoggedIn}
+            firstName={this.state.firstName}
           />
           <Modal
             modalType={this.state.modalType}
@@ -185,25 +193,18 @@ export default class App extends Component {
             allDBTopics={this.state.allTopics}
             serverUrl={this.state.serverUrl}
           />
-          {/* <button name='action' onClick={e => this.handlePageChange(e)}>
-            Go To Action Page
-          </button> */}
         </>
       );
     } else if (this.state.page === 'action') {
       return (
         <>
-          <SearchAppBar
-            toggleModal={this.toggleModal}
-            handlePageChange={this.handlePageChange.bind(this)}
-            logout={this.logout}
-            isLogged={this.state.isLoggedIn}
-            firstName={this.state.firstName}
-          />
           <TopicPageContainer
             currentTopic={this.state.currentTopic}
             handlePageChange={this.handlePageChange}
             toggleModal={this.toggleModal}
+            logout={this.logout}
+            isLogged={this.state.isLoggedIn}
+            firstName={this.state.firstName}
           />
           <Modal
             modalType={this.state.modalType}

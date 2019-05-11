@@ -11,31 +11,31 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 // Import child modals
 const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, serverUrl) => {
-  if (type === "login") {
+  if (type === 'login') {
     return (
-      <Login toggleOpen={toggleOpen} setLogin={setLogin} allDBTopics={allDBTopics} serverUrl={serverUrl} />
+      <Login toggleOpen={toggleOpen} setLogin={setLogin} serverUrl={serverUrl} />
     );
-  } else if (type === "signup") {
+  } else if (type === 'signup') {
     return (
       <Signup toggleOpen={toggleOpen} serverUrl={serverUrl} />
     );
-  } else if (type === "donate") {
+  } else if (type === 'donate') {
     return (
       <DonateModal topic={topic} serverUrl={serverUrl} />
     )
-  } else if (type === "more_info") {
+  } else if (type === 'more_info') {
     return (
       <MoreInfoModal topic={topic} allDBTopics={allDBTopics} />
     )
-  } else if (type === "volunteer") {
+  } else if (type === 'volunteer') {
     return (
       <VolunteerModal location={location} topic={topic} serverUrl={serverUrl} />
     );
-  } else if (type === "charities") {
+  } else if (type === 'charities') {
     return (
-      <div id="child-modal">charities</div>
+      <div id='child-modal'>charities</div>
     );
-  } else if (type === "info") {
+  } else if (type === 'info') {
     return (
       <div>
         <br />
@@ -56,7 +56,7 @@ const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, s
         </ul>
       </div>
     );
-  } else if (type === "location") {
+  } else if (type === 'location') {
     return (
       <div>
         <br />
@@ -81,17 +81,17 @@ const ModalDiv = (props) => {
   return (
     <Modal open={props.isOpen}>
       <Grid container
-        justify="center"
-        style={{ marginTop: "20vh", outline: "none" }}>
+        justify='center'
+        style={{ marginTop: '20vh', outline: 'none' }}>
         <ClickAwayListener onClickAway={() => { props.toggleOpen(); }}>
           <Grid item xs={10} sm={8} md={8} lg={6}
-            styles={{ justify: "center" }}>
+            styles={{ justify: 'center' }}>
             <Paper
-              style={{ height: "45vh" }}
+              style={{ height: '45vh' }}
               square={true}>
-              <svg onClick={(event) => { props.toggleOpen(event) }} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                <path d="M0 0h24v24H0z" fill="none" />
+              <svg onClick={(event) => { props.toggleOpen(event) }} xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
+                <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' />
+                <path d='M0 0h24v24H0z' fill='none' />
               </svg>
               {chooseChild(props.modalType, props.toggleOpen, props.setLogin, props.location, props.currentTopic, props.allDBTopics, props.serverUrl)}
             </Paper>
