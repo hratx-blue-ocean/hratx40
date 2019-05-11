@@ -29,7 +29,8 @@ const {
   charity,
   login,
   signup,
-  volunteering
+  volunteering,
+  getFavorites
 } = require("./routes");
 app.use("/api/example", example);
 app.use("/api/seedTopics", seedTopics);
@@ -42,6 +43,7 @@ app.use("/api/news", news);
 app.use(`/api/charities`, charity);
 app.use(`/api/signups`, signup);
 app.use(`/api/volunteers`, volunteering);
+app.use(`/api/getFavorites`, getFavorites);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

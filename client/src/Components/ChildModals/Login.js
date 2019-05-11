@@ -21,6 +21,11 @@ const loginReq = (event, toggleOpen, setLogin, allDBTopics, serverUrl) => {
         if (a.topic_name < b.topic_name) return -1;
         else return 1;
       });
+
+      window.localStorage.setItem('userId', response.data.user_id)
+      window.localStorage.setItem('userFName', response.data.first_name)
+      window.localStorage.setItem('username', response.data.username)
+      window.localStorage.setItem('userFave', JSON.stringify(response.data.favorites))
       setLogin({
         isLoggedIn: true,
         user_id: response.data.user_id,
