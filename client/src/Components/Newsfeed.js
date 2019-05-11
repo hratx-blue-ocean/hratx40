@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import NewsFeedItem from "./NewsfeedItem.js"
 
 class Newsfeed extends React.Component {
