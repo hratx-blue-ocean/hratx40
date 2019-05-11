@@ -9,6 +9,7 @@ const deleteFavorite = require("./deleteFave");
 const getAllTopics = require("./getAllTopics");
 const signup = require("./signup");
 const volunteering = require("./volunteer.js");
+const getFavorites = require('./getFavorites.js');
 
 module.exports = {
   example,
@@ -21,5 +22,6 @@ module.exports = {
   news,
   login,
   signup,
-  volunteering
+  volunteering,
+  getFavorites
 };
