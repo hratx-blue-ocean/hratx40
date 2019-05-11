@@ -72,7 +72,7 @@ function renderInputComponent(inputProps) {
           input: classes.input,
         },
       }}
-      {...other}
+      {...other} 
     />
   );
 }
@@ -106,9 +106,8 @@ function getSuggestionValue(suggestion) {
 
 const styles = theme => ({
   root: {
-    height: '50px',
     width: '300px',
-    flexGrow: 1,
+    fontFamily: 'Comfortaa',
   },
   container: {
     position: 'relative',
@@ -131,6 +130,10 @@ const styles = theme => ({
   divider: {
     height: theme.spacing.unit * 2,
   },
+  searchContainer: {
+    display: 'flex',
+    flexDirection: 'row-reverse'
+  }
 });
 
 class IntegrationAutosuggest extends React.Component {
@@ -163,12 +166,6 @@ class IntegrationAutosuggest extends React.Component {
         });
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     suggestions: this.props.topics
-  //   })
-  // }
-
   handleSuggestionsFetchRequested({ value }) {
     this.setState({
       suggestions: this.getSuggestions(value),
@@ -181,13 +178,37 @@ class IntegrationAutosuggest extends React.Component {
     });
   }
 
-  handleChange(name) {
-    return (event, {newValue}) => {
-      console.log('event:', event.keyCode);
-      this.setState({
-        [name]: newValue,
-      });
-    }
+  // handleChange(name) {
+  //   const searchField = document.getElementById('searchField');
+  //   console.log('searchButton:', searchField);
+    
+  //   if (searchField) {
+  //     searchField.addEventListener('keyup', function(event) {
+  //       console.log('event.keyCode:', event.keyCode);
+  //       // Number 13 is the "Enter" key on the keyboard
+  //       if (event.keyCode === 13) {
+  //         // Cancel the default action, if needed
+  //         event.preventDefault();
+  //         // Trigger the button element with a click
+  //         this.props.handleSearchSubmit(this.state.single);
+  //       }
+  //     });
+  //   }
+
+  //   return (event, {newValue}) => {
+  //     this.setState({
+  //       [name]: newValue,
+  //     });
+  //   }
+  // }
+
+  handleChange(event, {newValue, method}) {
+    console.log('method:', method);
+    console.log('newValue:', newValue);
+    console.log('event:', event.keyCode);
+    this.setState({
+      single: newValue
+    })
   }
 
   handleEnterKey(event) {
@@ -206,23 +227,22 @@ class IntegrationAutosuggest extends React.Component {
       onSuggestionsClearRequested: this.handleSuggestionsClearRequested.bind(this),
       getSuggestionValue,
       renderSuggestion,
-      onKeyDown: this.handleEnterKey.bind(this)
     };   
 
     return (
-      <div>
+      <div className={classes.searchContainer}>
         <div className={classes.searchIcon}>
           <SearchIcon id='searchIcon' onClick={() => {this.props.handleSearchSubmit(this.state.single)}}/>
         </div>
         <div className={classes.root}>
           <Autosuggest
+            id='searchField'
             {...autosuggestProps}
             inputProps={{
               classes,
               placeholder: 'Search by topic',
               value: this.state.single,
-              onChange: this.handleChange('single'),
-              onKeyDown: this.handleEnterKey(event)
+              onChange: this.handleChange.bind(this),
             }}
             theme={{
               container: classes.container,
