@@ -221,9 +221,16 @@ export default class App extends Component {
   
           return keep;
         });
-    this.setState({
-      displayTopics: filtered
-    })
+    if (inputLength) {
+      this.setState({
+        displayTopics: filtered
+      })
+    } else {
+      this.setState({
+        displayTopics: this.state.allTopics
+      })
+    }
+
     
   }
 
