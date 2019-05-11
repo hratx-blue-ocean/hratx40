@@ -183,9 +183,16 @@ class IntegrationAutosuggest extends React.Component {
 
   handleChange(name) {
     return (event, {newValue}) => {
+      console.log('event:', event.keyCode);
       this.setState({
         [name]: newValue,
       });
+    }
+  }
+
+  handleEnterKey(event) {
+    if (event.keyCode === 13) {
+      this.handleSearchSubmit();
     }
   }
 
@@ -199,12 +206,13 @@ class IntegrationAutosuggest extends React.Component {
       onSuggestionsClearRequested: this.handleSuggestionsClearRequested.bind(this),
       getSuggestionValue,
       renderSuggestion,
+      onKeyDown: this.handleEnterKey.bind(this)
     };   
 
     return (
       <div>
         <div className={classes.searchIcon}>
-          <SearchIcon onClick={() => {this.props.handleSearchSubmit(this.state.single)}}/>
+          <SearchIcon id='searchIcon' onClick={() => {this.props.handleSearchSubmit(this.state.single)}}/>
         </div>
         <div className={classes.root}>
           <Autosuggest
@@ -214,6 +222,7 @@ class IntegrationAutosuggest extends React.Component {
               placeholder: 'Search by topic',
               value: this.state.single,
               onChange: this.handleChange('single'),
+              onKeyDown: this.handleEnterKey(event)
             }}
             theme={{
               container: classes.container,

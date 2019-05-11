@@ -208,6 +208,10 @@ export default class App extends Component {
       displayTopics: this.state.allTopics
     });
   }
+  
+  autoScrollToTiles() {
+    document.getElementsById('topicContainer').scrollIntoView();
+  }
 
   handleSearchSubmit(value) {
     const inputValue = deburr(value.trim()).toLowerCase();
@@ -230,9 +234,9 @@ export default class App extends Component {
         displayTopics: this.state.allTopics
       })
     }
-
-    
+    // this.autoScrollToTiles();
   }
+
 
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
