@@ -6,15 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import TopicTiles from './TopicTiles';
 import SearchAppBar from './Header';
 
-// <SearchAppBar
-// toggleModal={this.toggleModal}
-// handlePageChange={this.handlePageChange.bind(this)}
-// logout={this.logout}
-// isLogged={this.state.isLoggedIn}
-// handleSearchSubmit={this.handleSearchSubmit}
-// firstName={this.state.firstName}
-// />
-
 const LandingPage = props => {
   return (
     <Grid>
