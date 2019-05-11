@@ -25,12 +25,13 @@ const {
   addFavorite,
   deleteFavorite,
   getAllTopics,
-  news,
+  newsfeed,
   charity,
   login,
   signup,
   volunteering,
-  getFavorites
+  getFavorites,
+  newsCache
 } = require("./routes");
 app.use("/api/example", example);
 app.use("/api/seedTopics", seedTopics);
@@ -39,7 +40,7 @@ app.use("/api/addFavorites", addFavorite);
 app.use("/api/logins", login);
 app.use("/api/deleteFavorites", deleteFavorite);
 app.use("/api/getAllTopics", getAllTopics);
-app.use("/api/news", news);
+app.use("/api/news", newsfeed);
 app.use(`/api/charities`, charity);
 app.use(`/api/signups`, signup);
 app.use(`/api/volunteers`, volunteering);
@@ -49,6 +50,9 @@ app.use(`/api/getFavorites`, getFavorites);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+// Uncomment when server is stable, this will run 37 API calls 10 times per day
+// newsCache();
 
 // error handler
 app.use(function(err, req, res, next) {
