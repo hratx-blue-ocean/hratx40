@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   fs.readFile(`../cache/${keyword}.json`, (error, data) => {
     if(error) {
       console.error(error);
-      res.statusCode(404).end();
+      res.status(404).end();
     } else {
       console.log(data);
       res.send(data)
