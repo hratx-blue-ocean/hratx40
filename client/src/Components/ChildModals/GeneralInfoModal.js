@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = (props) => {
+const GeneralInfoModal = (props) => {
   const { topic, allDBTopics } = props;
   const style = {
     display: 'flex',
@@ -33,4 +33,4 @@ const Login = (props) => {
   )
 }
 
-export default Login;
+export default GeneralInfoModal;
