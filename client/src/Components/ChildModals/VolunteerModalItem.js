@@ -6,14 +6,14 @@ const VolunteerModalItem = (props) => {
 
 
     return (
-        <a href={`${props.opportunity.url}`} rel="noopener noreferrer" target="_blank" style={{color:"black", textDecoration:"none", margin:"5px"}}>
-        <Card style={{display:"flex", flexDirection:"row", alignItems:"center", justify:"center", width:"100%"}}>
-            <CardContent style={{width:"50%"}}>
+        <a id="volunteer-modal-item" href={`${props.opportunity.url}`} rel="noopener noreferrer" target="_blank">
+        <Card id="vmi-card">
+            <CardContent id="vmi-cc1">
               <h3>{props.opportunity.name}</h3>
               <p>{props.opportunity.time}</p>
             </CardContent>
             <br/>
-            <CardContent style = {{width:'100%'}}>
+            <CardContent id="vmi-cc2">
               <p>{props.opportunity.description.slice(0,300)+'...'}</p>
             </CardContent> 
         </Card>  
