@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './ChildModalStyles/SignUp.css';
+import style from './ChildModalStyles/SignUp.css';
 
 const signupReq = (e, toggleOpen, serverUrl) => {
   e.preventDefault();

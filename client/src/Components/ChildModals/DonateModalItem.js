@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import './ChildModalStyles/DonateModalItem.css'
+import style from './ChildModalStyles/DonateModalItem.css';
 
 const DonateModalItem = (props) => {
     let descr;

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './ChildModalStyles/Login.css'
+import style from './ChildModalStyles/Login.css';
 
 // const url = `http://localhost:8000`
 

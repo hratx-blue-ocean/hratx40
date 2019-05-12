@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Typography } from '@material-ui/core';
 import DonateModalItem from './DonateModalItem'
-import './ChildModalStyles/DonateModal.css'
+import style from './ChildModalStyles/DonateModal.css';
 
 class DonateModal extends React.Component {
   constructor(props) {

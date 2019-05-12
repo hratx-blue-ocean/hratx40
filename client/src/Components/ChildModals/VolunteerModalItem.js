@@ -1,10 +1,9 @@
 import React from 'react';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import style from './ChildModalStyles/VolunteerModalItem.css'
+
 const VolunteerModalItem = (props) => {
-
-
-
     return (
         <a id="volunteer-modal-item" href={`${props.opportunity.url}`} rel="noopener noreferrer" target="_blank">
         <Card id="vmi-card">
