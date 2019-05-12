@@ -28,22 +28,21 @@ const signupReq = (e, toggleOpen, serverUrl) => {
 const Signup = (props) => {
   return (
     <div id='signup-modal'>
-      <br />
       <h1>Signup</h1>
-      <br />
+      
       <input id='first-name' placeholder='Enter your first name'></input>
-      <br />
       <input id='last-name' placeholder='Enter your last name'></input>
-      <br />
       <input id='email' placeholder='Enter your email address'></input>
-      <br />
       <input id='username' placeholder='Enter a username'></input>
-      <br />
       <input id='password' type='password' placeholder='Enter password'></input>
-      <br />
       <input id='password-check' type='password' placeholder='Enter password again'></input>
-      <br />
-      <button onClick={(e) => { signupReq(e, props.toggleOpen, props.serverUrl) }}>Signup!</button>
+
+      <div id="signup-modal-button-container">
+        <button id="signup-button" onClick={(e) => { signupReq(e, props.toggleOpen, props.serverUrl) }}>Signup!</button>
+        <span id="sneaky-login-span">Already got an account? Login </span>
+        <span id="sneaky-login">here!</span>
+      </div>
+
       <span id='success'></span>
       <span id='error'></span>
     </div>

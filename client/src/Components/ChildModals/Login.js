@@ -39,23 +39,24 @@ const loginReq = (event, toggleOpen, setLogin, allDBTopics, serverUrl) => {
       }, 1000);
     })
     .catch((error) => {
-      document.getElementById('error').innerHTML = "Incorrect username/password :(";
+      document.getElementById('error').innerHTML = "Incorrect username/password";
     })
 }
 
 const Login = (props) => {
   return (
     <div id="login-modal">
-      <br />
       <h1>Login</h1>
-      <br />
+      
       <input placeholder="username/email" id="username" ></input>
-      <br />
       <input type="password" placeholder="password" id="password"></input>
-      <br />
-      <br />
-      <button onClick={(event) => { loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics, props.serverUrl) }}>Login</button>
-      <br />
+
+      <div id="login-modal-button-container">
+        <button id="login-button" onClick={(event) => { loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics, props.serverUrl) }}>Login</button>
+        <span id="sneaky-login-span">Don't have an account? Sign up </span>
+        <span id="sneaky-signup">here!</span>
+      </div>
+
       <span id="success"></span>
       <span id="error"></span>
     </div>
