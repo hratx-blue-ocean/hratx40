@@ -27,7 +27,7 @@ const Login = (props) => {
     }
   }
   return (
-    <div id="child-modal" style={{ margin: "5vw", display: 'flex' }}>
+    <div id="more-info-modal" style={{ margin: "5vw", display: 'flex' }}>
       { renderDesc() }
     </div>
   )

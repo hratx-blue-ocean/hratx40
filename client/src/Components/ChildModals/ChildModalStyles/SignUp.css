@@ -1,0 +1,12 @@
+#signup-modal{
+  justify-content: "center";
+  margin-left: 15vw;
+}
+
+#signup-modal > input{
+  width: 200px;
+}
+
+#signup-modal > #error{
+  color: red;
+}

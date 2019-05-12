@@ -22,4 +22,4 @@ const VolunteerModalItem = (props) => {
 }
 
 
-export default VolunteerModalItem
+export default VolunteerModalItem;

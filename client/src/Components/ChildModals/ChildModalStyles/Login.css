@@ -1,0 +1,12 @@
+#login-modal{
+  justify-content: "center";
+  margin-left: 15vw;
+}
+
+#login-modal > input{
+  width: 200px;
+}
+
+#login-modal > #error{
+  color: red;
+}

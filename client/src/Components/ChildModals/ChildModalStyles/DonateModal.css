@@ -1,0 +1,9 @@
+#donate-modal{
+  text-align: center;
+}
+
+#donate-modal-item-container{
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 35vh;
+}

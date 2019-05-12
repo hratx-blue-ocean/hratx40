@@ -26,4 +26,4 @@ const DonateModalItem = (props) => {
 }
 
 
-export default DonateModalItem
+export default DonateModalItem;
