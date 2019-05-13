@@ -2,9 +2,7 @@
   "name": "blue-ocean-client",
   "jest": {
     "verbose": true,
-    "moduleNameMapper": {
-      ".css": "<rootDir>/__mocks__/styleMock.js"
-    }
+    "moduleFileExtensions": [".css"]
   },
   "version": "1.0.0",
   "description": "",
