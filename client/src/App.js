@@ -6,7 +6,7 @@ import Modal from "./Components/Modal.js";
 import axios from "axios";
 import TopicPageContainer from "./Components/TopicPageContainer.js";
 
-const url = `http://localhost:8000`;
+const url = ``;
 
 export default class App extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class App extends Component {
       user_id: 0,
       favorites: [],
       username: "",
-      serverUrl: 'http://localhost:8000'//"http://18.191.186.111"
+      serverUrl: "http://18.191.186.111"
     };
     // this.api = `http://localhost:8000/api/example`;
     this.toggleModal = this.toggleModal.bind(this);
@@ -91,7 +91,7 @@ export default class App extends Component {
         if (topic.topic_name === target_name) {
           foundFavorite = true;
           axios
-            .post(`${url}/api/deleteFavorites`, {
+            .post(`${this.state.serverUrl}/api/deleteFavorites`, {
               topic_id: topic_id,
               //user_id is hardcoded, change when login is implemented
               user_id: this.state.user_id
@@ -108,7 +108,7 @@ export default class App extends Component {
       });
       if (foundFavorite === false) {
         axios
-          .post(`${url}/api/addFavorites`, {
+          .post(`${this.state.serverUrl}/api/addFavorites`, {
             topic_id: topic_id,
             //user_id is hardcoded, change when login is implemented
             user_id: this.state.user_id
