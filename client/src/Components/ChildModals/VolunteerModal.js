@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Typography } from '@material-ui/core';
 import VolunteerModalItem from './VolunteerModalItem';
-import style from './ChildModalStyles/VolunteerModal.css';
+import './ChildModalStyles/VolunteerModal.css';
 
 class VolunteerModal extends React.Component {
   constructor(props) {

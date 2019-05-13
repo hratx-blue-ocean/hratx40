@@ -3,7 +3,7 @@
   "jest": {
     "verbose": true,
     "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMocks.js"
+      "*.(css)$": "<rootDir>/__mocks__/styleMocks.js"
     }
   },
   "version": "1.0.0",
