@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Typography } from '@material-ui/core';
-import VolunteerModalItem from './VolunteerModalItem'
+import VolunteerModalItem from './VolunteerModalItem';
+import './ChildModalStyles/VolunteerModal.css';
 
 class VolunteerModal extends React.Component {
   constructor(props) {
@@ -38,12 +39,12 @@ class VolunteerModal extends React.Component {
 
   render() {
     return (
-      <div id="child-modal" style={{textAlign: "center"}}>
-        <Typography variant = 'h3' >
+      <div id="volunteer-modal">
+        <Typography variant = 'h3'>
           Volunteering Opportunities in your area
         </Typography>
         <hr/>
-        <div style={{overflowY:"scroll", height: '35vh'}}>
+        <div id="volunteer-map">
         {this.state.volunteering.map((opportunity, index) => {
           return (
             <VolunteerModalItem opportunity = {opportunity} key = {index} />

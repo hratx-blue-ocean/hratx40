@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Login from './ChildModals/Login.js'
 import VolunteerModal from './ChildModals/VolunteerModal.js'
 import DonateModal from './ChildModals/DonateModal.js';
-import MoreInfoModal from './ChildModals/MoreInfoModal';
+import GeneralInfoModal from './ChildModals/GeneralInfoModal';
 import Signup from './ChildModals/Signup';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
@@ -25,7 +25,7 @@ const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, s
     )
   } else if (type === 'more_info') {
     return (
-      <MoreInfoModal topic={topic} allDBTopics={allDBTopics} />
+      <GeneralInfoModal topic={topic} allDBTopics={allDBTopics} />
     )
   } else if (type === 'volunteer') {
     return (
@@ -49,7 +49,7 @@ const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, s
           <li>Jay Kannaiyan</li>
           <li>Jonathan Becker</li>
           <li>Jonathon Lopez</li>
-          <li>Maggie Lopez</li>
+          <li>Maggie Gray</li>
           <li>Matthew Feinburg</li>
           <li>Nicholas Miron</li>
           <li>Ryan Ferrer</li>
@@ -70,7 +70,7 @@ const chooseChild = (type, toggleOpen, setLogin, location, topic, allDBTopics, s
         <br />
         <h3 style={{ textAlign: 'center' }}>Contact Information</h3>
         <ul>
-          <li>Some relevant shit belongs here</li>
+          <li>Something relevant goes here</li>
         </ul>
       </div>
     )
@@ -87,7 +87,7 @@ const ModalDiv = (props) => {
           <Grid item xs={10} sm={8} md={8} lg={6}
             styles={{ justify: 'center' }}>
             <Paper
-              style={{ height: '45vh' }}
+              style={{ height: '60vh' }}
               square={true}>
               <svg onClick={(event) => { props.toggleOpen(event) }} xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
                 <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' />

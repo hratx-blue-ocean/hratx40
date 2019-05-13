@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = (props) => {
+const GeneralInfoModal = (props) => {
   const { topic, allDBTopics } = props;
   const style = {
     display: 'flex',
@@ -27,10 +27,10 @@ const Login = (props) => {
     }
   }
   return (
-    <div id="child-modal" style={{ margin: "5vw", display: 'flex' }}>
+    <div id="more-info-modal" style={{ margin: "5vw", display: 'flex' }}>
       { renderDesc() }
     </div>
   )
 }
 
-export default Login;
+export default GeneralInfoModal;

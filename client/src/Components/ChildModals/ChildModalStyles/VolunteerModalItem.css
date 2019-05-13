@@ -1,0 +1,21 @@
+#volunteer-modal-item{
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+}
+
+#volunteer-modal-item > #vmi-card{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#vmi-card > #vmi-cc2{
+  width: 50%;
+}
+
+#vmi-card > #vmi-cc2{
+  width: 100%;
+}
