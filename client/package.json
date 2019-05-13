@@ -1,5 +1,11 @@
 {
   "name": "blue-ocean-client",
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(css|less)$": "/__mocks__/styleMock.js"
+    }
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
