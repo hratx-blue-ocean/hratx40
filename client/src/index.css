@@ -19,10 +19,11 @@ body {
 body,
 html {
   font-family: 'Comfortaa', cursive;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
