@@ -7,6 +7,7 @@
 var app = require('../server');
 var debug = require('debug')('BlueOcean:server');
 var http = require('http');
+var fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -18,6 +19,11 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
+
+var options = {
+	key: fs.readFileSync("/etc/ssh/ripl.today.key"),
+	cert: fs.readFileSync("/etc/ssh/ripl.today.pem")
+};
 
 var server = http.createServer(app);
 
