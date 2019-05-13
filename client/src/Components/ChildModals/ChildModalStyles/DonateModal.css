@@ -3,7 +3,10 @@
 }
 
 #donate-modal-item-container{
-  overflow: hidden;
   overflow-y: scroll;
-  height: 35vh;
+  height: 50vh;
+}
+
+::-webkit-scrollbar{
+  width: 0px;
 }

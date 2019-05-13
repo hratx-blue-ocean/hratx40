@@ -4,5 +4,9 @@
 
 #volunteer-modal > #volunteer-map{
   overflow-y: scroll;
-  height: 35vh;
+  height: 50vh;
+}
+
+::-webkit-scrollbar{
+  width: 0px;
 }
