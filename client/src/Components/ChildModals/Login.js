@@ -13,33 +13,39 @@ const loginReq = (event, toggleOpen, setLogin, allDBTopics, serverUrl) => {
     }
   })
     .then((response) => {
-      document.getElementById('success').innerHTML = "Success!";
-      allDBTopics.sort((a, b) => {
-        const temp = response.data.favorites;
-        for (let i = 0; i < temp.length; i++) {
-          if (temp[i].topic_name === a.topic_name) return -1;
-        }
-        if (a.topic_name < b.topic_name) return -1;
-        else return 1;
-      });
+      if(response.status === 200) {
+        document.getElementById('success').innerHTML = "Success!";
+        allDBTopics.sort((a, b) => {
+          const temp = response.data.favorites;
+          for (let i = 0; i < temp.length; i++) {
+            if (temp[i].topic_name === a.topic_name) return -1;
+          }
+          if (a.topic_name < b.topic_name) return -1;
+          else return 1;
+        });
 
-      window.localStorage.setItem('userId', response.data.user_id)
-      window.localStorage.setItem('userFName', response.data.first_name)
-      window.localStorage.setItem('username', response.data.username)
-      window.localStorage.setItem('userFave', JSON.stringify(response.data.favorites))
-      setLogin({
-        isLoggedIn: true,
-        user_id: response.data.user_id,
-        firstName: response.data.first_name,
-        username: response.data.username,
-        favorites: response.data.favorites
-      });
+        window.localStorage.setItem('userId', response.data.user_id)
+        window.localStorage.setItem('userFName', response.data.first_name)
+        window.localStorage.setItem('username', response.data.username)
+        window.localStorage.setItem('userFave', JSON.stringify(response.data.favorites))
+        setLogin({
+          isLoggedIn: true,
+          user_id: response.data.user_id,
+          firstName: response.data.first_name,
+          username: response.data.username,
+          favorites: response.data.favorites
+        });
+      } else {
+        document.getElementById('success').innerHTML = "";
+        document.getElementById('error').innerHTML = "Incorrect username/password :(";
+      }
       setTimeout(() => {
         toggleOpen();
       }, 1000);
     })
     .catch((error) => {
-      document.getElementById('error').innerHTML = "Incorrect username/password";
+      document.getElementById('success').innerHTML = "";
+      document.getElementById('error').innerHTML = "Incorrect username/password :(";
     })
 }
 
