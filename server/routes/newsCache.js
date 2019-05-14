@@ -365,7 +365,7 @@ const newsCache = () => {
       console.error(`ERROR: ${err}`)
     });
 
-    axios.get(`https://newsapi.org/v2/everything?q=(United Ways)&sortBy=popularity&language=en&apiKey=${process.env.NEWS_API}`)
+    axios.get(`https://newsapi.org/v2/everything?q=(United Ways AND charity)&sortBy=popularity&language=en&apiKey=${process.env.NEWS_API}`)
     .then((results) => {
       fs.writeFile('../cache/United Ways.json', JSON.stringify([results.data]), (error) => {
         if (error) console.error(error)
