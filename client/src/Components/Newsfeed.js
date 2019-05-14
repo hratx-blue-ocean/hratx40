@@ -14,7 +14,6 @@ class Newsfeed extends React.Component {
     let topic = this.props.currentTopic;
     axios.get(`http://localhost:8000/api/newsfeed?topic=${topic}`)
       .then((res) => {
-        console.log("newsfeed client: ", res.data)
         this.setState({
           articles: res.data[0].articles
         })
