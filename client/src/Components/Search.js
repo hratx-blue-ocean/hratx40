@@ -1,60 +1,59 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import deburr from 'lodash/deburr';
-import Autosuggest from 'react-autosuggest';
-import match from 'autosuggest-highlight/match';
-import parse from 'autosuggest-highlight/parse';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
-import MenuItem from '@material-ui/core/MenuItem';
-import Popper from '@material-ui/core/Popper';
-import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
+import React from "react";
+import PropTypes from "prop-types";
+import deburr from "lodash/deburr";
+import Autosuggest from "react-autosuggest";
+import match from "autosuggest-highlight/match";
+import parse from "autosuggest-highlight/parse";
+import TextField from "@material-ui/core/TextField";
+import Paper from "@material-ui/core/Paper";
+import MenuItem from "@material-ui/core/MenuItem";
+import { withStyles } from "@material-ui/core/styles";
+import SearchIcon from "@material-ui/icons/Search";
 
-const suggestions = [ 
-  { label: 'Children\'s and Family Services' },
-  { label: 'Homeless Services' },
-  { label: 'Youth Development, Shelter, and Crisis Services' },
-  { label: 'Multipurpose Human Service Organizations' },
-  { label: 'Food Banks, Food Pantries, and Food Distribution' },
-  { label: 'Social Services' },
-  { label: 'Scholarship and Financial Support' },
-  { label: 'Private Liberal Arts Colleges' },
-  { label: 'Youth Education Programs and Services' },
-  { label: 'Education Policy and Reform' },
-  { label: 'Other Education Programs and Services' },
-  { label: 'Private Elementary & Secondary Schools' },
-  { label: 'Universities, Graduate Schools, and Technological Institutes' },
-  { label: 'Adult Education Programs and Services' },
-  { label: 'Early Childhood Programs and Services' },
-  { label: 'Special Education' },
-  { label: 'International Peace, Security, and Affairs' },
-  { label: 'Development and Relief Services' },
-  { label: 'Humanitarian Relief Supplies' },
-  { label: 'Foreign Charity Support Organizations' },
-  { label: 'Advocacy and Education' },
-  { label: 'Religious Media and Broadcasting' },
-  { label: 'Religious Activities' },
-  { label: 'Wildlife Conservation' },
-  { label: 'Animal Rights, Welfare, and Services' },
-  { label: 'Zoos and Aquariums' },
-  { label: 'Libraries, Historical Societies and Landmark Preservation' },
-  { label: 'Museums' },
-  { label: 'Performing Arts' },
-  { label: 'Public Broadcasting and Media' },
-  { label: 'Botanical Gardens, Parks, and Nature Centers' },
-  { label: 'Environmental Protection and Conservation' },
-  { label: 'Patient and Family Support' },
-  { label: 'Diseases, Disorders, and Disciplines' },
-  { label: 'Treatment and Prevention Services' },
-  { label: 'Medical Research' },
-  { label: 'Community Foundations' },
-  { label: 'Fundraising' },
-  { label: 'Housing and Neighborhood Development' },
-  { label: 'United Ways' },
-  { label: 'Jewish Federations' },
-  { label: 'Non-Medical Science & Technology Research' },
-  { label: 'Social and Public Policy Research' } 
+const suggestions = [
+  { label: "Children's and Family Services" },
+  { label: "Homeless Services" },
+  { label: "Youth Development, Shelter, and Crisis Services" },
+  { label: "Multipurpose Human Service Organizations" },
+  { label: "Food Banks, Food Pantries, and Food Distribution" },
+  { label: "Social Services" },
+  { label: "Scholarship and Financial Support" },
+  { label: "Private Liberal Arts Colleges" },
+  { label: "Youth Education Programs and Services" },
+  { label: "Education Policy and Reform" },
+  { label: "Other Education Programs and Services" },
+  { label: "Private Elementary & Secondary Schools" },
+  { label: "Universities, Graduate Schools, and Technological Institutes" },
+  { label: "Adult Education Programs and Services" },
+  { label: "Early Childhood Programs and Services" },
+  { label: "Special Education" },
+  { label: "International Peace, Security, and Affairs" },
+  { label: "Development and Relief Services" },
+  { label: "Humanitarian Relief Supplies" },
+  { label: "Foreign Charity Support Organizations" },
+  { label: "Advocacy and Education" },
+  { label: "Religious Media and Broadcasting" },
+  { label: "Religious Activities" },
+  { label: "Wildlife Conservation" },
+  { label: "Animal Rights, Welfare, and Services" },
+  { label: "Zoos and Aquariums" },
+  { label: "Libraries, Historical Societies and Landmark Preservation" },
+  { label: "Museums" },
+  { label: "Performing Arts" },
+  { label: "Public Broadcasting and Media" },
+  { label: "Botanical Gardens, Parks, and Nature Centers" },
+  { label: "Environmental Protection and Conservation" },
+  { label: "Patient and Family Support" },
+  { label: "Diseases, Disorders, and Disciplines" },
+  { label: "Treatment and Prevention Services" },
+  { label: "Medical Research" },
+  { label: "Community Foundations" },
+  { label: "Fundraising" },
+  { label: "Housing and Neighborhood Development" },
+  { label: "United Ways" },
+  { label: "Jewish Federations" },
+  { label: "Non-Medical Science & Technology Research" },
+  { label: "Social and Public Policy Research" }
 ];
 
 function renderInputComponent(inputProps) {
@@ -69,10 +68,10 @@ function renderInputComponent(inputProps) {
           inputRef(node);
         },
         classes: {
-          input: classes.input,
-        },
+          input: classes.input
+        }
       }}
-      {...other} 
+      {...other}
     />
   );
 }
@@ -93,7 +92,7 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
             <strong key={String(index)} style={{ fontWeight: 300 }}>
               {part.text}
             </strong>
-          ),
+          )
         )}
       </div>
     </MenuItem>
@@ -106,33 +105,33 @@ function getSuggestionValue(suggestion) {
 
 const styles = theme => ({
   root: {
-    width: '300px',
-    fontFamily: 'Comfortaa',
+    width: "300px",
+    fontFamily: "Comfortaa"
   },
   container: {
-    position: 'relative',
+    position: "relative"
   },
   suggestionsContainerOpen: {
-    position: 'absolute',
+    position: "absolute",
     zIndex: 1,
     marginTop: theme.spacing.unit,
     left: 0,
-    right: 0,
+    right: 0
   },
   suggestion: {
-    display: 'block',
+    display: "block"
   },
   suggestionsList: {
     margin: 0,
     padding: 0,
-    listStyleType: 'none',
+    listStyleType: "none"
   },
   divider: {
-    height: theme.spacing.unit * 2,
+    height: theme.spacing.unit * 2
   },
   searchContainer: {
-    display: 'flex',
-    flexDirection: 'row-reverse'
+    display: "flex",
+    flexDirection: "row-reverse"
   }
 });
 
@@ -141,47 +140,54 @@ class IntegrationAutosuggest extends React.Component {
     super(props);
 
     this.state = {
-      single: '',
-      popper: '',
-      suggestions: [],
-    }
+      single: "",
+      popper: "",
+      suggestions: []
+    };
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", () => {
+      this.props.handleSearchSubmit(this.state.single);
+    });
   }
 
   getSuggestions(value) {
     const inputValue = deburr(value.trim()).toLowerCase();
     const inputLength = inputValue.length;
     let count = 0;
-  
+
     return inputLength === 0
       ? []
       : suggestions.filter(suggestion => {
           const keep =
-            count < 5 && suggestion.label.toLowerCase().includes(inputValue.toLowerCase());
-  
+            count < 5 &&
+            suggestion.label.toLowerCase().includes(inputValue.toLowerCase());
+
           if (keep) {
             count += 1;
           }
-  
+
           return keep;
         });
   }
 
   handleSuggestionsFetchRequested({ value }) {
     this.setState({
-      suggestions: this.getSuggestions(value),
+      suggestions: this.getSuggestions(value)
     });
   }
 
   handleSuggestionsClearRequested() {
     this.setState({
-      suggestions: [],
+      suggestions: []
     });
   }
 
-  handleChange(event, {newValue, method}) {
+  handleChange(event, { newValue, method }) {
     this.setState({
       single: newValue
-    })
+    });
   }
 
   handleEnterKey(event) {
@@ -196,32 +202,41 @@ class IntegrationAutosuggest extends React.Component {
     const autosuggestProps = {
       renderInputComponent,
       suggestions: this.state.suggestions,
-      onSuggestionsFetchRequested: this.handleSuggestionsFetchRequested.bind(this),
-      onSuggestionsClearRequested: this.handleSuggestionsClearRequested.bind(this),
+      onSuggestionsFetchRequested: this.handleSuggestionsFetchRequested.bind(
+        this
+      ),
+      onSuggestionsClearRequested: this.handleSuggestionsClearRequested.bind(
+        this
+      ),
       getSuggestionValue,
-      renderSuggestion,
-    };   
+      renderSuggestion
+    };
 
     return (
       <div className={classes.searchContainer}>
         <div className={classes.searchIcon}>
-          <SearchIcon id='searchIcon' onClick={() => {this.props.handleSearchSubmit(this.state.single)}}/>
+          <SearchIcon
+            id="searchIcon"
+            onClick={() => {
+              this.props.handleSearchSubmit(this.state.single);
+            }}
+          />
         </div>
         <div className={classes.root}>
           <Autosuggest
-            id='searchField'
+            id="searchField"
             {...autosuggestProps}
             inputProps={{
               classes,
-              placeholder: 'Search by topic',
+              placeholder: "Search by topic",
               value: this.state.single,
-              onChange: this.handleChange.bind(this),
+              onChange: this.handleChange.bind(this)
             }}
             theme={{
               container: classes.container,
               suggestionsContainerOpen: classes.suggestionsContainerOpen,
               suggestionsList: classes.suggestionsList,
-              suggestion: classes.suggestion,
+              suggestion: classes.suggestion
             }}
             renderSuggestionsContainer={options => (
               <Paper {...options.containerProps} square>
@@ -236,7 +251,7 @@ class IntegrationAutosuggest extends React.Component {
 }
 
 IntegrationAutosuggest.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(IntegrationAutosuggest);

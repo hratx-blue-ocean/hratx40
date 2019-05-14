@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import TopicPageContainer from './Components/TopicPageContainer.js';
-import LandingPage from './Components/LandingPage.js';
-import Modal from './Components/Modal.js';
-import deburr from 'lodash/deburr';
+import React, { Component } from "react";
+import axios from "axios";
+import TopicPageContainer from "./Components/TopicPageContainer.js";
+import LandingPage from "./Components/LandingPage.js";
+import Modal from "./Components/Modal.js";
+import deburr from "lodash/deburr";
 
 export default class App extends Component {
   constructor(props) {
@@ -12,16 +12,16 @@ export default class App extends Component {
       displayTopics: [],
       allTopics: [],
       isOpen: false,
-      modalType: 'login',
-      page: 'home',
-      currentTopic: 'Homeless Services',
-      location: '',
+      modalType: "login",
+      page: "home",
+      currentTopic: "Homeless Services",
+      location: "",
       isLoggedIn: false,
-      firstName: '',
+      firstName: "",
       user_id: 0,
       favorites: [],
-      username: '',
-      serverUrl: 'http://18.191.186.111'
+      username: "",
+      serverUrl: "http://18.191.186.111"
     };
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -37,59 +37,84 @@ export default class App extends Component {
   componentDidMount() {
     this.geolocate();
     this.getAllTopics();
-   
 
-    if (window.localStorage.getItem('userId')) {
-      this.setState({
-        user_id: window.localStorage.getItem('userId'),
-        firstName: window.localStorage.getItem('userFName'),
-        username: window.localStorage.getItem('username'),
-        isLoggedIn: true
-      }, () => {
-        axios.get(`${this.state.serverUrl}/api/getFavorites?user_id=${this.state.user_id}`)
-        .then(data => {
-          let tempAllTopics = this.state.allTopics;
-          tempAllTopics.sort((a,b) => {
-            const temp = data.data;
-            for (let i = 0; i < temp.length; i++) {
-              if (temp[i].topic_name === a.topic_name) return -1;
-            }
-            if (a.topic_name < b.topic_name) return -1;
-            else return 1;
-          });
-          this.setState({
-            favorites: data.data,
-            displayTopics: tempAllTopics,
-          })
-        })
-        .catch(err => {throw err})
-      })
+    if (window.localStorage.getItem("userId")) {
+      this.setState(
+        {
+          user_id: window.localStorage.getItem("userId"),
+          firstName: window.localStorage.getItem("userFName"),
+          username: window.localStorage.getItem("username"),
+          isLoggedIn: true
+        },
+        () => {
+          axios
+            .get(
+              `${this.state.serverUrl}/api/getFavorites?user_id=${
+                this.state.user_id
+              }`
+            )
+            .then(data => {
+              let allTopics = this.state.allTopics;
+              // allTopics.sort((a, b) => {
+              //   const favorites = data.data;
+              //   for (let i = 0; i < favorites.length; i++) {
+              //     if (favorites[i].topic_name === a.topic_name) return -1;
+              //   }
+              //   if (a.topic_name < b.topic_name) return -1;
+              //   else return 1;
+              // });
+              this.setState({
+                favorites: data.data //,
+                // displayTopics: allTopics
+              });
+            })
+            .catch(err => {
+              throw err;
+            });
+        }
+      );
     }
   }
 
   getAllTopics() {
-    axios.get(`${this.state.serverUrl}/api/getAllTopics`)
-    .then(results => {
-      let allDBTopics = results.data;
-      allDBTopics.sort((a, b) => {
-        const currFavs = this.state.favorites;
-        for (let i = 0; i < currFavs.length; i++) {
-          if (currFavs[i].topic_name === a.topic_name) return -1;
-        }
-        if (a.topic_name < b.topic_name) return -1;
-        else return 1;
+    axios
+      .get(`${this.state.serverUrl}/api/getAllTopics`)
+      .then(results => {
+        let allDBTopics = results.data;
+        let currFavs = this.state.favorites;
+        let newAll = [];
+        allDBTopics.sort((a, b) => {
+          if (b.topic_name > a.topic_name) return -1;
+        });
+        currFavs.sort((a, b) => {
+          if (b.topic_name > a.topic_name) return -1;
+        });
+        allDBTopics.forEach(value => {
+          let counter = false;
+          for (let i = 0; i < currFavs.length; i++) {
+            if (currFavs[i].topic_name === value.topic_name) {
+              counter = true;
+            }
+          }
+          if (counter === false) {
+            newAll.push(value);
+          }
+        });
+
+        let all = currFavs.concat(newAll);
+        this.setState({
+          allTopics: all,
+          displayTopics: all
+        });
+      })
+      .catch(err => {
+        throw err;
       });
-      this.setState({ 
-        allTopics: allDBTopics, 
-        displayTopics: allDBTopics 
-      });
-    })
-    .catch(err => {throw err})
   }
 
   handleTopicTileClick(e, target, topic_id, target_name) {
     e.preventDefault();
-    if (target === 'fav') {
+    if (target === "fav") {
       let route = `${this.state.serverUrl}/api/addFavorites`;
       for (let favorite of this.state.favorites) {
         if (favorite.topic_name === target_name) {
@@ -97,20 +122,23 @@ export default class App extends Component {
           break;
         }
       }
-      axios.post(route, {
-        topic_id: topic_id,
-        user_id: this.state.user_id
-      })
-      .then(results => {
-        const allFavorites = results.data;
-        this.setState({
-          favorites: allFavorites,
+      axios
+        .post(route, {
+          topic_id: topic_id,
+          user_id: this.state.user_id
+        })
+        .then(results => {
+          const allFavorites = results.data;
+          this.setState({
+            favorites: allFavorites
+          });
+        })
+        .catch(err => {
+          throw err;
         });
-      })
-      .catch(err => {throw err});
-    } else if (target === 'topicTile') {
+    } else if (target === "topicTile") {
       this.setState({
-        page: 'action',
+        page: "action",
         currentTopic: target_name
       });
     }
@@ -121,8 +149,8 @@ export default class App extends Component {
     this.setState({
       isLoggedIn: false,
       user_id: 0,
-      firstName: '',
-      username: '',
+      firstName: "",
+      username: "",
       favorites: []
     });
     localStorage.clear();
@@ -165,37 +193,52 @@ export default class App extends Component {
     this.setState(data);
   }
 
+  //if (page === "home") {
+  //   let allTopics = this.state.displayTopics;
+  //   allTopics.sort((a, b) => {
+  //     let userFavorites = this.state.favorites.sort();
+  //     for (let i = 0; i < userFavorites.length; i++) {
+  //       if (userFavorites[i].topic_name === a.topic_name) return -1;
+  //     }
+  //     if (a.topic_name < b.topic_name) return -1;
+  //     else return 1;
+  //   });
+  //   this.setState({ displayTopics: allTopics });
+  // }
+
   handlePageChange(e, page) {
     e.preventDefault();
-    this.setState({page: page});
+    this.setState({ page: page });
   }
 
   handleSearchSubmit(value) {
     const inputValue = deburr(value.trim()).toLowerCase();
     const inputLength = inputValue.length;
-  
-    let filtered = inputLength === 0
-      ? []
-      : this.state.allTopics.filter(suggestion => {
-          const keep =
-            suggestion.topic_name.toLowerCase().includes(inputValue.toLowerCase());
-  
-          return keep;
-        });
+
+    let filtered =
+      inputLength === 0
+        ? []
+        : this.state.allTopics.filter(suggestion => {
+            const keep = suggestion.topic_name
+              .toLowerCase()
+              .includes(inputValue.toLowerCase());
+
+            return keep;
+          });
     if (inputLength) {
       this.setState({
         displayTopics: filtered
-      })
+      });
     } else {
       this.setState({
         displayTopics: this.state.allTopics
-      })
+      });
     }
   }
 
   // When action tiles and navbar are active, remove handlePageChange fn and buttons (Jay)
   render() {
-    if (this.state.page === 'home') {
+    if (this.state.page === "home") {
       return (
         <>
           <LandingPage
@@ -220,7 +263,7 @@ export default class App extends Component {
           />
         </>
       );
-    } else if (this.state.page === 'action') {
+    } else if (this.state.page === "action") {
       return (
         <>
           <TopicPageContainer
