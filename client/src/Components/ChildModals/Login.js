@@ -13,7 +13,6 @@ const loginReq = (event, toggleOpen, setLogin, allDBTopics, serverUrl) => {
     }
   })
     .then((response) => {
-      console.log(response)
       if(response.status === 200) {
         document.getElementById('success').innerHTML = "Success!";
         allDBTopics.sort((a, b) => {
