@@ -4,7 +4,7 @@ const seedTopics = require("./seedTopics");
 const search = require("./search");
 const addFavorite = require("./favorites");
 const login = require("./login");
-const news = require("./newsfeed");
+const newsfeed = require("./newsfeed");
 const deleteFavorite = require("./deleteFave");
 const getAllTopics = require("./getAllTopics");
 const signup = require("./signup");
@@ -19,7 +19,7 @@ module.exports = {
   deleteFavorite,
   charity,
   getAllTopics,
-  news,
+  newsfeed,
   login,
   signup,
   volunteering,
