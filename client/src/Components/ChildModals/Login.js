@@ -55,8 +55,9 @@ const loginReq = (event, toggleOpen, setLogin, allDBTopics, serverUrl) => {
       }, 1000);
     })
     .catch(error => {
+      document.getElementById("success").innerHTML = "";
       document.getElementById("error").innerHTML =
-        "Incorrect username/password";
+        "Incorrect username/password :(";
     });
 };
 
