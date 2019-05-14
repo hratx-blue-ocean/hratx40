@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './ChildModalStyles/Login.css';
 
 // const url = `http://localhost:8000`
 
@@ -44,26 +45,31 @@ const loginReq = (event, toggleOpen, setLogin, allDBTopics, serverUrl) => {
       }, 1000);
     })
     .catch((error) => {
+<<<<<<< HEAD
       document.getElementById('success').innerHTML = "";
       document.getElementById('error').innerHTML = "Incorrect username/password :(";
+=======
+      document.getElementById('error').innerHTML = "Incorrect username/password";
+>>>>>>> d776b556f5f2456a4c59d05ce40b3e467c5cd06b
     })
 }
 
 const Login = (props) => {
   return (
-    <div id="child-modal" style={{ justify: "center", marginLeft: "15vw" }}>
-      <br />
+    <div id="login-modal">
       <h1>Login</h1>
-      <br />
-      <input placeholder="username/email" id="username" style={{ width: "200px" }}></input>
-      <br />
-      <input type="password" placeholder="password" id="password" style={{ width: "200px" }}></input>
-      <br />
-      <br />
-      <button onClick={(event) => { loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics, props.serverUrl) }}>Login</button>
-      <br />
+      
+      <input placeholder="username/email" id="username" ></input>
+      <input type="password" placeholder="password" id="password"></input>
+
+      <div id="login-modal-button-container">
+        <button id="login-button" onClick={(event) => { loginReq(event, props.toggleOpen, props.setLogin, props.allDBTopics, props.serverUrl) }}>Login</button>
+        <span id="sneaky-login-span">Don't have an account? Sign up </span>
+        <span id="sneaky-signup">here!</span>
+      </div>
+
       <span id="success"></span>
-      <span id="error" style={{ color: "red" }}></span>
+      <span id="error"></span>
     </div>
   )
 }

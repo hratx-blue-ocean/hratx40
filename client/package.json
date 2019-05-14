@@ -1,5 +1,11 @@
 {
   "name": "blue-ocean-client",
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(css|jpg|png)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +13,7 @@
     "build-app": "webpack --mode production",
     "build": "webpack -d",
     "test": "jest",
-    "server": "webpack-dev-server --mode development --open --hot"
+    "server": "webpack-dev-server --mode development --open --hot -w"
   },
   "author": "",
   "license": "ISC",

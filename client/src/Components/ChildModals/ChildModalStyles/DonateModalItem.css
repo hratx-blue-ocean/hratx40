@@ -1,0 +1,20 @@
+#donate-modal-item-container{
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+}
+
+#dmi-card{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+#dmi-card > #dmi-cc1 {
+  width: 50%;
+}
+
+#dmi-card > #dmi-cc2{
+  width: 100%;
+}
