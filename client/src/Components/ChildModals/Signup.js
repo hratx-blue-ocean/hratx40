@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './ChildModalStyles/SignUp.css';
 
 const signupReq = (e, toggleOpen, serverUrl) => {
   e.preventDefault();
@@ -26,25 +27,24 @@ const signupReq = (e, toggleOpen, serverUrl) => {
 }
 const Signup = (props) => {
   return (
-    <div id='child-modal' style={{ justify: 'center', marginLeft: '15vw' }}>
-      <br />
+    <div id='signup-modal'>
       <h1>Signup</h1>
-      <br />
-      <input id='first-name' placeholder='Enter your first name' style={{ width: "200px" }}></input>
-      <br />
-      <input id='last-name' placeholder='Enter your last name' style={{ width: "200px" }}></input>
-      <br />
-      <input id='email' placeholder='Enter your email address' style={{ width: "200px" }}></input>
-      <br />
-      <input id='username' placeholder='Enter a username' style={{ width: "200px" }}></input>
-      <br />
-      <input id='password' type='password' placeholder='Enter password' style={{ width: "200px" }}></input>
-      <br />
-      <input id='password-check' type='password' placeholder='Enter password again' style={{ width: "200px" }}></input>
-      <br />
-      <button onClick={(e) => { signupReq(e, props.toggleOpen, props.serverUrl) }}>Signup!</button>
+      
+      <input id='first-name' placeholder='Enter your first name'></input>
+      <input id='last-name' placeholder='Enter your last name'></input>
+      <input id='email' placeholder='Enter your email address'></input>
+      <input id='username' placeholder='Enter a username'></input>
+      <input id='password' type='password' placeholder='Enter password'></input>
+      <input id='password-check' type='password' placeholder='Enter password again'></input>
+
+      <div id="signup-modal-button-container">
+        <button id="signup-button" onClick={(e) => { signupReq(e, props.toggleOpen, props.serverUrl) }}>Signup!</button>
+        <span id="sneaky-login-span">Already got an account? Login </span>
+        <span id="sneaky-login">here!</span>
+      </div>
+
       <span id='success'></span>
-      <span id='error' style={{ color: 'red' }}></span>
+      <span id='error'></span>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import NewsFeedItem from "./NewsfeedItem.js"
+import axios from 'axios';
 
 class Newsfeed extends React.Component {
   constructor(props) {
@@ -271,18 +272,18 @@ class Newsfeed extends React.Component {
     }
   }
   // Uncomment the code below to use NEWS API
-  // componentDidMount() {
-  //   axios.get(`http://localhost:8000/api/news?topic=${this.props.currentTopic}`)
-  //     .then((res) => {
-  //       // console.log("newsfeed client: ", res.data)
-  //       this.setState({
-  //         articles: res.data
-  //       })
-  //     })
-  //     .catch((err) => {
-  //       throw err;
-  //     });
-  // }
+  componentDidMount() {
+    axios.get(`http://localhost:8000/api/news?topic=${this.props.currentTopic}`)
+      .then((res) => {
+        // console.log("newsfeed client: ", res.data)
+        this.setState({
+          articles: res.data
+        })
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
 
   render() {
     return (

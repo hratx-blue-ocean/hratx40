@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Login from "./ChildModals/Login.js";
 import VolunteerModal from "./ChildModals/VolunteerModal.js";
 import DonateModal from "./ChildModals/DonateModal.js";
-import MoreInfoModal from "./ChildModals/MoreInfoModal";
+import GeneralInfoModal from "./ChildModals/GeneralInfoModal";
 import Signup from "./ChildModals/Signup";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
@@ -33,7 +33,7 @@ const chooseChild = (
   } else if (type === "donate") {
     return <DonateModal topic={topic} serverUrl={serverUrl} />;
   } else if (type === "more_info") {
-    return <MoreInfoModal topic={topic} allDBTopics={allDBTopics} />;
+    return <GeneralInfoModal topic={topic} allDBTopics={allDBTopics} />;
   } else if (type === "volunteer") {
     return (
       <VolunteerModal location={location} topic={topic} serverUrl={serverUrl} />
@@ -54,7 +54,7 @@ const chooseChild = (
           <li>Jay Kannaiyan</li>
           <li>Jonathan Becker</li>
           <li>Jonathon Lopez</li>
-          <li>Maggie Lopez</li>
+          <li>Maggie Gray</li>
           <li>Matthew Feinburg</li>
           <li>Nicholas Miron</li>
           <li>Ryan Ferrer</li>
@@ -75,7 +75,7 @@ const chooseChild = (
         <br />
         <h3 style={{ textAlign: "center" }}>Contact Information</h3>
         <ul>
-          <li>Some relevant shit belongs here</li>
+          <li>Something relevant goes here</li>
         </ul>
       </div>
     );
@@ -103,7 +103,7 @@ const ModalDiv = props => {
             lg={6}
             styles={{ justify: "center" }}
           >
-            <Paper style={{ height: "45vh" }} square={true}>
+            <Paper style={{ height: "60vh" }} square={true}>
               <svg
                 onClick={event => {
                   props.toggleOpen(event);

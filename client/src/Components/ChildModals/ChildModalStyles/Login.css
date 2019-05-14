@@ -1,0 +1,61 @@
+#login-modal{
+  justify-content: "center";
+  margin-left: 14vw;
+}
+
+#login-modal > input{
+  height: 35px;
+  width: 400px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.658);
+  cursor: text;
+}
+
+#login-modal > input:focus{
+  outline: none;
+  border: 1px solid #61dafb;
+  box-shadow: 0 0 0 0;
+}
+
+#login-modal > #error{
+  color: red;
+}
+
+#login-modal-button-container{
+  margin-top: 5px;
+}
+
+#login-button {
+  background-color: #ef9494;
+  border: 1px solid #ef9494;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  padding: 12px 40px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#login-button:focus{
+  outline: none;
+  border: 1px solid #61dafb;
+  box-shadow: 0 0 0 0;
+}
+
+#sneaky-signup-span{
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+#sneaky-signup{
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+#sneaky-signup:hover{
+  color: #61dafb;
+}

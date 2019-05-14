@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Typography } from '@material-ui/core';
 import DonateModalItem from './DonateModalItem'
+import './ChildModalStyles/DonateModal.css';
 
 class DonateModal extends React.Component {
   constructor(props) {
@@ -37,12 +38,12 @@ class DonateModal extends React.Component {
 
   render() {
     return (
-      <div id="child-modal" style={{textAlign: "center"}}>
+      <div id="donate-modal">
         <Typography variant = 'h3' >
           Donate to these Charities!
         </Typography>
         <hr/>
-        <div style={{overflowY:"scroll", height: '35vh'}}>
+        <div id="donate-modal-item-container">
         {this.state.Donating.map((opportunity, index) => {
           return (
             <DonateModalItem opportunity = {opportunity} key = {index} />
