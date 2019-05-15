@@ -1,0 +1,8 @@
+#volunteer-modal{
+  text-align: center;
+}
+
+#volunteer-modal > #volunteer-map{
+  overflow-y: scroll;
+  height: 35vh;
+}

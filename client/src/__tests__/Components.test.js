@@ -7,11 +7,20 @@ import App from '../App';
 
 afterEach(cleanup);
 
-
-xit('CheckboxWithLabel changes the text after click', async () => {
+it('Should load the hero banner text', async () => {
   const { getByText } = render(<App />);
+  const hero = await waitForElement(() => getByText(/throw your pebble/i))
+  expect(hero).toBeTruthy();
+});
 
-  const dolphin = await waitForElement(() => getByText(/dolphin/i))
+// xit('CheckboxWithLabel changes the text after click', async () => {
+//   const { getByText } = render(<App />);
 
-  expect(dolphin).toBeTruthy();
+//   const dolphin = await waitForElement(() => getByText(/dolphin/i))
+
+//   expect(dolphin).toBeTruthy();
+// });
+
+it('Is a dummy test', async () => {
+  expect(true).toBe(true);
 });

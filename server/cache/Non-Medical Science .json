@@ -1,0 +1,266 @@
+[{
+"status": "ok",
+"totalResults": 6490,
+"articles": [
+  {
+    "source": {
+      "id": "wired",
+      "name": "Wired"
+    },
+    "author": "Nicholas Thompson",
+    "title": "15 Months of Fresh Hell Inside Facebook",
+    "description": "Scandals. Backstabbing. Resignations. Record profits. Time Bombs. In early 2018, Mark Zuckerberg set out to fix Facebook. Here's how that turned out.",
+    "url": "https://www.wired.com/story/facebook-mark-zuckerberg-15-months-of-fresh-hell/",
+    "urlToImage": "https://media.wired.com/photos/5cafc0b9d7df712212ad118b/191:100/pass/FB%20Social%20Share%20Image.jpg",
+    "publishedAt": "2019-04-16T09:30:00Z",
+    "content": "The streets of Davos, Switzerland, were iced over on the night of January 25, 2018, which added a slight element of danger to the prospect of trekking to the Hotel Seehof for George Soros annual banquet. The aged financier has a tradition of hosting a dinner … [+74950 chars]"
+  },
+  {
+    "source": {
+      "id": "techcrunch",
+      "name": "TechCrunch"
+    },
+    "author": "Jonathan Shieber",
+    "title": "As researchers pursue links between the bacteria and human health, startups stand to benefit",
+    "description": "In 2009, the National Institutes of Health launched a five-year, $150 million project to stimulate research into a new field of medicine examining the connections between the millions of bacteria living in the human gut and overall human health. Spurred by th…",
+    "url": "http://techcrunch.com/2019/04/17/as-researchers-pursue-links-between-the-microbiome-and-human-health-startups-reap-the-rewards/",
+    "urlToImage": "https://techcrunch.com/wp-content/uploads/2016/07/bacteria.jpg?w=600",
+    "publishedAt": "2019-04-17T17:00:40Z",
+    "content": "In 2009, the National Institutes of Health launched a five-year, $150 million project to stimulate research into a new field of medicine examining the connections between the millions of bacteria living in the human gut and overall human health.\r\nSpurred by t… [+8360 chars]"
+  },
+  {
+    "source": {
+      "id": "techcrunch",
+      "name": "TechCrunch"
+    },
+    "author": "Anthony Ha",
+    "title": "Daily Crunch: Google Play rethinks app ratings",
+    "description": "The Daily Crunch is TechCrunch’s roundup of our biggest and most important stories. If you’d like to get this delivered to your inbox every day at around 9am Pacific, you can subscribe here. 1. Google Play is changing how app ratings work Specifically, Google…",
+    "url": "http://techcrunch.com/2019/05/09/daily-crunch-google-play-ratings/",
+    "urlToImage": "https://techcrunch.com/wp-content/uploads/2014/06/google-play.jpg?w=711",
+    "publishedAt": "2019-05-09T16:32:51Z",
+    "content": "The Daily Crunch is TechCrunch’s roundup of our biggest and most important stories. If you’d like to get this delivered to your inbox every day at around 9am Pacific, you can subscribe here.\r\n1. Google Play is changing how app ratings work\r\nSpecifically, Goog… [+2263 chars]"
+  },
+  {
+    "source": {
+      "id": "techcrunch",
+      "name": "TechCrunch"
+    },
+    "author": "Ron Miller",
+    "title": "R/GA Ventures incubator to nurture enterprise blockchain startups in Portland, OR",
+    "description": "R/GA Ventures, a company that acts as investment arm and startup incubator for R/GA corporate client work, announced plans to open a new studio in Portland devoted to encouraging startups working on enterprise blockchain projects. R/GA itself has a three-pron…",
+    "url": "http://techcrunch.com/2019/04/24/r-ga-ventures-project-pushes-enterprise-blockchain-startups-in-portland-or/",
+    "urlToImage": "https://techcrunch.com/wp-content/uploads/2019/04/GettyImages-962714224-2.jpg?w=600",
+    "publishedAt": "2019-04-24T13:00:29Z",
+    "content": "R/GA Ventures, a company that acts as investment arm and startup incubator for R/GA corporate client work, announced plans to open a new studio in Portland devoted to encouraging startups working on enterprise blockchain projects.\r\nR/GA itself has a three-pro… [+2253 chars]"
+  },
+  {
+    "source": {
+      "id": "techcrunch",
+      "name": "TechCrunch"
+    },
+    "author": "Matt Burns",
+    "title": "Jeff Bezos aims Blue Origin at the Moon",
+    "description": "Today at a packed event blocks from the White House, Jeff Bezos took the stage in front of select members of the media, executives, government officials and a gaggle of middle schoolers to reveal new details of his plan to get to the Moon by 2024.  Blue Origi…",
+    "url": "http://techcrunch.com/2019/05/09/jeff-bezos-aims-blue-origin-at-the-moon/",
+    "urlToImage": "https://techcrunch.com/wp-content/uploads/2019/05/jeff-bezos-blue-origin-0096.jpg?w=600",
+    "publishedAt": "2019-05-09T20:45:36Z",
+    "content": "Today at a packed event blocks from the White House, Jeff Bezos took the stage in front of select members of the media, executives, government officials and a gaggle of middle schoolers to reveal new details of his plan to get to the Moon by 2024. \r\nBlue Orig… [+5625 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Gizmodo.com"
+    },
+    "author": "George Dvorsky",
+    "title": "Substandard, Superficial, and Absurd: Experts Slam the Science Behind the CRISPR Baby Experiment",
+    "description": "A pair of genetic experts are claiming that the controversial human gene-editing experiment conducted by Chinese scientist He Jiankui was not only unethical, it was also deeply flawed from a scientific perspective. The experiment, they said, likely won’t work…",
+    "url": "https://gizmodo.com/substandard-superficial-and-absurd-experts-slam-the-1834417285",
+    "urlToImage": "https://i.kinja-img.com/gawker-media/image/upload/s--EST9lmzt--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/aw6bi4n1wdhjmoz122ca.jpg",
+    "publishedAt": "2019-04-30T18:00:00Z",
+    "content": "A pair of genetic experts are claiming that the controversial human gene-editing experiment conducted by Chinese scientist He Jiankui was not only unethical, it was also deeply flawed from a scientific perspective. The experiment, they said, likely wont work … [+6391 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Gizmodo.com"
+    },
+    "author": "Yessenia Funes on Earther, shared by Maddie Stone to Gizmodo",
+    "title": "‘Biodegradable' Bags Can Still Carry Groceries After Three Years in the Ground, Study Finds",
+    "description": "I’m a cat owner, so cleaning up poop is a near daily occurrence. I buy special bags for my feline son, Mellow: the biodegradable type. If I’m going to dump his poop and pine litter into the trash, might as well use do so in something that decomposes, right? R…",
+    "url": "https://earther.gizmodo.com/biodegradable-bags-can-still-carry-groceries-after-thr-1834384186",
+    "urlToImage": "https://i.kinja-img.com/gawker-media/image/upload/s--Ks-F2C9z--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/lcccarmpsbysj7upd98c.jpg",
+    "publishedAt": "2019-04-29T17:00:00Z",
+    "content": "Im a cat owner, so cleaning up poop is a near daily occurrence. I buy special bags for my feline son, Mellow: the biodegradable type. If Im going to dump his poop and pine litter into the trash, might as well use do so in something that decomposes, right?\r\nWe… [+3295 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Gizmodo.com"
+    },
+    "author": "Matt Novak",
+    "title": "Secretive Group of Elite Scientists Saved From Pentagon Budget Cuts at the Last Minute",
+    "description": "The Jason Group, an advisory panel of scientists and academics that have conducted studies for the Pentagon since 1960, might not be dissolving after all. The Department of Energy’s National Nuclear Safety Administration (NNSA) has stepped in to keep the grou…",
+    "url": "https://gizmodo.com/secretive-group-of-elite-scientists-saved-from-pentagon-1834323744",
+    "urlToImage": "https://i.kinja-img.com/gawker-media/image/upload/s--auK2WFn6--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/m2euozigibfetymwcfzd.jpg",
+    "publishedAt": "2019-04-26T13:20:00Z",
+    "content": "The Jason Group, an advisory panel of scientists and academics that have conducted studies for the Pentagon since 1960, might not be dissolving after all. The Department of Energys National Nuclear Security Administration (NNSA) has stepped in to keep the gro… [+2988 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Gizmodo.com"
+    },
+    "author": "Daniel Kolitz",
+    "title": "Will There Ever Be New Colors That We Can See?",
+    "description": "When brain chips break big, and commercial tech giants start sifting our thoughts and swapping cherished memories for subscription wine box ads, there will be plenty of reasons to be skeptical. But if this future is inevitable, we might as well dwell on the g…",
+    "url": "https://gizmodo.com/will-there-ever-be-new-colors-that-we-can-see-1834500228",
+    "urlToImage": "https://i.kinja-img.com/gawker-media/image/upload/s--nUnUb5mh--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/mxunspbjhh8jnznvy6zl.jpg",
+    "publishedAt": "2019-05-06T12:15:00Z",
+    "content": "When brain chips break big, and commercial tech giants start sifting our thoughts and swapping cherished memories for subscription wine box ads, there will be plenty of reasons to be skeptical. But if this future is inevitable, we might as well dwell on the g… [+16715 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Gizmodo.com"
+    },
+    "author": "Sarah Wells",
+    "title": "Happy Birthday to Dorothy Garrod, One of the First Women Archaeologists",
+    "description": "Equipped with only dining hall spoons, the clothes on their backs, and pure archaeological curiosity, undergraduates at Cambridge’s Newnham College in 1939 were given a crash course in field work when their professor, Dorothy Garrod, led them through the exca…",
+    "url": "https://gizmodo.com/happy-birthday-to-dorothy-garrod-one-of-the-first-wome-1834534414",
+    "urlToImage": "https://i.kinja-img.com/gawker-media/image/upload/s--xMn104AZ--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/tgxmdewuxcovzb6g2xve.png",
+    "publishedAt": "2019-05-05T16:40:00Z",
+    "content": "Equipped with only dining hall spoons, the clothes on their backs, and pure archaeological curiosity, undergraduates at Cambridges Newnham College in 1939 were given a crash course in field work when their professor, Dorothy Garrod, led them through the excav… [+5195 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Gizmodo.com"
+    },
+    "author": "Ryan F. Mandelbaum",
+    "title": "The Quest for the Most Elusive Material in Physics",
+    "description": "Zack Geballe spent months screwing together pairs of polished diamonds at the Carnegie Institution for Science’s Geophysical Laboratory. Theory predicted that squeezed between the diamonds’ tips could be one of the most miraculous substances of modern physics…",
+    "url": "https://gizmodo.com/the-quest-for-the-most-elusive-material-in-physics-1833846121",
+    "urlToImage": "https://i.kinja-img.com/gawker-media/image/upload/s--gplw4H22--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/kgxcorad8ws3mbxw5sdi.png",
+    "publishedAt": "2019-04-16T15:00:00Z",
+    "content": "Zack Geballe spent months screwing together pairs of polished diamonds at the Carnegie Institution for Sciences Geophysical Laboratory. Theory predicted that squeezed between the diamonds tips could be one of the most miraculous substances of modern physicsa … [+18291 chars]"
+  },
+  {
+    "source": {
+      "id": "mashable",
+      "name": "Mashable"
+    },
+    "author": "The Conversation",
+    "title": "How Uber and other digital platforms could trick us using behavioral science – unless we act fast",
+    "description": "Uber’s business model is incredibly simple: It’s a platform that facilitates exchanges between people. And Uber’s been incredibly successful at it, almost eliminating the transaction costs of doing business in everything from shuttling people around town to d…",
+    "url": "https://mashable.com/article/how-uber-and-other-digital-platforms-trick-us-using-behavioral-science/",
+    "urlToImage": "https://mondrian.mashable.com/2019%252F05%252F10%252F10%252F1ca47e00f3af47fc90132a9600afb11e.18acf.jpg%252F1200x630.jpg?signature=c1sZFAnwRoVWjoIaSuk3Lh6vHPI=",
+    "publishedAt": "2019-05-10T17:10:08Z",
+    "content": "Ubers business model is incredibly simple: Its a platform that facilitates exchanges between people. And Ubers been incredibly successful at it, almost eliminating the transaction costs\r\n of doing business\r\n in everything from shuttling people around town to … [+6507 chars]"
+  },
+  {
+    "source": {
+      "id": "mashable",
+      "name": "Mashable"
+    },
+    "author": "Adam Rosenberg",
+    "title": "Drone discovers a Hawaiian plant that was thought to be extinct",
+    "description": "Hey there, Hibiscadelphus woodii. How you been? The plant, which is also known as \"Wood's hau kuahiwi\" and was thought to be extinct, is apparently still around and possibly even flourishing in its native Hawaii. Researchers for the National Tropical Botanica…",
+    "url": "https://mashable.com/article/hawaii-extinct-plant-h-woodii-drone-discovery/",
+    "urlToImage": "https://mondrian.mashable.com/2019%252F04%252F20%252F30%252Fac7647ef41c840c79b99fd44a964f406.f3b13.jpg%252F1200x630.jpg?signature=BRMMxSUBDZkohzbuFnyfM-v4r8o=",
+    "publishedAt": "2019-04-20T15:27:39Z",
+    "content": "Hey there, Hibiscadelphus woodii. How you been?\r\nThe plant, which is also known as \"Wood's hau kuahiwi\" and was thought to be extinct, is apparently still around and possibly even flourishing in its native Hawaii. Researchers for the National Tropical Botanic… [+1514 chars]"
+  },
+  {
+    "source": {
+      "id": "bbc-news",
+      "name": "BBC News"
+    },
+    "author": "https://www.facebook.com/bbcnews",
+    "title": "The Wandering Earth and China's sci-fi heritage",
+    "description": "As the blockbuster heads to Netflix, here are five classic films from China's rich sci-fi film history.",
+    "url": "https://www.bbc.co.uk/news/world-asia-china-47769882",
+    "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/A2EE/production/_106601714_mediaitem106604695.jpg",
+    "publishedAt": "2019-04-28T23:39:05Z",
+    "content": "Image copyrightNetflixImage caption\r\n The Wandering Earth debuts on Netflix on 30 April\r\nThe Wandering Earth has been billed as a breakthrough for Chinese sci-fi.\r\nThe film tells the story of our planet, doomed by the expanding Sun, being moved across space t… [+8604 chars]"
+  },
+  {
+    "source": {
+      "id": "bbc-news",
+      "name": "BBC News"
+    },
+    "author": "https://www.facebook.com/bbcnews",
+    "title": "Tracking the toxic air that's killing millions",
+    "description": "Artificial intelligence is giving us more accurate air pollution forecasts, potentially saving lives.",
+    "url": "https://www.bbc.co.uk/news/business-48037412",
+    "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/8262/production/_106587333_gettyimages-476505663.jpg",
+    "publishedAt": "2019-04-25T23:03:08Z",
+    "content": "Image copyrightGetty ImagesImage caption\r\n Could better tracking of air pollution help us choose safer routes?\r\nThe air we breathe is killing us. \r\nThe World Health Organisation (WHO) says air pollution causes the death of seven million people a year and acco… [+6934 chars]"
+  },
+  {
+    "source": {
+      "id": "ars-technica",
+      "name": "Ars Technica"
+    },
+    "author": "John Timmer",
+    "title": "Science and bicycling meet in a new helmet design",
+    "description": "New helmet is supposed to solve a problem identified in studies of NFL injuries.",
+    "url": "https://arstechnica.com/science/2019/04/science-and-bicycling-meet-in-a-new-helmet-design/",
+    "urlToImage": "https://cdn.arstechnica.net/wp-content/uploads/2019/04/Screen-Shot-2019-04-12-at-5.10.29-PM-760x380.png",
+    "publishedAt": "2019-04-14T13:00:16Z",
+    "content": "0 with 0 posters participating\r\nWhen we recently did an overview of the evolution of bicycling technology, helmets were barely mentioned. They've been made out of the same materials for decades, and the only improvement they've seen in that time is a more eff… [+8503 chars]"
+  },
+  {
+    "source": {
+      "id": "ars-technica",
+      "name": "Ars Technica"
+    },
+    "author": "Peter Bright",
+    "title": "Now it’s Microsoft’s turn for an anti-diversity internal revolt",
+    "description": "Internal memo suggests that women don't think the right way to be engineers.",
+    "url": "https://arstechnica.com/tech-policy/2019/04/now-its-microsofts-turn-for-an-anti-diversity-internal-revolt/",
+    "urlToImage": "https://cdn.arstechnica.net/wp-content/uploads/2019/04/microsoft-plant-logo-760x380.jpg",
+    "publishedAt": "2019-04-22T17:12:22Z",
+    "content": "7 with 7 posters participating\r\nSome Microsoft employees are criticizing the company's efforts to increase hiring from under-represented demographics to make its staff more diverse, according to messages leaked to Quartz.\r\nThreads started by an as-yet unnamed… [+4840 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Androidcentral.com"
+    },
+    "author": "Andrew Martonik",
+    "title": "Samsung Galaxy Fold review: Potential and promise, not a product",
+    "description": "You can't deny the Fold's technical achievements, but you'd also be hard-pressed to justify buying one. We've been waiting for this day for years. Once an item of science fiction, we finally have our first taste of real, honest-to-goodness, foldable smartphon…",
+    "url": "https://www.androidcentral.com/samsung-galaxy-fold-review",
+    "urlToImage": "https://www.androidcentral.com/sites/androidcentral.com/files/styles/large/public/article_images/2019/04/galaxy-fold-black-home-screen-open.jpg?itok=KccPhyIO",
+    "publishedAt": "2019-04-23T19:33:59Z",
+    "content": "We've been waiting for this day for years. Once an item of science fiction, we finally have our first taste of real, honest-to-goodness, foldable smartphones. With no separate screens or weird caveats; the Samsung Galaxy Fold has a single display that folds i… [+15730 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Cnet.com"
+    },
+    "author": "Stephen Shankland",
+    "title": "Google working to fix AI bias problems - CNET",
+    "description": "Just because artificial intelligence training data might show that doctors are often male, doesn't mean machine learning should assume that's the case.",
+    "url": "https://www.cnet.com/news/google-working-to-fix-ai-bias-problems/",
+    "urlToImage": "https://cnet4.cbsistatic.com/img/T4NTL_28hPh0B12RVsgJXyXGuMw=/756x567/2019/05/07/a50cafe7-45b4-46b9-88cf-e71a81ccbb6b/sundar-pichai-google-io.jpg",
+    "publishedAt": "2019-05-07T18:03:09Z",
+    "content": "Google CEO Sundar Pichai talks AI at I/O.\r\nScreenshot by Stephen Shankland/CNET\r\nGoogle is trying to keep AI bias at bay.\r\nAt its Google I/O conference Tuesday, Chief Executive Sundar Pichai described research to gain insight into how its artificial intellige… [+654 chars]"
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Npr.org"
+    },
+    "author": "Merrit Kennedy",
+    "title": "Uber And Lyft Caused Major Traffic Uptick In San Francisco, Study Says",
+    "description": "Researchers compared data from fall 2010 — before the companies made inroads in the city — and fall 2016. They found that the companies are to blame for more than half of a big increase in traffic.",
+    "url": "https://www.npr.org/2019/05/08/721139488/uber-and-lyft-caused-major-traffic-uptick-in-san-francisco-study-says",
+    "urlToImage": "https://media.npr.org/assets/img/2019/05/07/gettyimages-1137615478_wide-dce35d773a91c41574428e38a9bacc59d6c9db1a.jpg?s=1400",
+    "publishedAt": "2019-05-08T19:57:03Z",
+    "content": "Researchers also found that congestion on the roads in San Francisco also was exacerbated because of where the ride-hailing cars were and at what time of day.\r\nJustin Sullivan/Getty Images\r\nDo ride-hailing companies like Uber and Lyft make a city's traffic wo… [+5360 chars]"
+  }
+]
+}]

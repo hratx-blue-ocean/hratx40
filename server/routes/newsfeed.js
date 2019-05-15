@@ -1,17 +1,18 @@
 const router = require("express").Router();
-const axios = require("axios");
+const fs = require("file-system");
 require('dotenv').config({path: '../../.env'})
 
 router.get("/", (req, res) => {
-  let keyword = req.query.topic;
-  axios.get(`https://newsapi.org/v2/everything?q="${keyword}"&sortBy=popularity&language=en&apiKey=${process.env.NEWS_KEY}`)
-    .then((data) => {
-      console.log(data)
-      res.send(data.data.articles)
-    })
-    .catch((err) => {
-      console.error(`ERROR: ${err}`)
-    })
-})
+  const keyword = req.query.topic
+  console.log(keyword);
+  fs.readFile(`./cache/${keyword}.json`, (error, data) => {
+    if(error) {
+      console.log(error);
+      res.status(404).end();
+    } else {
+      res.send(data)
+    }
+  });
+});
 
 module.exports = router;
