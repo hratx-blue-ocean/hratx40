@@ -17,7 +17,8 @@ const chooseChild = (
   location,
   topic,
   allDBTopics,
-  serverUrl
+  serverUrl,
+  switchModal
 ) => {
   if (type === "login") {
     return (
@@ -26,10 +27,11 @@ const chooseChild = (
         setLogin={setLogin}
         serverUrl={serverUrl}
         allDBTopics={allDBTopics}
+        switchModal={switchModal} 
       />
     );
   } else if (type === "signup") {
-    return <Signup toggleOpen={toggleOpen} serverUrl={serverUrl} />;
+    return <Signup toggleOpen={toggleOpen} serverUrl={serverUrl} switchModal={switchModal} />;
   } else if (type === "donate") {
     return <DonateModal topic={topic} serverUrl={serverUrl} />;
   } else if (type === "more_info") {
@@ -123,7 +125,8 @@ const ModalDiv = props => {
                 props.location,
                 props.currentTopic,
                 props.allDBTopics,
-                props.serverUrl
+                props.serverUrl,
+                props.switchModal
               )}
             </Paper>
           </Grid>

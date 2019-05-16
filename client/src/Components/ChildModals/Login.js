@@ -85,7 +85,7 @@ const Login = props => {
           Login
         </button>
         <span id="sneaky-login-span">Don't have an account? Sign up </span>
-        <span id="sneaky-signup">here!</span>
+        <span id="sneaky-signup" onClick={(e) => props.switchModal(e, 'signup')}>here!</span>
       </div>
 
       <span id="success" />

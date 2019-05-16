@@ -32,6 +32,7 @@ export default class App extends Component {
     this.logout = this.logout.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.switchModal = this.switchModal.bind(this);
   }
 
   componentDidMount() {
@@ -189,6 +190,13 @@ export default class App extends Component {
     }
   }
 
+  switchModal(event, type){
+    if (event) event.preventDefault();
+    this.setState({
+      modalType: type
+    });
+  }
+
   setLoginState(data) {
     this.setState(data);
   }
@@ -260,6 +268,7 @@ export default class App extends Component {
             setLogin={this.setLoginState}
             allDBTopics={this.state.allTopics}
             serverUrl={this.state.serverUrl}
+            switchModal={this.switchModal}
           />
         </>
       );

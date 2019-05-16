@@ -25,6 +25,7 @@ const signupReq = (e, toggleOpen, serverUrl) => {
     document.getElementById(`error`).innerHTML = `Passwords don't match`;
   }
 }
+
 const Signup = (props) => {
   return (
     <div id='signup-modal'>
@@ -40,7 +41,7 @@ const Signup = (props) => {
       <div id="signup-modal-button-container">
         <button id="signup-button" onClick={(e) => { signupReq(e, props.toggleOpen, props.serverUrl) }}>Signup!</button>
         <span id="sneaky-login-span">Already got an account? Login </span>
-        <span id="sneaky-login">here!</span>
+        <span id="sneaky-login" onClick={(e) => props.switchModal(e, 'login')}>here!</span>
       </div>
 
       <span id='success'></span>
