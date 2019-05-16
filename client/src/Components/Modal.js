@@ -17,12 +17,8 @@ const chooseChild = (
   location,
   topic,
   allDBTopics,
-<<<<<<< HEAD
   serverUrl,
   switchModal
-=======
-  serverUrl
->>>>>>> 4c17956618f0f4c72fc28ca5cdb0ede96602098e
 ) => {
   if (type === "login") {
     return (
@@ -31,18 +27,11 @@ const chooseChild = (
         setLogin={setLogin}
         serverUrl={serverUrl}
         allDBTopics={allDBTopics}
-<<<<<<< HEAD
         switchModal={switchModal} 
       />
     );
   } else if (type === "signup") {
     return <Signup toggleOpen={toggleOpen} serverUrl={serverUrl} switchModal={switchModal} />;
-=======
-      />
-    );
-  } else if (type === "signup") {
-    return <Signup toggleOpen={toggleOpen} serverUrl={serverUrl} />;
->>>>>>> 4c17956618f0f4c72fc28ca5cdb0ede96602098e
   } else if (type === "donate") {
     return <DonateModal topic={topic} serverUrl={serverUrl} />;
   } else if (type === "more_info") {
