@@ -13,7 +13,7 @@ const LandingPage = props => {
         toggleModal={props.toggleModal}
         handlePageChange={props.handlePageChange.bind(props)}
         logout={props.logout}
-        isLogged={props.isLoggedIn}
+        isLogged={props.isLogged}
         firstName={props.firstName}
         handleSearchSubmit={props.handleSearchSubmit}
       />

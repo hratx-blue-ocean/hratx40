@@ -28,7 +28,7 @@ const TopicPageContainer = (props) => {
             toggleModal={props.toggleModal}
             handlePageChange={props.handlePageChange}
             logout={props.logout}
-            isLogged={props.isLoggedIn}
+            isLogged={props.isLogged}
             firstName={props.firstName}
           />
       <Grid 
