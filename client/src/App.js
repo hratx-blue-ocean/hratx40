@@ -274,6 +274,7 @@ export default class App extends Component {
             isLogged={this.state.isLoggedIn}
             handleSearchSubmit={this.handleSearchSubmit}
             firstName={this.state.firstName}
+            isLogged={this.state.isLoggedIn}
           />
           <Modal
             modalType={this.state.modalType}
