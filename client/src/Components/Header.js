@@ -60,8 +60,6 @@ const styles = theme => ({
 function SearchAppBar(props) {
   const { classes } = props;
 
-  console.log(props.isLogged);
-
   return (
     <div className={classes.root} style={{position: 'fixed', top: 0}}>
       <AppBar position="static" style={{background: '#C4ADAE'}}>
