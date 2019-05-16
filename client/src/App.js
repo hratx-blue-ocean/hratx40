@@ -173,6 +173,66 @@ export default class App extends Component {
     });
   }
 
+  handleTopicTileClick(e, target, topic_id, target_name) {
+    e.preventDefault();
+    if (target === "fav") {
+      let route = `${this.state.serverUrl}/api/addFavorites`;
+      for (let favorite of this.state.favorites) {
+        if (favorite.topic_name === target_name) {
+          route = `${this.state.serverUrl}/api/deleteFavorites`;
+          break;
+        }
+      }
+      axios
+        .post(route, {
+          topic_id: topic_id,
+          user_id: this.state.user_id
+        })
+        .then(results => {
+          const allFavorites = results.data;
+          this.setState({
+            favorites: allFavorites
+          });
+        })
+        .catch(err => {
+          throw err;
+        });
+    } else if (target === "topicTile") {
+      this.setState({
+        page: "action",
+        currentTopic: target_name
+      });
+    }
+  }
+
+  logout(e) {
+    e.preventDefault();
+    this.setState({
+      isLoggedIn: false,
+      user_id: 0,
+      firstName: "",
+      username: "",
+      favorites: []
+    });
+    localStorage.clear();
+  }
+
+  geolocate() {
+    if (window.navigator && window.navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this.geolocateSuccess,
+        this.onGeolocateError
+      );
+    }
+  }
+
+  geolocateSuccess(coordinates) {
+    const { latitude, longitude } = coordinates.coords;
+    this.setState({
+      location: `${latitude},${longitude}`
+    });
+  }
+
   // Toggles if the Modal is open or closed
   // upon open, sets the modalType using the element's name
   toggleModal(event, type) {

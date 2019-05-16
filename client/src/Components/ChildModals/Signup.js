@@ -25,7 +25,10 @@ const signupReq = (e, toggleOpen, serverUrl) => {
     document.getElementById(`error`).innerHTML = `Passwords don't match`;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c17956618f0f4c72fc28ca5cdb0ede96602098e
 const Signup = (props) => {
   return (
     <div id='signup-modal'>
@@ -41,7 +44,11 @@ const Signup = (props) => {
       <div id="signup-modal-button-container">
         <button id="signup-button" onClick={(e) => { signupReq(e, props.toggleOpen, props.serverUrl) }}>Signup!</button>
         <span id="sneaky-login-span">Already got an account? Login </span>
+<<<<<<< HEAD
         <span id="sneaky-login" onClick={(e) => props.switchModal(e, 'login')}>here!</span>
+=======
+        <span id="sneaky-login">here!</span>
+>>>>>>> 4c17956618f0f4c72fc28ca5cdb0ede96602098e
       </div>
 
       <span id='success'></span>
